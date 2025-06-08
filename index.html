@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+
+</body>
+</html><!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -287,8 +289,6 @@
 
     <script>
         // --- KONFIGURASI FIREBASE ANDA ---
-        // Ini adalah detail proyek Firebase Anda yang sudah saya tempelkan.
-        // Anda tidak perlu mengubahnya lagi.
         const firebaseConfig = {
             apiKey: "AIzaSyDmyanNuVS3-Kdsz22fhS-prViRSCyUFK4",
             authDomain: "komunitas-chataja.firebaseapp.com",
@@ -308,7 +308,6 @@
         let currentUserName = 'Anonim';
         let authMode = 'login'; // 'login' atau 'signup'
         const FIRESTORE_COLLECTION_NAME = 'community_posts';
-        // Kunci unik untuk Local Storage, menggunakan UID pengguna untuk batasan ganti nama per pengguna
         const LAST_NAME_CHANGE_KEY_PREFIX = 'last_name_change_timestamp_';
 
         const authSection = document.getElementById('authSection');
@@ -320,7 +319,7 @@
 
         const userProfileSection = document.getElementById('userProfileSection');
         const currentUserNameDisplay = document.getElementById('currentUserName');
-        const changeNameButton = document.getElementById('changeNameButton'); // Tombol Ganti Nama
+        const changeNameButton = document.getElementById('changeNameButton');
         const postFormSection = document.getElementById('postFormSection');
         const postContentInput = document.getElementById('postContent');
         const postsContainer = document.getElementById('postsContainer');
@@ -480,7 +479,6 @@
 
                         const postAuthor = document.createElement('span');
                         postAuthor.classList.add('post-author');
-                        // Tampilkan nama tampilan atau bagian email jika displayName tidak ada
                         postAuthor.textContent = post.author || (post.authorEmail ? post.authorEmail.split('@')[0] : 'Anonim');
 
                         const postDate = document.createElement('span');
@@ -518,13 +516,16 @@
         }
 
         async function addPost() {
-            // Pastikan pengguna sudah login sebelum posting
             if (!auth.currentUser) {
                 alert('Anda harus login untuk membuat postingan!');
                 return;
             }
 
             const content = postContentInput.value.trim();
+
+            // Debugging console logs
+            console.log('Nilai dari textarea:', postContentInput.value);
+            console.log('Nilai setelah .trim():', content);
 
             if (content === '') {
                 alert('Postingan tidak boleh kosong!');
@@ -535,6 +536,7 @@
                 await db.collection(FIRESTORE_COLLECTION_NAME).add({
                     author: auth.currentUser.displayName || auth.currentUser.email.split('@')[0],
                     authorEmail: auth.currentUser.email,
+                    content: content, // Pastikan 'content' ini tidak kosong
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 });
                 postContentInput.value = '';

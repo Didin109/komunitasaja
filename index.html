@@ -1,6 +1,4 @@
-
-</body>
-</html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -321,7 +319,7 @@
         const currentUserNameDisplay = document.getElementById('currentUserName');
         const changeNameButton = document.getElementById('changeNameButton');
         const postFormSection = document.getElementById('postFormSection');
-        const postContentInput = document.getElementById('postContent');
+        const postContentInput = document.getElementById('postContent'); // Pastikan ini benar
         const postsContainer = document.getElementById('postsContainer');
         const noPostsMessage = document.getElementById('noPostsMessage');
 
@@ -498,7 +496,8 @@
 
                         const postContent = document.createElement('p');
                         postContent.classList.add('post-content');
-                        postContent.textContent = post.content || '';
+                        // Pastikan ini mengambil data dari field 'content' di Firestore
+                        postContent.textContent = post.content || ''; 
 
                         postHeader.appendChild(postAuthor);
                         postHeader.appendChild(postDate);
@@ -521,11 +520,11 @@
                 return;
             }
 
-            const content = postContentInput.value.trim();
+            const content = postContentInput.value.trim(); // Ini seharusnya menangkap nilai dari textarea
 
             // Debugging console logs
-            console.log('Nilai dari textarea:', postContentInput.value);
-            console.log('Nilai setelah .trim():', content);
+            console.log('Nilai dari textarea (postContentInput.value):', postContentInput.value);
+            console.log('Nilai setelah .trim() (content):', content);
 
             if (content === '') {
                 alert('Postingan tidak boleh kosong!');
@@ -536,12 +535,12 @@
                 await db.collection(FIRESTORE_COLLECTION_NAME).add({
                     author: auth.currentUser.displayName || auth.currentUser.email.split('@')[0],
                     authorEmail: auth.currentUser.email,
-                    content: content, // Pastikan 'content' ini tidak kosong
+                    content: content, // <<< PASTIKAN BARIS INI ADA DAN MENGGUNAKAN VARIABEL 'content'
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 });
-                postContentInput.value = '';
+                postContentInput.value = ''; // Kosongkan input setelah dikirim
                 alert('Postingan berhasil dikirim!');
-                displayPosts();
+                displayPosts(); // Muat ulang tampilan agar postingan baru muncul
             } catch (error) {
                 console.error("Error adding post to Firestore:", error);
                 alert('Gagal mengirim postingan. Coba lagi nanti.');

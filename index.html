@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Komunitas Kita</title>
+    <style>
+        /* --- Gaya Visual (CSS) --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 20px;
+            width: 100%;
+            max-width: 700px;
+            box-sizing: border-box;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .user-profile {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #e9f0f7;
+            border-radius: 6px;
+            border: 1px solid #d0e0ed;
+        }
+
+        .user-profile span {
+            font-weight: bold;
+            color: #007bff;
+            font-size: 1.1em;
+        }
+
+        .user-profile button {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .user-profile button:hover {
+            background-color: #0056b3;
+        }
+
+        .post-form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 1px solid #eee;
+        }
+
+        .post-form textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            min-height: 80px;
+            resize: vertical;
+            font-size: 1em;
+        }
+
+        .post-form button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .post-form button:hover {
+            background-color: #218838;
+        }
+
+        .posts-list {
+            margin-top: 20px;
+        }
+
+        .post-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .post-item .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .post-item .post-author {
+            font-weight: bold;
+            color: #3498db;
+            font-size: 1.05em;
+        }
+
+        .post-item .post-date {
+            font-size: 0.85em;
+            color: #777;
+        }
+
+        .post-item .post-content {
+            line-height: 1.6;
+            color: #444;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .no-posts-message {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                padding: 20px;
+            }
+            .user-profile {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .user-profile button {
+                margin-top: 10px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Selamat Datang di Komunitas Kita!</h1>
+
+        <div class="user-profile">
+            <p>Anda masuk sebagai: <span id="currentUserName">Loading...</span></p>
+            <button onclick="changeUserName()">Ganti Nama</button>
+        </div>
+
+        <div class="post-form">
+            <h2>Buat Postingan Baru</h2>
+            <textarea id="postContent" placeholder="Apa yang ingin Anda bagikan hari ini?"></textarea>
+            <button onclick="addPost()">Kirim Postingan</button>
+        </div>
+
+        <div class="posts-list">
+            <h2>Postingan Terbaru</h2>
+            <div id="postsContainer">
+                <p class="no-posts-message" id="noPostsMessage">Memuat postingan...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script>
+        // --- KONFIGURASI FIREBASE ANDA (SUDAH TERISI) ---
+        // Ini adalah detail proyek Firebase Anda yang sudah saya tempelkan.
+        // Anda tidak perlu mengubahnya lagi.
+        const firebaseConfig = {
+            apiKey: "AIzaSyDmyanNuVS3-Kdsz22fhS-prViRSCyUFK4",
+            authDomain: "komunitas-chataja.firebaseapp.com",
+            projectId: "komunitas-chataja",
+            storageBucket: "komunitas-chataja.firebasestorage.app",
+            messagingSenderId: "410060651422",
+            appId: "1:410060651422:web:65c05c744bdb814715f48f",
+            measurementId: "G-7YVNM9EK93" // Ini opsional, mungkin ada atau tidak ada
+        };
+
+        // Inisialisasi Firebase
+        // Baris ini menghubungkan website Anda ke proyek Firebase di cloud.
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore(); // Mendapatkan akses ke database Firestore
+
+        // Variabel Global dan Referensi Elemen HTML
+        let currentUserName = 'Anonim';
+        const userNameStorageKey = 'komunitas_userName';
+        const FIRESTORE_COLLECTION_NAME = 'community_posts'; // Nama koleksi di Firestore
+
+        const currentUserNameDisplay = document.getElementById('currentUserName');
+        const postContentInput = document.getElementById('postContent');
+        const postsContainer = document.getElementById('postsContainer');
+        const noPostsMessage = document.getElementById('noPostsMessage');
+
+        // --- Fungsi Pengelolaan Nama Pengguna (Disimpan di browser Anda) ---
+        function loadUserName() {
+            const storedName = localStorage.getItem(userNameStorageKey);
+            if (storedName) {
+                currentUserName = storedName;
+            } else {
+                changeUserName(true); // Meminta nama saat pertama kali
+            }
+            currentUserNameDisplay.textContent = currentUserName;
+        }
+
+        function saveUserName() {
+            localStorage.setItem(userNameStorageKey, currentUserName);
+        }
+
+        function changeUserName(isInitialLoad = false) {
+            let newName = prompt('Masukkan nama Anda:', currentUserName);
+            if (newName && newName.trim() !== '') {
+                const cleanedNewName = newName.trim().replace(/[.#$\[\]\/]/g, '_');
+                if (cleanedNewName !== newName.trim()) {
+                    alert('Nama mengandung karakter yang tidak diizinkan. Beberapa karakter akan diganti dengan underscore.');
+                }
+                currentUserName = cleanedNewName;
+                saveUserName();
+                currentUserNameDisplay.textContent = currentUserName;
+                if (!isInitialLoad) {
+                    alert('Nama berhasil diubah menjadi: ' + currentUserName);
+                }
+            } else if (newName === null && isInitialLoad) {
+                currentUserName = 'Anonim';
+                saveUserName();
+                currentUserNameDisplay.textContent = currentUserName;
+            } else if (newName !== null) {
+                alert('Nama tidak boleh kosong.');
+            }
+        }
+
+        // --- Fungsi Pengelolaan Postingan (Menggunakan Firebase Firestore) ---
+
+        // Fungsi untuk MENAMPILKAN postingan dari database global (Firestore)
+        async function displayPosts() {
+            postsContainer.innerHTML = '';
+            noPostsMessage.textContent = 'Memuat postingan...';
+            noPostsMessage.style.display = 'block';
+
+            try {
+                // Mengambil postingan dari Firestore, diurutkan dari yang terbaru
+                const snapshot = await db.collection(FIRESTORE_COLLECTION_NAME)
+                                        .orderBy('timestamp', 'desc')
+                                        .get();
+
+                if (snapshot.empty) {
+                    noPostsMessage.textContent = 'Belum ada postingan. Ayo jadi yang pertama!';
+                } else {
+                    noPostsMessage.style.display = 'none';
+                    snapshot.forEach(doc => {
+                        const post = doc.data();
+                        const postItem = document.createElement('div');
+                        postItem.classList.add('post-item');
+
+                        const postHeader = document.createElement('div');
+                        postHeader.classList.add('post-header');
+
+                        const postAuthor = document.createElement('span');
+                        postAuthor.classList.add('post-author');
+                        postAuthor.textContent = post.author || 'Anonim';
+
+                        const postDate = document.createElement('span');
+                        postDate.classList.add('post-date');
+                        let date;
+                        if (post.timestamp && post.timestamp.toDate) {
+                            date = post.timestamp.toDate();
+                        } else if (post.timestamp) {
+                            date = new Date(post.timestamp);
+                        } else {
+                            date = new Date();
+                        }
+                        postDate.textContent = date.toLocaleDateString('id-ID', {
+                            year: 'numeric', month: 'long', day: 'numeric',
+                            hour: '2-digit', minute: '2-digit'
+                        });
+
+                        const postContent = document.createElement('p');
+                        postContent.classList.add('post-content');
+                        postContent.textContent = post.content || '';
+
+                        postHeader.appendChild(postAuthor);
+                        postHeader.appendChild(postDate);
+                        postItem.appendChild(postHeader);
+                        postItem.appendChild(postContent);
+
+                        postsContainer.appendChild(postItem);
+                    });
+                }
+            } catch (error) {
+                console.error("Error loading posts from Firestore:", error);
+                noPostsMessage.textContent = 'Gagal memuat postingan. Terjadi kesalahan.';
+                noPostsMessage.style.color = '#d9534f';
+            }
+        }
+
+        // Fungsi untuk MENAMBAHKAN postingan ke database global (Firestore)
+        async function addPost() {
+            const content = postContentInput.value.trim();
+
+            if (content === '') {
+                alert('Postingan tidak boleh kosong!');
+                return;
+            }
+
+            try {
+                // Mengirim postingan ke Firestore
+                await db.collection(FIRESTORE_COLLECTION_NAME).add({
+                    author: currentUserName,
+                    content: content,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                postContentInput.value = ''; // Kosongkan input
+                alert('Postingan berhasil dikirim!');
+                displayPosts(); // Muat ulang tampilan agar postingan baru muncul
+            } catch (error) {
+                console.error("Error adding post to Firestore:", error);
+                alert('Gagal mengirim postingan. Coba lagi nanti.');
+            }
+        }
+
+        // --- Inisialisasi Saat Halaman Dimuat ---
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUserName(); // Muat nama pengguna saat halaman pertama dibuka
+            displayPosts(); // Tampilkan postingan dari Firestore
+        });
+    </script>
+</body>
+</html>

@@ -1,86 +1,258 @@
-<!DOCTYPE html>
+
+</body>
+</html><!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Komunitas Kita</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* --- Gaya Visual (CSS) --- */
+        /* --- Variabel Warna (Tema) --- */
+        :root {
+            /* Warna Default (Light Mode) */
+            --bg-color: #f0f2f5;
+            --text-color: #333;
+            --container-bg: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --header-bg: #2c3e50; /* Warna header utama */
+            --header-text: #ffffff;
+            --nav-link-color: #ffffff;
+            --nav-link-hover-color: #f0f0f0;
+            --section-bg: #f9f9f9;
+            --section-border: #eee;
+            --input-border: #ccc;
+            --button-primary-bg: #007bff;
+            --button-primary-hover: #0056b3;
+            --button-success-bg: #28a745;
+            --button-success-hover: #218838;
+            --button-danger-bg: #dc3545;
+            --button-danger-hover: #c82333;
+            --button-secondary-bg: #6c757d;
+            --button-secondary-hover: #5a6268;
+            --user-profile-bg: #e9f0f7;
+            --user-profile-border: #d0e0ed;
+            --post-item-bg: #fff;
+            --post-item-border: #ddd;
+            --post-shadow-color: rgba(0, 0, 0, 0.05);
+            --post-header-border: #eee;
+            --post-author-color: #3498db;
+            --post-date-color: #777;
+            --no-posts-color: #666;
+            --link-color: #007bff;
+            --link-hover-color: #0056b3;
+            --message-error-bg: #f8d7da;
+            --message-error-text: #721c24;
+            --message-success-bg: #d4edda;
+            --message-success-text: #155724;
+            /* NEW: Warna untuk centang biru */
+            --verified-badge-color: #1DA1F2; /* Twitter Blue */
+        }
+
+        /* Night Mode (Dark Theme) */
+        body.dark-mode {
+            --bg-color: #2c2c2c;
+            --text-color: #f0f0f0;
+            --container-bg: #3c3c3c;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --header-bg: #004085; /* Darker blue for dark mode header */
+            --header-text: #ffffff;
+            --nav-link-color: #f0f0f0;
+            --nav-link-hover-color: #cccccc;
+            --section-bg: #4c4c4c;
+            --section-border: #555;
+            --input-border: #666;
+            --button-primary-bg: #4a90e2;
+            --button-primary-hover: #3a7bd8;
+            --button-success-bg: #5cb85c;
+            --button-success-hover: #4cae4c;
+            --button-danger-bg: #e25c5c;
+            --button-danger-hover: #d94b4b;
+            --button-secondary-bg: #5c6770;
+            --button-secondary-hover: #4a545d;
+            --user-profile-bg: #4c5a6d;
+            --user-profile-border: #5d6d7e;
+            --post-item-bg: #4c4c4c;
+            --post-item-border: #555;
+            --post-shadow-color: rgba(0, 0, 0, 0.2);
+            --post-header-border: #666;
+            --post-author-color: #87ceeb;
+            --post-date-color: #bbb;
+            --no-posts-color: #aaa;
+            --link-color: #87ceeb;
+            --link-hover-color: #6aabcb;
+            --message-error-bg: #a53d3d;
+            --message-error-text: #ffcccc;
+            --message-success-bg: #3a7a3a;
+            --message-success-text: #ccffcc;
+            /* NEW: Warna untuk centang biru di Dark Mode */
+            --verified-badge-color: #4A90E2; /* Sedikit lebih terang di dark mode */
+        }
+
+        /* --- Gaya Umum & Reset untuk Responsivitas --- */
+        * {
+            box-sizing: border-box; /* Sangat penting untuk responsivitas */
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f2f5;
-            color: #333;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             display: flex;
             flex-direction: column;
-            align-items: center;
             min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden; /* Mencegah scrolling horizontal yang tidak diinginkan */
+            width: 100%; /* Memastikan body tidak melebihi viewport */
+        }
+
+        /* Top Bar / Navigasi */
+        .top-bar {
+            width: 100%;
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            flex-wrap: wrap; /* Memungkinkan item wrap di layar kecil */
+        }
+
+        .top-bar .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--header-text);
+            text-decoration: none;
+            flex-shrink: 0; /* Mencegah logo mengecil terlalu banyak */
+            margin-right: 20px; /* Memberi sedikit jarak */
+        }
+
+        .top-bar nav {
+            flex-grow: 1; /* Memungkinkan nav mengambil ruang yang tersisa */
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .top-bar nav a {
+            color: var(--nav-link-color);
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: 500;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+            white-space: nowrap; /* Mencegah link putus baris */
+            display: flex; /* MODIFIKASI UNTUK FITUR CENTANG BIRU: Untuk menyejajarkan ikon dan teks */
+            align-items: center; /* MODIFIKASI UNTUK FITUR CENTANG BIRU: Untuk menyejajarkan ikon dan teks */
+            gap: 5px; /* MODIFIKASI UNTUK FITUR CENTANG BIRU: Jarak antara ikon dan teks */
+        }
+
+        .top-bar nav a:last-child {
+            margin-right: 0;
+        }
+
+        .top-bar nav a:hover {
+            color: var(--nav-link-hover-color);
+            text-decoration: underline;
+        }
+
+        /* Header Utama (Konten "Komunitas Kita") */
+        header {
+            width: 100%;
+            padding: 30px 20px;
+            text-align: center;
+            background-color: var(--container-bg);
+            box-shadow: 0 2px 4px var(--shadow-color);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: var(--header-color);
+            transition: color 0.3s ease;
         }
 
         .container {
-            background-color: #ffffff;
+            flex-grow: 1;
+            background-color: var(--container-bg);
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px var(--shadow-color);
             padding: 30px;
-            margin: 20px;
-            width: 100%;
+            margin: 20px auto; /* Centering the container */
+            width: calc(100% - 40px); /* Adjusting width to account for margin */
             max-width: 700px;
             box-sizing: border-box;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        h1, h2 {
-            color: #2c3e50;
+        h2 {
+            color: var(--header-color);
             text-align: center;
             margin-bottom: 25px;
+            transition: color 0.3s ease;
         }
 
-        /* Bagian Autentikasi */
-        .auth-section {
-            background-color: #f9f9f9;
+        /* Gaya untuk bagian yang tersembunyi/tampil */
+        .auth-section, .post-form, .profile-management {
+            background-color: var(--section-bg);
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 30px;
-            border: 1px solid #eee;
+            border: 1px solid var(--section-border);
             text-align: center;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
-        .auth-section input[type="email"],
-        .auth-section input[type="password"] {
-            width: calc(100% - 22px);
+        input[type="email"],
+        input[type="password"],
+        input[type="text"],
+        textarea {
+            width: 100%; /* Lebar penuh */
             padding: 10px;
             margin-bottom: 10px;
-            border: 1px solid #ccc;
+            border: 1px solid var(--input-border);
             border-radius: 5px;
             font-size: 1em;
+            background-color: var(--container-bg);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
-        .auth-section button {
-            background-color: #007bff;
+        button {
+            background-color: var(--button-primary-bg);
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
             margin: 5px;
             font-size: 1em;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        .auth-section button:hover {
-            background-color: #0056b3;
+        button:hover {
+            background-color: var(--button-primary-hover);
         }
 
         .auth-section p {
             margin-top: 15px;
             font-size: 0.9em;
-            color: #555;
+            color: var(--text-color);
         }
 
         .auth-section p button {
             background: none;
             border: none;
-            color: #007bff;
+            color: var(--link-color);
             cursor: pointer;
             text-decoration: underline;
             padding: 0;
@@ -89,78 +261,115 @@
         }
 
         .auth-section p button:hover {
-            color: #0056b3;
+            color: var(--link-hover-color);
         }
 
-        /* Profil Pengguna */
+        /* --- Profil Pengguna (Navbar di atas) --- */
         .user-profile {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
             padding: 15px;
-            background-color: #e9f0f7;
+            background-color: var(--user-profile-bg);
             border-radius: 6px;
-            border: 1px solid #d0e0ed;
+            border: 1px solid var(--user-profile-border);
             flex-wrap: wrap;
             gap: 10px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .user-profile .profile-info {
             flex-grow: 1;
+            color: var(--text-color);
+            min-width: 150px; /* Ensure it doesn't get too small */
         }
 
         .user-profile span {
             font-weight: bold;
-            color: #007bff;
+            color: var(--link-color);
             font-size: 1.1em;
+            transition: color 0.3s ease;
         }
 
         .user-profile button {
-            background-color: #007bff;
+            background-color: var(--button-primary-bg);
             color: white;
             padding: 8px 15px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            margin-left: 10px;
+            margin-left: 10px; /* Jarak antar tombol */
+            flex-shrink: 0; /* Mencegah tombol mengecil */
+        }
+        
+        .user-profile button:first-of-type {
+            margin-left: 0; /* Hilangkan margin kiri pada tombol pertama */
         }
 
+
         .user-profile button:hover {
-            background-color: #0056b3;
+            background-color: var(--button-primary-hover);
         }
 
         .user-profile button.logout-button {
-            background-color: #dc3545;
+            background-color: var(--button-danger-bg);
         }
 
         .user-profile button.logout-button:hover {
-            background-color: #c82333;
+            background-color: var(--button-danger-hover);
         }
 
-        /* Form Postingan */
-        .post-form {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            border: 1px solid #eee;
+        /* --- Kelola Profil --- */
+        .profile-management p {
+            text-align: left;
+            margin-bottom: 10px;
         }
-
-        .post-form textarea {
-            width: calc(100% - 20px);
-            padding: 10px;
+        .profile-management p strong {
+            color: var(--link-color);
+        }
+        .profile-management button.back-button {
+             background-color: var(--button-secondary-bg);
+        }
+        .profile-management button.back-button:hover {
+             background-color: var(--button-secondary-hover);
+        }
+        #nameChangeInfo {
+            font-size: 0.9em;
+            color: var(--post-date-color);
+            text-align: left;
+            margin-top: -5px;
             margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        }
+        /* NEW: Style untuk status verifikasi di profil */
+        .profile-management #profileVerificationStatus {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: bold;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            justify-content: flex-start;
+        }
+        .profile-management #profileVerificationStatus .verified-badge {
+            font-size: 1.1em;
+            color: var(--verified-badge-color);
+        }
+        .profile-management #profileVerificationStatus .not-verified-text {
+            font-weight: normal;
+            color: var(--post-date-color); /* Warna abu-abu */
+        }
+
+
+        /* --- Form Postingan --- */
+        .post-form textarea {
             min-height: 80px;
             resize: vertical;
-            font-size: 1em;
         }
 
         .post-form button {
-            background-color: #28a745;
+            background-color: var(--button-success-bg);
             color: white;
             padding: 10px 20px;
             border: none;
@@ -173,21 +382,22 @@
         }
 
         .post-form button:hover {
-            background-color: #218838;
+            background-color: var(--button-success-hover);
         }
 
-        /* Daftar Postingan */
+        /* --- Daftar Postingan --- */
         .posts-list {
             margin-top: 20px;
         }
 
         .post-item {
-            background-color: #fff;
-            border: 1px solid #ddd;
+            background-color: var(--post-item-bg);
+            border: 1px solid var(--post-item-border);
             border-radius: 8px;
             padding: 15px;
             margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px var(--post-shadow-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .post-item .post-header {
@@ -196,81 +406,228 @@
             align-items: center;
             margin-bottom: 10px;
             padding-bottom: 5px;
-            border-bottom: 1px dashed #eee;
+            border-bottom: 1px dashed var(--post-header-border);
+            transition: border-color 0.3s ease;
+            flex-wrap: wrap; /* Untuk tampilan di layar kecil */
         }
 
         .post-item .post-author {
             font-weight: bold;
-            color: #3498db;
+            color: var(--post-author-color);
             font-size: 1.05em;
+            transition: color 0.3s ease;
+            margin-right: 10px; /* Jarak antara author dan date */
+            display: flex; /* NEW: Untuk menyejajarkan nama dan centang biru */
+            align-items: center; /* NEW: Untuk menyejajarkan nama dan centang biru */
+            gap: 5px; /* NEW: Jarak antara nama dan ikon centang */
+        }
+
+        /* NEW: Style untuk centang biru */
+        .post-item .post-author .verified-badge {
+            color: var(--verified-badge-color);
+            font-size: 0.9em; /* Sedikit lebih kecil dari teks nama */
+            vertical-align: middle; /* Memastikan ikon sejajar dengan teks */
         }
 
         .post-item .post-date {
             font-size: 0.85em;
-            color: #777;
+            color: var(--post-date-color);
+            transition: color 0.3s ease;
+            white-space: nowrap; /* Mencegah tanggal putus baris */
         }
 
         .post-item .post-content {
             line-height: 1.6;
-            color: #444;
+            color: var(--text-color);
             white-space: pre-wrap;
             word-wrap: break-word;
+            transition: color 0.3s ease;
         }
 
         .no-posts-message {
             text-align: center;
-            color: #666;
+            color: var(--no-posts-color);
             font-style: italic;
             margin-top: 30px;
+            transition: color 0.3s ease;
         }
 
-        /* Responsif */
-        @media (max-width: 600px) {
+        /* --- Tema Toggle --- */
+        .theme-toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: auto; /* Memastikan tombol tema selalu di kanan */
+            flex-shrink: 0;
+        }
+        .theme-toggle-button {
+            background-color: var(--button-primary-bg);
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .theme-toggle-button:hover {
+            background-color: var(--button-primary-hover);
+        }
+
+        /* Pesan notifikasi */
+        .message {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            text-align: center;
+        }
+        .message.error {
+            background-color: var(--message-error-bg);
+            color: var(--message-error-text);
+        }
+        .message.success {
+            background-color: var(--message-success-bg);
+            color: var(--message-success-text);
+        }
+
+        /* Utility Class */
+        .hidden {
+            display: none !important;
+        }
+
+        /* --- Responsif (mobile first) --- */
+        @media (max-width: 768px) {
             .container {
-                margin: 10px;
-                padding: 20px;
+                margin: 10px auto;
+                padding: 15px;
+                width: calc(100% - 20px);
             }
+            header {
+                padding: 20px 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px;
+            }
+            .top-bar .logo {
+                margin-bottom: 10px; /* Jarak antara logo dan navigasi */
+                margin-right: 0;
+                width: 100%;
+                text-align: center;
+                font-size: 1.5em;
+            }
+            .top-bar nav {
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            .top-bar nav a {
+                margin: 5px 0; /* Jarak vertikal untuk link navigasi */
+                width: auto;
+            }
+            .theme-toggle-container {
+                width: 100%;
+                justify-content: center; /* Pusatkan tombol tema */
+                margin-left: 0;
+            }
+
             .user-profile {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 5px;
             }
+            .user-profile .profile-info {
+                width: 100%; /* Pastikan info profil mengambil lebar penuh */
+                margin-bottom: 10px;
+            }
+            .user-profile > div { /* Container untuk tombol kelola profil & keluar */
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                gap: 10px;
+            }
             .user-profile button {
                 margin-left: 0;
-                width: 100%;
+                width: 100%; /* Tombol memenuhi lebar */
             }
             .user-profile button.logout-button {
-                 margin-top: 10px;
+                 margin-top: 0; /* Dikelola oleh gap pada parent div */
             }
-            .auth-section input[type="email"],
-            .auth-section input[type="password"] {
-                width: calc(100% - 20px);
+            
+            .post-item .post-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            .post-item .post-author {
+                margin-right: 0; /* Hilangkan margin di mobile */
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="top-bar">
+        <a href="#" class="logo">Komunitas Kita</a>
+        <nav>
+            <a href="https://www.tebakangka.co-id.id" target="_blank" rel="noopener noreferrer"><i class="fas fa-calculator"></i> Tebak Angka</a>
+            </nav>
+        <div class="theme-toggle-container">
+            <button id="themeToggleButton" class="theme-toggle-button">
+                <i class="fas fa-moon"></i> Mode Gelap
+            </button>
+        </div>
+    </div>
+
+    <header>
         <h1>Selamat Datang di Komunitas Kita!</h1>
+    </header>
+
+    <main class="container">
+        <div id="globalMessage" class="message hidden"></div>
 
         <div id="authSection" class="auth-section">
             <h2 id="authTitle">Masuk ke Komunitas</h2>
             <input type="email" id="authEmail" placeholder="Email Anda">
             <input type="password" id="authPassword" placeholder="Kata Sandi Anda">
-            <button id="authActionButton" onclick="handleAuth()">Masuk</button>
-            <p id="authToggleMessage">Belum punya akun? <button onclick="toggleAuthMode()">Daftar di sini</button></p>
+            <button id="authActionButton"><i class="fas fa-sign-in-alt"></i> Masuk</button>
+            <p id="authToggleMessage">Belum punya akun? <button id="toggleAuthModeButton">Daftar di sini</button></p>
         </div>
 
-        <div id="userProfileSection" class="user-profile" style="display: none;">
+        <div id="userProfileSection" class="user-profile hidden">
             <p class="profile-info">Anda masuk sebagai: <span id="currentUserName"></span></p>
-            <button id="changeNameButton" onclick="changeUserName()">Ganti Nama</button>
-            <button class="logout-button" onclick="logout()">Keluar</button>
+            <div>
+                <button id="showProfileManagementButton"><i class="fas fa-user-edit"></i> Kelola Profil</button>
+                <button id="logoutButton" class="logout-button"><i class="fas fa-sign-out-alt"></i> Keluar</button>
+            </div>
         </div>
 
-        <div id="postFormSection" class="post-form" style="display: none;">
+        <div id="profileManagementSection" class="profile-management hidden">
+            <h2>Kelola Profil Anda</h2>
+            <p>Email: <strong id="profileEmail"></strong></p>
+            <p>Nama Tampilan Saat Ini: <strong id="profileDisplayName"></strong></p>
+            <div id="profileVerificationStatus">Status Verifikasi: Sedang dimuat...</div>
+            
+            <label for="newDisplayNameInput" style="display: block; text-align: left; margin-bottom: 5px;">Ganti Nama Tampilan:</label>
+            <input type="text" id="newDisplayNameInput" placeholder="Nama tampilan baru">
+            <p id="nameChangeInfo"></p>
+            <button id="changeNameButton"><i class="fas fa-save"></i> Ganti Nama</button>
+            
+            <button id="backButtonProfile" class="back-button"><i class="fas fa-arrow-circle-left"></i> Kembali</button>
+        </div>
+
+        <div id="postFormSection" class="post-form hidden">
             <h2>Buat Postingan Baru</h2>
             <textarea id="postContent" placeholder="Apa yang ingin Anda bagikan hari ini?"></textarea>
-            <button onclick="addPost()">Kirim Postingan</button>
+            <button id="addPostButton"><i class="fas fa-paper-plane"></i> Kirim Postingan</button>
         </div>
 
         <div class="posts-list">
@@ -279,13 +636,13 @@
                 <p class="no-posts-message" id="noPostsMessage">Memuat postingan...</p>
             </div>
         </div>
-    </div>
+    </main>
 
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, doc, getDoc, setDoc, updateDoc, serverTimestamp, Timestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    <script>
         // --- KONFIGURASI FIREBASE ANDA ---
         const firebaseConfig = {
             apiKey: "AIzaSyDmyanNuVS3-Kdsz22fhS-prViRSCyUFK4",
@@ -298,177 +655,445 @@
         };
 
         // Inisialisasi Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        const auth = firebase.auth(); // Mendapatkan akses ke Firebase Authentication
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
 
         // Variabel Global dan Referensi Elemen HTML
         let currentUserName = 'Anonim';
+        let currentUserIsVerified = false; // NEW: Tambahkan status verifikasi pengguna saat ini
         let authMode = 'login'; // 'login' atau 'signup'
-        const FIRESTORE_COLLECTION_NAME = 'community_posts';
-        const LAST_NAME_CHANGE_KEY_PREFIX = 'last_name_change_timestamp_';
+        const POSTS_COLLECTION_NAME = 'community_posts'; // Nama koleksi postingan Anda
+        const USERS_COLLECTION_NAME = 'users'; // NEW: Nama koleksi pengguna
+        const THEME_KEY = 'theme_preference'; // Kunci untuk Local Storage tema
+        const DISPLAY_NAME_UPDATE_COOLDOWN = 24 * 60 * 60 * 1000; // 24 jam dalam milidetik
 
+        // Elemen Autentikasi
+        const globalMessage = document.getElementById('globalMessage');
         const authSection = document.getElementById('authSection');
         const authTitle = document.getElementById('authTitle');
         const authEmailInput = document.getElementById('authEmail');
         const authPasswordInput = document.getElementById('authPassword');
         const authActionButton = document.getElementById('authActionButton');
         const authToggleMessage = document.getElementById('authToggleMessage');
+        let toggleAuthModeButton = document.getElementById('toggleAuthModeButton'); // Perlu diperbarui
 
+        // Elemen Profil Pengguna (Navbar)
         const userProfileSection = document.getElementById('userProfileSection');
         const currentUserNameDisplay = document.getElementById('currentUserName');
-        const changeNameButton = document.getElementById('changeNameButton');
+        const logoutButton = document.getElementById('logoutButton');
+        const showProfileManagementButton = document.getElementById('showProfileManagementButton');
+
+        // Elemen Kelola Profil
+        const profileManagementSection = document.getElementById('profileManagementSection');
+        const profileEmailDisplay = document.getElementById('profileEmail');
+        const profileDisplayNameDisplay = document.getElementById('profileDisplayName');
+        const newDisplayNameInput = document.getElementById('newDisplayNameInput');
+        const nameChangeInfo = document.getElementById('nameChangeInfo');
+        const changeNameButtonInProfile = document.getElementById('changeNameButton');
+        const backButtonProfile = document.getElementById('backButtonProfile');
+        const profileVerificationStatus = document.getElementById('profileVerificationStatus'); // NEW ID
+
+        // Elemen Form Postingan
         const postFormSection = document.getElementById('postFormSection');
-        const postContentInput = document.getElementById('postContent'); // Pastikan ini benar
+        const postContentInput = document.getElementById('postContent');
+        const addPostButton = document.getElementById('addPostButton');
         const postsContainer = document.getElementById('postsContainer');
         const noPostsMessage = document.getElementById('noPostsMessage');
 
-        // --- Fungsi Pengelolaan Autentikasi ---
-        function toggleAuthMode() {
-            if (authMode === 'login') {
-                authMode = 'signup';
-                authTitle.textContent = 'Daftar Akun Baru';
-                authActionButton.textContent = 'Daftar';
-                authToggleMessage.innerHTML = 'Sudah punya akun? <button onclick="toggleAuthMode()">Masuk di sini</button>';
+        // Elemen Tema Toggle
+        const themeToggleButton = document.getElementById('themeToggleButton');
+
+        // --- Fungsi Utilitas ---
+        function showMessage(element, msg, type = 'error') {
+            console.log(`Pesan: ${msg} (Tipe: ${type})`);
+            element.textContent = msg;
+            element.className = `message ${type}`;
+            element.classList.remove('hidden');
+            setTimeout(() => {
+                element.classList.add('hidden');
+                element.textContent = '';
+                element.className = 'message';
+            }, 5000);
+        }
+
+        function formatTimestamp(timestamp) {
+            if (!timestamp) return 'Tidak diketahui';
+            let date;
+            if (timestamp instanceof Timestamp) {
+                date = timestamp.toDate();
+            } else if (timestamp instanceof Date) {
+                date = timestamp;
             } else {
-                authMode = 'login';
-                authTitle.textContent = 'Masuk ke Komunitas';
-                authActionButton.textContent = 'Masuk';
-                authToggleMessage.innerHTML = 'Belum punya akun? <button onclick="toggleAuthMode()">Daftar di sini</button>';
+                date = new Date(timestamp);
+            }
+            const options = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            return date.toLocaleDateString('id-ID', options);
+        }
+
+        // --- Fungsi Pengelolaan Autentikasi ---
+        function attachToggleAuthModeButtonListener() {
+             // Pastikan button ada sebelum menambahkan event listener
+            toggleAuthModeButton = document.getElementById('toggleAuthModeButton');
+            if (toggleAuthModeButton) {
+                toggleAuthModeButton.removeEventListener('click', toggleAuthMode); // Hapus listener lama
+                toggleAuthModeButton.addEventListener('click', toggleAuthMode);    // Tambahkan listener baru
             }
         }
 
-        async function handleAuth() {
+        function toggleAuthMode() {
+            console.log('toggleAuthMode dipanggil. Mode saat ini:', authMode);
+            if (authMode === 'login') {
+                authMode = 'signup';
+                authTitle.textContent = 'Daftar Akun Baru';
+                authActionButton.innerHTML = '<i class="fas fa-user-plus"></i> Daftar';
+                authToggleMessage.innerHTML = 'Sudah punya akun? <button id="toggleAuthModeButton">Masuk di sini</button>';
+            } else {
+                authMode = 'login';
+                authTitle.textContent = 'Masuk ke Komunitas';
+                authActionButton.innerHTML = '<i class="fas fa-sign-in-alt"></i> Masuk';
+                authToggleMessage.innerHTML = 'Belum punya akun? <button id="toggleAuthModeButton">Daftar di sini</button>';
+            }
+            attachToggleAuthModeButtonListener(); // Re-attach listener setelah innerHTML berubah
+
+            authEmailInput.value = '';
+            authPasswordInput.value = '';
+            globalMessage.classList.add('hidden');
+        }
+
+        authActionButton.addEventListener('click', async () => {
+            console.log('Auth Action Button diklik. Mode:', authMode);
             const email = authEmailInput.value.trim();
             const password = authPasswordInput.value.trim();
 
             if (!email || !password) {
-                alert('Email dan kata sandi tidak boleh kosong!');
+                showMessage(globalMessage, 'Email dan kata sandi tidak boleh kosong!', 'error');
                 return;
             }
 
-            if (authMode === 'signup') {
-                try {
-                    await auth.createUserWithEmailAndPassword(email, password);
-                    alert('Pendaftaran berhasil! Anda sudah masuk.');
-                } catch (error) {
-                    alert('Error pendaftaran: ' + error.message);
-                    console.error("Sign-up error:", error);
+            try {
+                if (authMode === 'signup') {
+                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                    const newUser = userCredential.user;
+                    const defaultDisplayName = email.split('@')[0];
+                    await updateProfile(newUser, { displayName: defaultDisplayName });
+
+                    // NEW: Simpan data pengguna ke koleksi 'users' di Firestore
+                    // Ini akan membuat koleksi 'users' jika belum ada
+                    await setDoc(doc(db, USERS_COLLECTION_NAME, newUser.uid), {
+                        email: email,
+                        displayName: defaultDisplayName,
+                        createdAt: serverTimestamp(),
+                        lastDisplayNameUpdate: null,
+                        isVerified: false // NEW: Default isVerified to false for new users
+                    });
+                    showMessage(globalMessage, 'Pendaftaran berhasil! Anda sudah masuk.', 'success');
+                } else {
+                    await signInWithEmailAndPassword(auth, email, password);
+                    showMessage(globalMessage, 'Login berhasil!', 'success');
                 }
-            } else {
-                try {
-                    await auth.signInWithEmailAndPassword(email, password);
-                    alert('Login berhasil!');
-                } catch (error) {
-                    alert('Error login: ' + error.message);
-                    console.error("Login error:", error);
-                }
+            } catch (error) {
+                console.error("Auth Error:", error);
+                showMessage(globalMessage, 'Error: ' + error.message, 'error');
             }
-        }
+        });
 
         async function logout() {
+            console.log('Logout dipanggil');
             try {
-                await auth.signOut();
-                alert('Anda telah keluar.');
+                await signOut(auth);
+                showMessage(globalMessage, 'Anda telah keluar.', 'success');
             } catch (error) {
-                alert('Error logout: ' + error.message);
-                console.error("Logout error:", error);
+                console.error("Logout Error:", error);
+                showMessage(globalMessage, 'Error logout: ' + error.message, 'error');
             }
         }
 
-        // --- Fungsi Pengelolaan Nama Pengguna (dengan batasan 24 jam) ---
-        async function changeUserName() {
+        // --- Fungsi Pengelolaan Profil ---
+        async function showProfileManagement() { 
+            console.log('showProfileManagement dipanggil');
             const user = auth.currentUser;
             if (!user) {
-                alert('Anda harus login untuk mengganti nama!');
+                showMessage(globalMessage, 'Anda harus login untuk mengelola profil!', 'error');
                 return;
             }
 
-            // Gunakan UID pengguna untuk kunci Local Storage
-            const lastChangeTimestampKey = LAST_NAME_CHANGE_KEY_PREFIX + user.uid;
-            const lastChange = localStorage.getItem(lastChangeTimestampKey);
+            profileEmailDisplay.textContent = user.email;
+            profileDisplayNameDisplay.textContent = user.displayName || user.email.split('@')[0];
+            newDisplayNameInput.value = user.displayName || user.email.split('@')[0];
+
+            await updateNameChangeInfo(user.uid); // Perbarui info batasan waktu (pastikan ini await)
+            
+            // NEW: Memuat status verifikasi dari Firestore
+            try {
+                const userDocRef = doc(db, USERS_COLLECTION_NAME, user.uid);
+                const userDoc = await getDoc(userDocRef);
+                if (userDoc.exists()) {
+                    const userData = userDoc.data();
+                    const isVerified = userData.isVerified === true; // Pastikan boolean
+                    profileVerificationStatus.innerHTML = `Status Verifikasi: <strong>${isVerified ? 'Terverifikasi' : 'Belum Terverifikasi'}</strong> ${isVerified ? '<i class="fas fa-check-circle verified-badge" title="Akun Terverifikasi"></i>' : '<span class="not-verified-text">(Perlu Verifikasi)</span>'}`;
+                } else {
+                    // Kasus ini seharusnya jarang terjadi jika updateUIVisibility sudah benar
+                    profileVerificationStatus.textContent = 'Status Verifikasi: Data pengguna tidak ditemukan.';
+                }
+            } catch (error) {
+                console.error("Error fetching verification status:", error);
+                profileVerificationStatus.textContent = 'Status Verifikasi: Gagal memuat.';
+            }
+
+
+            authSection.classList.add('hidden');
+            userProfileSection.classList.add('hidden');
+            postFormSection.classList.add('hidden');
+            profileManagementSection.classList.remove('hidden');
+            globalMessage.classList.add('hidden');
+        }
+
+        function hideProfileManagement() {
+            console.log('hideProfileManagement dipanggil');
+            updateUIVisibility(auth.currentUser);
+        }
+
+        changeNameButtonInProfile.addEventListener('click', async () => {
+            console.log('Change Name Button diklik');
+            const user = auth.currentUser;
+            if (!user) {
+                showMessage(globalMessage, 'Anda harus login untuk mengganti nama!', 'error');
+                return;
+            }
+
+            const newName = newDisplayNameInput.value.trim();
+
+            if (!newName) {
+                showMessage(globalMessage, 'Nama tampilan tidak boleh kosong.', 'error');
+                return;
+            }
+
+            const userDocRef = doc(db, USERS_COLLECTION_NAME, user.uid); // NEW: Referensi ke koleksi 'users'
+            let userDocData;
+            try {
+                const userDoc = await getDoc(userDocRef);
+                userDocData = userDoc.exists() ? userDoc.data() : null;
+            } catch (error) {
+                console.error("Error fetching user doc for name change:", error);
+                showMessage(globalMessage, 'Gagal memeriksa status perubahan nama. Coba lagi.', 'error');
+                return;
+            }
+
+            const lastChangeTimestamp = userDocData?.lastDisplayNameUpdate;
             const now = Date.now();
-            const twentyFourHours = 24 * 60 * 60 * 1000; // 24 jam dalam milidetik
 
-            if (lastChange && (now - parseInt(lastChange) < twentyFourHours)) {
-                const remainingTime = twentyFourHours - (now - parseInt(lastChange));
-                const hours = Math.floor(remainingTime / (1000 * 60 * 60));
-                const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-                alert(`Anda hanya bisa mengganti nama sekali setiap 24 jam. Mohon coba lagi dalam ${hours} jam ${minutes} menit.`);
+            if (lastChangeTimestamp) {
+                const lastChangeTime = lastChangeTimestamp.toMillis();
+                const timePassed = now - lastChangeTime;
+                if (timePassed < DISPLAY_NAME_UPDATE_COOLDOWN) {
+                    const remainingTime = DISPLAY_NAME_UPDATE_COOLDOWN - timePassed;
+                    const hours = Math.floor(remainingTime / (1000 * 60 * 60));
+                    const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+                    showMessage(globalMessage, `Anda bisa mengganti nama lagi dalam sekitar ${hours} jam ${minutes} menit.`, 'error');
+                    return;
+                }
+            }
+            
+            // Bersihkan nama dari karakter terlarang Firebase
+            const cleanedNewName = newName.replace(/[.#$\[\]\/]/g, '_');
+            if (cleanedNewName !== newName) {
+                showMessage(globalMessage, 'Nama mengandung karakter yang tidak diizinkan. Beberapa karakter akan diganti dengan underscore.', 'error');
+                newDisplayNameInput.value = cleanedNewName; // Update input field
+            }
+
+            try {
+                // Update display name di Firebase Authentication
+                await updateProfile(user, { displayName: cleanedNewName });
+
+                // Update display name dan lastDisplayNameUpdate di Firestore di koleksi 'users'
+                await updateDoc(userDocRef, {
+                    displayName: cleanedNewName,
+                    lastDisplayNameUpdate: serverTimestamp()
+                });
+
+                // Perbarui variabel lokal dan UI
+                currentUserName = cleanedNewName;
+                currentUserNameDisplay.textContent = currentUserName;
+                profileDisplayNameDisplay.textContent = currentUserName;
+                newDisplayNameInput.value = currentUserName;
+                showMessage(globalMessage, 'Nama tampilan berhasil diperbarui!', 'success');
+                await updateNameChangeInfo(user.uid); // Perbarui info batasan waktu setelah ganti nama
+
+            } catch (error) {
+                console.error("Update Profile Error:", error);
+                showMessage(globalMessage, 'Gagal mengganti nama: ' + error.message, 'error');
+            }
+        });
+
+        async function updateNameChangeInfo(uid) {
+            const userDocRef = doc(db, USERS_COLLECTION_NAME, uid); // NEW: Referensi ke koleksi 'users'
+            let userDocData;
+            try {
+                const userDoc = await getDoc(userDocRef);
+                userDocData = userDoc.exists() ? userDoc.data() : null;
+            } catch (error) {
+                console.error("Error fetching user doc for name change info:", error);
+                nameChangeInfo.textContent = 'Gagal memuat info perubahan nama.';
+                changeNameButtonInProfile.disabled = true;
+                newDisplayNameInput.disabled = true;
                 return;
             }
 
-            let newName = prompt('Masukkan nama baru Anda:', user.displayName || user.email.split('@')[0]);
-            if (newName && newName.trim() !== '') {
-                const cleanedNewName = newName.trim().replace(/[.#$\[\]\/]/g, '_');
-                if (cleanedNewName !== newName.trim()) {
-                    alert('Nama mengandung karakter yang tidak diizinkan. Beberapa karakter akan diganti dengan underscore.');
-                }
-                
-                try {
-                    // Update displayName di Firebase Auth
-                    await user.updateProfile({ displayName: cleanedNewName });
-                    // Simpan timestamp perubahan di Local Storage untuk UID pengguna ini
-                    localStorage.setItem(lastChangeTimestampKey, now.toString());
+            const lastChangeTimestamp = userDocData?.lastDisplayNameUpdate;
+            const now = Date.now();
 
-                    currentUserName = cleanedNewName;
-                    currentUserNameDisplay.textContent = currentUserName;
-                    alert('Nama berhasil diubah menjadi: ' + currentUserName + '. Anda bisa menggantinya lagi dalam 24 jam.');
-                } catch (error) {
-                    alert('Gagal mengganti nama: ' + error.message);
-                    console.error('Error updating profile:', error);
+            if (lastChangeTimestamp) {
+                const lastChangeTime = lastChangeTimestamp.toMillis();
+                const timePassed = now - lastChangeTime;
+                if (timePassed < DISPLAY_NAME_UPDATE_COOLDOWN) {
+                    const remainingTime = DISPLAY_NAME_UPDATE_COOLDOWN - timePassed;
+                    const hours = Math.floor(remainingTime / (1000 * 60 * 60));
+                    const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+                    nameChangeInfo.textContent = `Anda bisa mengganti nama lagi dalam ${hours} jam ${minutes} menit.`;
+                    changeNameButtonInProfile.disabled = true;
+                    newDisplayNameInput.disabled = true;
+                } else {
+                    nameChangeInfo.textContent = 'Anda bisa mengganti nama Anda sekarang.';
+                    changeNameButtonInProfile.disabled = false;
+                    newDisplayNameInput.disabled = false;
                 }
-            } else if (newName !== null) {
-                alert('Nama tidak boleh kosong.');
+            } else {
+                nameChangeInfo.textContent = 'Anda belum pernah mengganti nama. Anda bisa menggantinya sekarang.';
+                changeNameButtonInProfile.disabled = false;
+                newDisplayNameInput.disabled = false;
             }
         }
 
-        // --- Update UI Berdasarkan Status Autentikasi (PENTING!) ---
-        auth.onAuthStateChanged(user => {
+
+        // --- Fungsi untuk memperbarui tampilan UI ---
+        async function updateUIVisibility(user) { 
+            console.log('updateUIVisibility dipanggil. User:', user ? user.email : 'null');
+            authSection.classList.add('hidden');
+            userProfileSection.classList.add('hidden');
+            postFormSection.classList.add('hidden');
+            profileManagementSection.classList.add('hidden');
+            globalMessage.classList.add('hidden');
+
             if (user) {
-                // Pengguna sudah login
                 currentUserName = user.displayName || user.email.split('@')[0];
                 currentUserNameDisplay.textContent = currentUserName;
-
-                authSection.style.display = 'none'; // Sembunyikan form login
-                userProfileSection.style.display = 'flex'; // Tampilkan profil
-                postFormSection.style.display = 'block'; // Tampilkan form posting
+                
+                // NEW: Ambil status isVerified dari Firestore untuk pengguna yang login
+                // Atau buat dokumen user jika belum ada
+                try {
+                    const userDocRef = doc(db, USERS_COLLECTION_NAME, user.uid); // NEW: Referensi ke koleksi 'users'
+                    const userDoc = await getDoc(userDocRef);
+                    if (userDoc.exists()) {
+                        const userData = userDoc.data();
+                        currentUserIsVerified = userData.isVerified === true; // Pastikan boolean
+                    } else {
+                        // Jika dokumen pengguna tidak ada (misal, akun lama tanpa field isVerified), set default false
+                        // dan buat dokumen user baru di sini dengan isVerified: false
+                        currentUserIsVerified = false;
+                        await setDoc(userDocRef, {
+                            email: user.email,
+                            displayName: user.displayName || user.email.split('@')[0],
+                            createdAt: serverTimestamp(),
+                            lastDisplayNameUpdate: null,
+                            isVerified: false // Set default false
+                        }, { merge: true }); // Gunakan merge agar tidak menimpa data lain jika sudah ada
+                    }
+                } catch (error) {
+                    console.error("Error fetching/creating current user verification status:", error);
+                    currentUserIsVerified = false; // Fallback jika error
+                }
+                
+                userProfileSection.classList.remove('hidden');
+                postFormSection.classList.remove('hidden');
 
             } else {
-                // Pengguna belum login atau logout
                 currentUserName = 'Anonim';
+                currentUserIsVerified = false; // Reset verification status
                 currentUserNameDisplay.textContent = currentUserName;
-
-                authSection.style.display = 'block'; // Tampilkan form login
-                userProfileSection.style.display = 'none'; // Sembunyikan profil
-                postFormSection.style.display = 'none'; // Sembunyikan form posting
-
-                authEmailInput.value = '';
-                authPasswordInput.value = '';
-                toggleAuthMode(); // Pastikan kembali ke mode login
+                authSection.classList.remove('hidden');
+                toggleAuthMode(); // Pastikan toggleAuthMode dipanggil setelah updateUIVisibility selesai
             }
-            displayPosts(); // Perbarui daftar postingan
+            displayPosts(); // Perbarui daftar postingan setiap kali UI berubah
+        }
+
+
+        // --- Update UI Berdasarkan Status Autentikasi ---
+        onAuthStateChanged(auth, async user => { 
+            await updateUIVisibility(user); // Tunggu sampai updateUIVisibility selesai
         });
 
 
         // --- Fungsi Pengelolaan Postingan (Menggunakan Firebase Firestore) ---
 
-        async function displayPosts() {
+        let unsubscribePosts = null; // Variable to hold the unsubscribe function
+
+        // Cache untuk status verifikasi pengguna agar tidak terlalu banyak membaca dari Firestore
+        // Key: UID pengguna, Value: boolean (isVerified)
+        const userVerificationCache = {}; 
+
+        async function getAuthorVerificationStatus(authorId) {
+            if (!authorId) return false; // Jika tidak ada authorId, tidak bisa diverifikasi
+
+            // Cek di cache dulu
+            if (typeof userVerificationCache[authorId] !== 'undefined') {
+                return userVerificationCache[authorId];
+            }
+
+            // Jika tidak ada di cache, ambil dari Firestore
+            try {
+                const authorDocRef = doc(db, USERS_COLLECTION_NAME, authorId);
+                const authorDoc = await getDoc(authorDocRef);
+                if (authorDoc.exists()) {
+                    const isVerified = authorDoc.data().isVerified === true;
+                    userVerificationCache[authorId] = isVerified; // Simpan ke cache
+                    return isVerified;
+                }
+            } catch (error) {
+                console.error("Error fetching author verification status from Firestore:", error);
+            }
+            userVerificationCache[authorId] = false; // Default ke false jika ada error atau tidak ditemukan
+            return false;
+        }
+
+
+        function displayPosts() {
+            console.log('displayPosts dipanggil');
+            if (unsubscribePosts) {
+                unsubscribePosts(); // Detach previous listener if it exists
+            }
+
             postsContainer.innerHTML = '';
             noPostsMessage.textContent = 'Memuat postingan...';
-            noPostsMessage.style.display = 'block';
+            noPostsMessage.classList.remove('hidden');
 
-            try {
-                const snapshot = await db.collection(FIRESTORE_COLLECTION_NAME)
-                                        .orderBy('timestamp', 'desc')
-                                        .get();
+            const postsCollectionRef = collection(db, POSTS_COLLECTION_NAME);
+            const q = query(postsCollectionRef, orderBy('timestamp', 'desc'));
 
+            unsubscribePosts = onSnapshot(q, async (snapshot) => { 
+                postsContainer.innerHTML = '';
                 if (snapshot.empty) {
                     noPostsMessage.textContent = 'Belum ada postingan. Ayo jadi yang pertama!';
+                    noPostsMessage.classList.remove('hidden');
                 } else {
-                    noPostsMessage.style.display = 'none';
-                    snapshot.forEach(doc => {
-                        const post = doc.data();
+                    noPostsMessage.classList.add('hidden');
+                    
+                    // NEW: Memproses postingan dan mengambil status verifikasi secara paralel
+                    const postPromises = snapshot.docs.map(async docSnapshot => {
+                        const post = docSnapshot.data();
+                        const isAuthorVerified = await getAuthorVerificationStatus(post.authorId); // Ambil dari Firestore atau cache
+                        return { post, isAuthorVerified };
+                    });
+
+                    const postsWithVerification = await Promise.all(postPromises);
+
+                    postsWithVerification.forEach(({ post, isAuthorVerified }) => {
                         const postItem = document.createElement('div');
                         postItem.classList.add('post-item');
 
@@ -478,26 +1103,22 @@
                         const postAuthor = document.createElement('span');
                         postAuthor.classList.add('post-author');
                         postAuthor.textContent = post.author || (post.authorEmail ? post.authorEmail.split('@')[0] : 'Anonim');
+                        
+                        // MODIFIKASI UNTUK FITUR CENTANG BIRU: Tambahkan ikon centang jika terverifikasi
+                        if (isAuthorVerified) {
+                            const verifiedBadge = document.createElement('i');
+                            verifiedBadge.classList.add('fas', 'fa-check-circle', 'verified-badge');
+                            verifiedBadge.title = "Akun Terverifikasi";
+                            postAuthor.appendChild(verifiedBadge);
+                        }
 
                         const postDate = document.createElement('span');
                         postDate.classList.add('post-date');
-                        let date;
-                        if (post.timestamp && post.timestamp.toDate) {
-                            date = post.timestamp.toDate();
-                        } else if (post.timestamp) {
-                            date = new Date(post.timestamp);
-                        } else {
-                            date = new Date();
-                        }
-                        postDate.textContent = date.toLocaleDateString('id-ID', {
-                            year: 'numeric', month: 'long', day: 'numeric',
-                            hour: '2-digit', minute: '2-digit'
-                        });
+                        postDate.textContent = formatTimestamp(post.timestamp);
 
                         const postContent = document.createElement('p');
                         postContent.classList.add('post-content');
-                        // Pastikan ini mengambil data dari field 'content' di Firestore
-                        postContent.textContent = post.content || ''; 
+                        postContent.textContent = post.content || '';
 
                         postHeader.appendChild(postAuthor);
                         postHeader.appendChild(postDate);
@@ -507,49 +1128,96 @@
                         postsContainer.appendChild(postItem);
                     });
                 }
-            } catch (error) {
+            }, (error) => {
                 console.error("Error loading posts from Firestore:", error);
                 noPostsMessage.textContent = 'Gagal memuat postingan. Terjadi kesalahan.';
-                noPostsMessage.style.color = '#d9534f';
-            }
+                noPostsMessage.classList.remove('hidden');
+                noPostsMessage.classList.add('error');
+            });
         }
 
         async function addPost() {
+            console.log('addPost dipanggil');
             if (!auth.currentUser) {
-                alert('Anda harus login untuk membuat postingan!');
+                showMessage(globalMessage, 'Anda harus login untuk membuat postingan!', 'error');
                 return;
             }
 
-            const content = postContentInput.value.trim(); // Ini seharusnya menangkap nilai dari textarea
+            const content = postContentInput.value.trim();
 
-            // Debugging console logs
-            console.log('Nilai dari textarea (postContentInput.value):', postContentInput.value);
-            console.log('Nilai setelah .trim() (content):', content);
-
-            if (content === '') {
-                alert('Postingan tidak boleh kosong!');
+            if (!content) {
+                showMessage(globalMessage, 'Postingan tidak boleh kosong!', 'error');
                 return;
             }
 
             try {
-                await db.collection(FIRESTORE_COLLECTION_NAME).add({
+                // NEW: Pastikan authorId disertakan untuk pengambilan status verifikasi
+                await addDoc(collection(db, POSTS_COLLECTION_NAME), {
                     author: auth.currentUser.displayName || auth.currentUser.email.split('@')[0],
-                    authorEmail: auth.currentUser.email,
-                    content: content, // <<< PASTIKAN BARIS INI ADA DAN MENGGUNAKAN VARIABEL 'content'
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    authorEmail: auth.currentUser.email, // Pertahankan field ini juga
+                    authorId: auth.currentUser.uid, // NEW: Simpan UID penulis untuk verifikasi
+                    content: content,
+                    timestamp: serverTimestamp()
                 });
-                postContentInput.value = ''; // Kosongkan input setelah dikirim
-                alert('Postingan berhasil dikirim!');
-                displayPosts(); // Muat ulang tampilan agar postingan baru muncul
+                postContentInput.value = '';
+                showMessage(globalMessage, 'Postingan berhasil dikirim!', 'success');
             } catch (error) {
                 console.error("Error adding post to Firestore:", error);
-                alert('Gagal mengirim postingan. Coba lagi nanti.');
+                showMessage(globalMessage, 'Gagal mengirim postingan. Coba lagi nanti.', 'error');
             }
         }
 
-        // --- Inisialisasi Saat Halaman Dimuat ---
+        // --- Fungsi Tema Toggle (Mode Gelap) ---
+
+        function toggleTheme() {
+            console.log('toggleTheme dipanggil');
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            localStorage.setItem(THEME_KEY, isDarkMode ? 'dark' : 'light');
+            
+            // Update button text and icon
+            if (isDarkMode) {
+                themeToggleButton.innerHTML = '<i class="fas fa-sun"></i> Mode Terang';
+            } else {
+                themeToggleButton.innerHTML = '<i class="fas fa-moon"></i> Mode Gelap';
+            }
+        }
+
+        // Terapkan tema yang disimpan saat halaman dimuat
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem(THEME_KEY);
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggleButton.innerHTML = '<i class="fas fa-sun"></i> Mode Terang';
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeToggleButton.innerHTML = '<i class="fas fa-moon"></i> Mode Gelap';
+            }
+        }
+
+        // --- Inisialisasi Event Listeners & Tema Saat Halaman Dimuat ---
         document.addEventListener('DOMContentLoaded', () => {
-            // onAuthStateChanged akan otomatis menangani tampilan awal dan memuat postingan
+            console.log('DOM Content Loaded');
+
+            applySavedTheme();
+            themeToggleButton.addEventListener('click', toggleTheme);
+            
+            attachToggleAuthModeButtonListener(); // Pasang listener awal
+            
+            if (logoutButton) {
+                logoutButton.addEventListener('click', logout);
+            }
+            if (showProfileManagementButton) {
+                showProfileManagementButton.addEventListener('click', showProfileManagement);
+            }
+            if (backButtonProfile) {
+                backButtonProfile.addEventListener('click', hideProfileManagement);
+            }
+            if (addPostButton) {
+                addPostButton.addEventListener('click', addPost);
+            }
+
+            // onAuthStateChanged akan menangani tampilan awal setelah loading
         });
     </script>
 </body>

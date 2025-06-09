@@ -1,6 +1,4 @@
-
-</body>
-</html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -47,6 +45,14 @@
             --message-success-text: #155724;
             /* NEW: Warna untuk centang biru */
             --verified-badge-color: #1DA1F2; /* Twitter Blue */
+
+            /* NEW: Warna untuk Rules Section */
+            --rules-section-bg: #f0f8ff; /* Light blue background */
+            --rules-section-border: #b3d9ff; /* Border for rules section */
+            --rules-heading-color: #2c3e50;
+            --rules-text-color: #444;
+            --rules-list-marker-color: #007bff;
+            --rules-highlight-bg: #e6f2ff;
         }
 
         /* Night Mode (Dark Theme) */
@@ -87,6 +93,14 @@
             --message-success-text: #ccffcc;
             /* NEW: Warna untuk centang biru di Dark Mode */
             --verified-badge-color: #4A90E2; /* Sedikit lebih terang di dark mode */
+
+            /* NEW: Warna untuk Rules Section di Dark Mode */
+            --rules-section-bg: #34495e; /* Darker blue background */
+            --rules-section-border: #4a6d8c; /* Border for rules section */
+            --rules-heading-color: #ffffff;
+            --rules-text-color: #e0e0e0;
+            --rules-list-marker-color: #87ceeb;
+            --rules-highlight-bg: #4c667a;
         }
 
         /* --- Gaya Umum & Reset untuk Responsivitas --- */
@@ -198,7 +212,7 @@
         }
 
         /* Gaya untuk bagian yang tersembunyi/tampil */
-        .auth-section, .post-form, .profile-management {
+        .auth-section, .post-form, .profile-management, .rules-section { /* NEW: Tambahkan .rules-section */
             background-color: var(--section-bg);
             padding: 20px;
             border-radius: 8px;
@@ -221,6 +235,16 @@
             background-color: var(--container-bg);
             color: var(--text-color);
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        /* NEW: Gaya untuk textarea yang disabled */
+        textarea:disabled {
+            background-color: #e0e0e0;
+            cursor: not-allowed;
+            color: #777;
+        }
+        body.dark-mode textarea:disabled {
+            background-color: #555;
+            color: #aaa;
         }
 
         button {
@@ -290,6 +314,11 @@
             color: var(--link-color);
             font-size: 1.1em;
             transition: color 0.3s ease;
+        }
+        /* NEW: Gaya untuk teks "Belum Login" */
+        .user-profile span.not-logged-in {
+            color: var(--post-date-color); /* Atau warna abu-abu */
+            font-style: italic;
         }
 
         .user-profile button {
@@ -495,6 +524,75 @@
             display: none !important;
         }
 
+        /* --- NEW: Gaya untuk Rules Section --- */
+        .rules-section {
+            background-color: var(--rules-section-bg);
+            border: 1px solid var(--rules-section-border);
+            padding: 25px;
+            text-align: left; /* Atur teks ke kiri */
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .rules-section h2 {
+            color: var(--rules-heading-color);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .rules-section p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: var(--rules-text-color);
+        }
+
+        .rules-section ul {
+            list-style-type: none; /* Hilangkan bullet default */
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        .rules-section ul li {
+            position: relative;
+            padding-left: 25px; /* Ruang untuk ikon bullet */
+            margin-bottom: 10px;
+            line-height: 1.5;
+            color: var(--rules-text-color);
+        }
+
+        .rules-section ul li:before {
+            content: "\f058"; /* Font Awesome check-circle icon */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--rules-list-marker-color);
+            font-size: 0.9em;
+        }
+
+        .rules-section .highlight {
+            background-color: var(--rules-highlight-bg);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .rules-section .back-button {
+            margin-top: 20px;
+            width: auto; /* Agar tidak memenuhi lebar penuh */
+            display: block; /* Pusatkan tombol jika perlu */
+            margin-left: auto;
+            margin-right: auto;
+            background-color: var(--button-secondary-bg);
+        }
+        .rules-section .back-button:hover {
+            background-color: var(--button-secondary-hover);
+        }
+
+
         /* --- Responsif (mobile first) --- */
         @media (max-width: 768px) {
             .container {
@@ -579,7 +677,7 @@
         <a href="#" class="logo">Komunitas Kita</a>
         <nav>
             <a href="https://www.tebakangka.co-id.id" target="_blank" rel="noopener noreferrer"><i class="fas fa-calculator"></i> Tebak Angka</a>
-            </nav>
+            <a href="#" id="showRulesButton"><i class="fas fa-gavel"></i> Rules Komunitas</a> </nav>
         <div class="theme-toggle-container">
             <button id="themeToggleButton" class="theme-toggle-button">
                 <i class="fas fa-moon"></i> Mode Gelap
@@ -594,7 +692,7 @@
     <main class="container">
         <div id="globalMessage" class="message hidden"></div>
 
-        <div id="authSection" class="auth-section">
+        <div id="authSection" class="auth-section hidden"> 
             <h2 id="authTitle">Masuk ke Komunitas</h2>
             <input type="email" id="authEmail" placeholder="Email Anda">
             <input type="password" id="authPassword" placeholder="Kata Sandi Anda">
@@ -602,11 +700,11 @@
             <p id="authToggleMessage">Belum punya akun? <button id="toggleAuthModeButton">Daftar di sini</button></p>
         </div>
 
-        <div id="userProfileSection" class="user-profile hidden">
+        <div id="userProfileSection" class="user-profile">
             <p class="profile-info">Anda masuk sebagai: <span id="currentUserName"></span></p>
-            <div>
+            <div id="profileButtons">
                 <button id="showProfileManagementButton"><i class="fas fa-user-edit"></i> Kelola Profil</button>
-                <button id="logoutButton" class="logout-button"><i class="fas fa-sign-out-alt"></i> Keluar</button>
+                <button id="logoutButton" class="logout-button hidden"><i class="fas fa-sign-out-alt"></i> Keluar</button>
             </div>
         </div>
 
@@ -624,7 +722,23 @@
             <button id="backButtonProfile" class="back-button"><i class="fas fa-arrow-circle-left"></i> Kembali</button>
         </div>
 
-        <div id="postFormSection" class="post-form hidden">
+        <div id="rulesSection" class="rules-section hidden">
+            <h2><i class="fas fa-book"></i> Aturan Komunitas Kita</h2>
+            <p>Selamat datang di Komunitas Kita! Agar kita semua bisa berinteraksi dengan nyaman dan positif, mohon perhatikan dan patuhi aturan berikut:</p>
+            <ul>
+                <li><span class="highlight">Hormati Sesama Anggota:</span> Jaga bahasa Anda, hindari hinaan, pelecehan, atau konten yang merendahkan. Ingat, ada manusia di balik setiap akun.</li>
+                <li><span class="highlight">Tidak Ada Spam atau Promosi Berlebihan:</span> Jangan mengirim postingan berulang-ulang, iklan yang tidak relevan, atau mempromosikan produk/jasa tanpa izin admin.</li>
+                <li><span class="highlight">Jaga Privasi:</span> Jangan pernah membagikan informasi pribadi orang lain (alamat, nomor telepon, dll.) tanpa izin.</li>
+                <li><span class="highlight">Konten Positif dan Relevan:</span> Postinglah konten yang membangun, informatif, atau menghibur. Hindari konten yang mengandung SARA, pornografi, atau kekerasan.</li>
+                <li><span class="highlight">Gunakan Fitur dengan Bijak:</span> Jika ada masalah atau pelanggaran, gunakan fitur pelaporan jika tersedia, atau hubungi admin.</li>
+                <li><span class="highlight">Patuhi Keputusan Admin:</span> Admin memiliki hak untuk memoderasi konten dan anggota demi menjaga ketertiban komunitas. Keputusan admin adalah final.</li>
+            </ul>
+            <p>Dengan berinteraksi di Komunitas Kita, Anda menyetujui untuk mematuhi semua aturan di atas. Pelanggaran dapat mengakibatkan penghapusan postingan, peringatan, atau bahkan pembatasan akun.</p>
+            <button id="backButtonRules" class="back-button"><i class="fas fa-arrow-circle-left"></i> Kembali ke Beranda</button>
+        </div>
+
+
+        <div id="postFormSection" class="post-form">
             <h2>Buat Postingan Baru</h2>
             <textarea id="postContent" placeholder="Apa yang ingin Anda bagikan hari ini?"></textarea>
             <button id="addPostButton"><i class="fas fa-paper-plane"></i> Kirim Postingan</button>
@@ -681,6 +795,7 @@
         // Elemen Profil Pengguna (Navbar)
         const userProfileSection = document.getElementById('userProfileSection');
         const currentUserNameDisplay = document.getElementById('currentUserName');
+        const profileButtons = document.getElementById('profileButtons'); // NEW: Kontainer tombol
         const logoutButton = document.getElementById('logoutButton');
         const showProfileManagementButton = document.getElementById('showProfileManagementButton');
 
@@ -693,6 +808,12 @@
         const changeNameButtonInProfile = document.getElementById('changeNameButton');
         const backButtonProfile = document.getElementById('backButtonProfile');
         const profileVerificationStatus = document.getElementById('profileVerificationStatus'); // NEW ID
+
+        // NEW: Elemen Rules
+        const rulesSection = document.getElementById('rulesSection');
+        const showRulesButton = document.getElementById('showRulesButton');
+        const backButtonRules = document.getElementById('backButtonRules');
+
 
         // Elemen Form Postingan
         const postFormSection = document.getElementById('postFormSection');
@@ -784,14 +905,13 @@
                     const defaultDisplayName = email.split('@')[0];
                     await updateProfile(newUser, { displayName: defaultDisplayName });
 
-                    // NEW: Simpan data pengguna ke koleksi 'users' di Firestore
-                    // Ini akan membuat koleksi 'users' jika belum ada
+                    // Simpan data pengguna ke koleksi 'users' di Firestore
                     await setDoc(doc(db, USERS_COLLECTION_NAME, newUser.uid), {
                         email: email,
                         displayName: defaultDisplayName,
                         createdAt: serverTimestamp(),
                         lastDisplayNameUpdate: null,
-                        isVerified: false // NEW: Default isVerified to false for new users
+                        isVerified: false 
                     });
                     showMessage(globalMessage, 'Pendaftaran berhasil! Anda sudah masuk.', 'success');
                 } else {
@@ -820,7 +940,9 @@
             console.log('showProfileManagement dipanggil');
             const user = auth.currentUser;
             if (!user) {
+                // NEW: Jika belum login, tampilkan authSection
                 showMessage(globalMessage, 'Anda harus login untuk mengelola profil!', 'error');
+                showAuthSection(); // Memanggil fungsi baru untuk menampilkan form login/daftar
                 return;
             }
 
@@ -828,18 +950,17 @@
             profileDisplayNameDisplay.textContent = user.displayName || user.email.split('@')[0];
             newDisplayNameInput.value = user.displayName || user.email.split('@')[0];
 
-            await updateNameChangeInfo(user.uid); // Perbarui info batasan waktu (pastikan ini await)
+            await updateNameChangeInfo(user.uid); 
             
-            // NEW: Memuat status verifikasi dari Firestore
+            // Memuat status verifikasi dari Firestore
             try {
                 const userDocRef = doc(db, USERS_COLLECTION_NAME, user.uid);
                 const userDoc = await getDoc(userDocRef);
                 if (userDoc.exists()) {
                     const userData = userDoc.data();
-                    const isVerified = userData.isVerified === true; // Pastikan boolean
+                    const isVerified = userData.isVerified === true; 
                     profileVerificationStatus.innerHTML = `Status Verifikasi: <strong>${isVerified ? 'Terverifikasi' : 'Belum Terverifikasi'}</strong> ${isVerified ? '<i class="fas fa-check-circle verified-badge" title="Akun Terverifikasi"></i>' : '<span class="not-verified-text">(Perlu Verifikasi)</span>'}`;
                 } else {
-                    // Kasus ini seharusnya jarang terjadi jika updateUIVisibility sudah benar
                     profileVerificationStatus.textContent = 'Status Verifikasi: Data pengguna tidak ditemukan.';
                 }
             } catch (error) {
@@ -847,17 +968,23 @@
                 profileVerificationStatus.textContent = 'Status Verifikasi: Gagal memuat.';
             }
 
-
-            authSection.classList.add('hidden');
-            userProfileSection.classList.add('hidden');
-            postFormSection.classList.add('hidden');
+            // Sembunyikan bagian lain dan tampilkan hanya profil management
+            authSection.classList.add('hidden'); 
+            rulesSection.classList.add('hidden'); // NEW
             profileManagementSection.classList.remove('hidden');
             globalMessage.classList.add('hidden');
+            postFormSection.classList.add('hidden'); // NEW
+            postsContainer.parentElement.classList.add('hidden'); // NEW: Sembunyikan daftar postingan
+
         }
 
         function hideProfileManagement() {
             console.log('hideProfileManagement dipanggil');
-            updateUIVisibility(auth.currentUser);
+            // NEW: Sembunyikan profil management, auth section, rules section, biarkan semua yang lain terlihat
+            profileManagementSection.classList.add('hidden');
+            authSection.classList.add('hidden'); 
+            rulesSection.classList.add('hidden'); // NEW
+            updateUIVisibility(auth.currentUser); // Perbarui UI sesuai status login (akan menampilkan postForm dan postsList)
         }
 
         changeNameButtonInProfile.addEventListener('click', async () => {
@@ -875,7 +1002,7 @@
                 return;
             }
 
-            const userDocRef = doc(db, USERS_COLLECTION_NAME, user.uid); // NEW: Referensi ke koleksi 'users'
+            const userDocRef = doc(db, USERS_COLLECTION_NAME, user.uid); 
             let userDocData;
             try {
                 const userDoc = await getDoc(userDocRef);
@@ -901,30 +1028,26 @@
                 }
             }
             
-            // Bersihkan nama dari karakter terlarang Firebase
             const cleanedNewName = newName.replace(/[.#$\[\]\/]/g, '_');
             if (cleanedNewName !== newName) {
                 showMessage(globalMessage, 'Nama mengandung karakter yang tidak diizinkan. Beberapa karakter akan diganti dengan underscore.', 'error');
-                newDisplayNameInput.value = cleanedNewName; // Update input field
+                newDisplayNameInput.value = cleanedNewName; 
             }
 
             try {
-                // Update display name di Firebase Authentication
                 await updateProfile(user, { displayName: cleanedNewName });
 
-                // Update display name dan lastDisplayNameUpdate di Firestore di koleksi 'users'
                 await updateDoc(userDocRef, {
                     displayName: cleanedNewName,
                     lastDisplayNameUpdate: serverTimestamp()
                 });
 
-                // Perbarui variabel lokal dan UI
                 currentUserName = cleanedNewName;
                 currentUserNameDisplay.textContent = currentUserName;
                 profileDisplayNameDisplay.textContent = currentUserName;
                 newDisplayNameInput.value = currentUserName;
                 showMessage(globalMessage, 'Nama tampilan berhasil diperbarui!', 'success');
-                await updateNameChangeInfo(user.uid); // Perbarui info batasan waktu setelah ganti nama
+                await updateNameChangeInfo(user.uid); 
 
             } catch (error) {
                 console.error("Update Profile Error:", error);
@@ -933,7 +1056,7 @@
         });
 
         async function updateNameChangeInfo(uid) {
-            const userDocRef = doc(db, USERS_COLLECTION_NAME, uid); // NEW: Referensi ke koleksi 'users'
+            const userDocRef = doc(db, USERS_COLLECTION_NAME, uid); 
             let userDocData;
             try {
                 const userDoc = await getDoc(userDocRef);
@@ -972,53 +1095,98 @@
         }
 
 
-        // --- Fungsi untuk memperbarui tampilan UI ---
-        async function updateUIVisibility(user) { 
-            console.log('updateUIVisibility dipanggil. User:', user ? user.email : 'null');
+        // --- NEW: Fungsi Pengelolaan Rules Section ---
+        function showRules() {
+            console.log('showRules dipanggil');
+            // Sembunyikan semua bagian lain dan tampilkan hanya rules
             authSection.classList.add('hidden');
-            userProfileSection.classList.add('hidden');
-            postFormSection.classList.add('hidden');
             profileManagementSection.classList.add('hidden');
             globalMessage.classList.add('hidden');
+            postFormSection.classList.add('hidden');
+            postsContainer.parentElement.classList.add('hidden'); // Sembunyikan daftar postingan
+            
+            rulesSection.classList.remove('hidden'); // Tampilkan rules section
+        }
+
+        function hideRules() {
+            console.log('hideRules dipanggil');
+            // Sembunyikan rules section dan perbarui UI ke tampilan default (postingan)
+            rulesSection.classList.add('hidden');
+            updateUIVisibility(auth.currentUser); // Akan menampilkan postForm dan postsList
+        }
+
+
+        // --- Fungsi untuk memperbarui tampilan UI ---
+        // NEW: Fungsi untuk menampilkan Auth Section
+        function showAuthSection() {
+            authSection.classList.remove('hidden');
+            profileManagementSection.classList.add('hidden'); // Sembunyikan profil mgmt jika muncul
+            rulesSection.classList.add('hidden'); // NEW: Sembunyikan rules
+            postFormSection.classList.add('hidden'); // NEW: Sembunyikan form postingan
+            postsContainer.parentElement.classList.add('hidden'); // NEW: Sembunyikan daftar postingan
+            globalMessage.classList.add('hidden'); // Sembunyikan pesan global lama
+            authEmailInput.focus(); // Fokus ke input email
+        }
+
+        async function updateUIVisibility(user) { 
+            console.log('updateUIVisibility dipanggil. User:', user ? user.email : 'null');
+            // Selalu sembunyikan authSection dan profileManagementSection dan rulesSection saat awal
+            authSection.classList.add('hidden');
+            profileManagementSection.classList.add('hidden');
+            rulesSection.classList.add('hidden'); // NEW
+
+            // NEW: Selalu tampilkan postFormSection dan postsContainer
+            postFormSection.classList.remove('hidden'); 
+            postsContainer.parentElement.classList.remove('hidden'); // Menampilkan kembali kontainer postingan
 
             if (user) {
+                // Pengguna sudah login
                 currentUserName = user.displayName || user.email.split('@')[0];
                 currentUserNameDisplay.textContent = currentUserName;
-                
-                // NEW: Ambil status isVerified dari Firestore untuk pengguna yang login
-                // Atau buat dokumen user jika belum ada
+                currentUserNameDisplay.classList.remove('not-logged-in'); // Hapus gaya "belum login"
+
+                logoutButton.classList.remove('hidden'); // Tampilkan tombol keluar
+                // showProfileManagementButton sudah selalu terlihat
+
+                postContentInput.disabled = false; // Aktifkan textarea
+                addPostButton.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Postingan'; // Ubah teks tombol kirim
+
+                // Ambil status isVerified dari Firestore untuk pengguna yang login
                 try {
-                    const userDocRef = doc(db, USERS_COLLECTION_NAME, user.uid); // NEW: Referensi ke koleksi 'users'
+                    const userDocRef = doc(db, USERS_COLLECTION_NAME, user.uid); 
                     const userDoc = await getDoc(userDocRef);
                     if (userDoc.exists()) {
                         const userData = userDoc.data();
-                        currentUserIsVerified = userData.isVerified === true; // Pastikan boolean
+                        currentUserIsVerified = userData.isVerified === true; 
                     } else {
-                        // Jika dokumen pengguna tidak ada (misal, akun lama tanpa field isVerified), set default false
-                        // dan buat dokumen user baru di sini dengan isVerified: false
                         currentUserIsVerified = false;
                         await setDoc(userDocRef, {
                             email: user.email,
                             displayName: user.displayName || user.email.split('@')[0],
                             createdAt: serverTimestamp(),
                             lastDisplayNameUpdate: null,
-                            isVerified: false // Set default false
-                        }, { merge: true }); // Gunakan merge agar tidak menimpa data lain jika sudah ada
+                            isVerified: false 
+                        }, { merge: true });
                     }
                 } catch (error) {
                     console.error("Error fetching/creating current user verification status:", error);
-                    currentUserIsVerified = false; // Fallback jika error
+                    currentUserIsVerified = false; 
                 }
                 
-                userProfileSection.classList.remove('hidden');
-                postFormSection.classList.remove('hidden');
-
             } else {
-                currentUserName = 'Anonim';
-                currentUserIsVerified = false; // Reset verification status
+                // Pengguna BELUM login
+                currentUserName = 'Belum Login'; // Ganti teks nama
                 currentUserNameDisplay.textContent = currentUserName;
-                authSection.classList.remove('hidden');
-                toggleAuthMode(); // Pastikan toggleAuthMode dipanggil setelah updateUIVisibility selesai
+                currentUserNameDisplay.classList.add('not-logged-in'); // Tambahkan gaya "belum login"
+
+                logoutButton.classList.add('hidden'); // Sembunyikan tombol keluar
+                // showProfileManagementButton sudah selalu terlihat
+
+                postContentInput.disabled = true; // Nonaktifkan textarea
+                postContentInput.value = ''; // Kosongkan isi textarea
+                addPostButton.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login untuk Posting'; // Ubah teks tombol
+
+                currentUserIsVerified = false; // Reset verification status
             }
             displayPosts(); // Perbarui daftar postingan setiap kali UI berubah
         }
@@ -1026,39 +1194,35 @@
 
         // --- Update UI Berdasarkan Status Autentikasi ---
         onAuthStateChanged(auth, async user => { 
-            await updateUIVisibility(user); // Tunggu sampai updateUIVisibility selesai
+            await updateUIVisibility(user); 
         });
 
 
         // --- Fungsi Pengelolaan Postingan (Menggunakan Firebase Firestore) ---
 
-        let unsubscribePosts = null; // Variable to hold the unsubscribe function
+        let unsubscribePosts = null; 
 
-        // Cache untuk status verifikasi pengguna agar tidak terlalu banyak membaca dari Firestore
-        // Key: UID pengguna, Value: boolean (isVerified)
         const userVerificationCache = {}; 
 
         async function getAuthorVerificationStatus(authorId) {
-            if (!authorId) return false; // Jika tidak ada authorId, tidak bisa diverifikasi
+            if (!authorId) return false; 
 
-            // Cek di cache dulu
             if (typeof userVerificationCache[authorId] !== 'undefined') {
                 return userVerificationCache[authorId];
             }
 
-            // Jika tidak ada di cache, ambil dari Firestore
             try {
                 const authorDocRef = doc(db, USERS_COLLECTION_NAME, authorId);
                 const authorDoc = await getDoc(authorDocRef);
                 if (authorDoc.exists()) {
                     const isVerified = authorDoc.data().isVerified === true;
-                    userVerificationCache[authorId] = isVerified; // Simpan ke cache
+                    userVerificationCache[authorId] = isVerified; 
                     return isVerified;
                 }
             } catch (error) {
                 console.error("Error fetching author verification status from Firestore:", error);
             }
-            userVerificationCache[authorId] = false; // Default ke false jika ada error atau tidak ditemukan
+            userVerificationCache[authorId] = false; 
             return false;
         }
 
@@ -1066,7 +1230,7 @@
         function displayPosts() {
             console.log('displayPosts dipanggil');
             if (unsubscribePosts) {
-                unsubscribePosts(); // Detach previous listener if it exists
+                unsubscribePosts(); 
             }
 
             postsContainer.innerHTML = '';
@@ -1084,10 +1248,9 @@
                 } else {
                     noPostsMessage.classList.add('hidden');
                     
-                    // NEW: Memproses postingan dan mengambil status verifikasi secara paralel
                     const postPromises = snapshot.docs.map(async docSnapshot => {
                         const post = docSnapshot.data();
-                        const isAuthorVerified = await getAuthorVerificationStatus(post.authorId); // Ambil dari Firestore atau cache
+                        const isAuthorVerified = await getAuthorVerificationStatus(post.authorId); 
                         return { post, isAuthorVerified };
                     });
 
@@ -1104,7 +1267,6 @@
                         postAuthor.classList.add('post-author');
                         postAuthor.textContent = post.author || (post.authorEmail ? post.authorEmail.split('@')[0] : 'Anonim');
                         
-                        // MODIFIKASI UNTUK FITUR CENTANG BIRU: Tambahkan ikon centang jika terverifikasi
                         if (isAuthorVerified) {
                             const verifiedBadge = document.createElement('i');
                             verifiedBadge.classList.add('fas', 'fa-check-circle', 'verified-badge');
@@ -1139,7 +1301,9 @@
         async function addPost() {
             console.log('addPost dipanggil');
             if (!auth.currentUser) {
-                showMessage(globalMessage, 'Anda harus login untuk membuat postingan!', 'error');
+                // NEW: Jika belum login, tampilkan pesan dan arahkan ke authSection
+                showMessage(globalMessage, 'Anda harus login untuk membuat postingan! Silakan masuk atau daftar.', 'error');
+                showAuthSection(); 
                 return;
             }
 
@@ -1151,11 +1315,10 @@
             }
 
             try {
-                // NEW: Pastikan authorId disertakan untuk pengambilan status verifikasi
                 await addDoc(collection(db, POSTS_COLLECTION_NAME), {
                     author: auth.currentUser.displayName || auth.currentUser.email.split('@')[0],
-                    authorEmail: auth.currentUser.email, // Pertahankan field ini juga
-                    authorId: auth.currentUser.uid, // NEW: Simpan UID penulis untuk verifikasi
+                    authorEmail: auth.currentUser.email,
+                    authorId: auth.currentUser.uid, 
                     content: content,
                     timestamp: serverTimestamp()
                 });
@@ -1202,20 +1365,28 @@
             applySavedTheme();
             themeToggleButton.addEventListener('click', toggleTheme);
             
-            attachToggleAuthModeButtonListener(); // Pasang listener awal
+            attachToggleAuthModeButtonListener(); 
             
             if (logoutButton) {
                 logoutButton.addEventListener('click', logout);
             }
-            if (showProfileManagementButton) {
-                showProfileManagementButton.addEventListener('click', showProfileManagement);
-            }
+            // showProfileManagementButton tidak lagi memiliki kondisi if (showProfileManagementButton) karena selalu ada
+            showProfileManagementButton.addEventListener('click', showProfileManagement);
+            
             if (backButtonProfile) {
                 backButtonProfile.addEventListener('click', hideProfileManagement);
             }
-            if (addPostButton) {
-                addPostButton.addEventListener('click', addPost);
+            // addPostButton sekarang memiliki logika kondisional
+            addPostButton.addEventListener('click', addPost);
+
+            // NEW: Event listener untuk tombol Rules Komunitas
+            if (showRulesButton) {
+                showRulesButton.addEventListener('click', showRules);
             }
+            if (backButtonRules) {
+                backButtonRules.addEventListener('click', hideRules);
+            }
+
 
             // onAuthStateChanged akan menangani tampilan awal setelah loading
         });

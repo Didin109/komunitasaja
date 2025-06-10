@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Komunitas Kita</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="google-site-verification" content="uOq5OFGGKbB0TCKFkwKulr52Y-SMjA5MU_prM-lVZv8" />
     <style>
         /* --- Variabel Warna (Tema) --- */
         :root {
@@ -1140,7 +1141,8 @@
             try {
                 await signOut(auth);
                 showMessage(globalMessage, 'Anda telah keluar.', 'success');
-            } catch (error) {
+            }
+            catch (error) {
                 console.error("Logout Error:", error);
                 showMessage(globalMessage, 'Error logout: ' + error.message, 'error');
             }

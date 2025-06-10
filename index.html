@@ -9,65 +9,68 @@
         /* --- Variabel Warna (Tema) --- */
         :root {
             /* Warna Default (Light Mode) */
-            --bg-color: #f0f2f5;
-            --text-color: #333;
-            --container-bg: #ffffff;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-            --header-bg: #2c3e50; /* Warna header utama */
+            --bg-body: #f7f9fc; /* Latar belakang halaman utama yang lebih terang */
+            --bg-container: #ffffff; /* Latar belakang kartu/kontainer */
+            --text-primary: #2c3e50; /* Warna teks utama yang lebih gelap */
+            --text-secondary: #5a6a7a; /* Warna teks sekunder (misal: tanggal, info kecil) */
+            --accent-color: #007bff; /* Warna aksen utama (biru cerah) */
+            --accent-hover: #0056b3; /* Hover untuk warna aksen */
+            --border-color: #e0e6ec; /* Warna border yang halus */
+            --shadow-light: rgba(0, 0, 0, 0.08); /* Bayangan elemen ringan */
+            --shadow-medium: rgba(0, 0, 0, 0.15); /* Bayangan elemen standar */
+            --header-bg: #2c3e50; /* Header background */
             --header-text: #ffffff;
             --nav-link-color: #ffffff;
             --nav-link-hover-color: #f0f0f0;
-            --section-bg: #f9f9f9;
-            --section-border: #eee;
-            --input-border: #ccc;
-            --button-primary-bg: #007bff;
-            --button-primary-hover: #0056b3;
+
             --button-success-bg: #28a745;
             --button-success-hover: #218838;
             --button-danger-bg: #dc3545;
             --button-danger-hover: #c82333;
             --button-secondary-bg: #6c757d;
             --button-secondary-hover: #5a6268;
+
             --user-profile-bg: #e9f0f7;
             --user-profile-border: #d0e0ed;
-            --post-item-bg: #fff;
-            --post-item-border: #ddd;
-            --post-shadow-color: rgba(0, 0, 0, 0.05);
-            --post-header-border: #eee;
-            --post-author-color: #3498db;
-            --post-date-color: #777;
-            --no-posts-color: #666;
-            --link-color: #007bff;
-            --link-hover-color: #0056b3;
-            --message-error-bg: #f8d7da;
-            --message-error-text: #721c24;
-            --message-success-bg: #d4edda;
-            --message-success-text: #155724;
-            /* NEW: Warna untuk centang biru */
             --verified-badge-color: #1DA1F2; /* Twitter Blue */
 
-            /* NEW: Warna untuk Rules Section */
             --rules-section-bg: #f0f8ff; /* Light blue background */
-            --rules-section-border: #b3d9ff; /* Border for rules section */
-            --rules-heading-color: #2c3e50;
-            --rules-text-color: #444;
-            --rules-list-marker-color: #007bff;
+            --rules-section-border: #b3d9ff;
+            --rules-heading-color: var(--text-primary);
+            --rules-text-color: var(--text-secondary);
+            --rules-list-marker-color: var(--accent-color);
             --rules-highlight-bg: #e6f2ff;
+
+            --affiliate-banner-bg: #fffbe6; /* Warna kuning muda pastel */
+            --affiliate-banner-border: #ffe082;
+            --affiliate-banner-text: #856404;
+            --affiliate-close-btn-color: #856404;
+            --affiliate-close-btn-hover-bg: #faebcc;
+            --affiliate-link-color: #007bff;
+
+            /* Messages */
+            --message-error-bg: #ffe0e6;
+            --message-error-text: #cc0033;
+            --message-success-bg: #e0ffe6;
+            --message-success-text: #009933;
         }
 
         /* Night Mode (Dark Theme) */
         body.dark-mode {
-            --bg-color: #2c2c2c;
-            --text-color: #f0f0f0;
-            --container-bg: #3c3c3c;
-            --shadow-color: rgba(0, 0, 0, 0.3);
-            --header-bg: #004085; /* Darker blue for dark mode header */
+            --bg-body: #1a1a2e; /* Latar belakang halaman yang lebih gelap */
+            --bg-container: #212135; /* Latar belakang kartu/kontainer yang lebih gelap */
+            --text-primary: #e0e0e0; /* Teks utama lebih terang */
+            --text-secondary: #a0a0a0; /* Teks sekunder abu-abu terang */
+            --accent-color: #87ceeb; /* Warna aksen lebih terang (biru langit) */
+            --accent-hover: #6aabcb; /* Hover untuk warna aksen gelap */
+            --border-color: #33334c; /* Warna border yang lebih gelap */
+            --shadow-light: rgba(0, 0, 0, 0.4); /* Bayangan elemen ringan gelap */
+            --shadow-medium: rgba(0, 0, 0, 0.6); /* Bayangan elemen standar gelap */
+            --header-bg: #141426; /* Header background lebih gelap */
             --header-text: #ffffff;
-            --nav-link-color: #f0f0f0;
+            --nav-link-color: #e0e0e0;
             --nav-link-hover-color: #cccccc;
-            --section-bg: #4c4c4c;
-            --section-border: #555;
-            --input-border: #666;
+
             --button-primary-bg: #4a90e2;
             --button-primary-hover: #3a7bd8;
             --button-success-bg: #5cb85c;
@@ -76,216 +79,340 @@
             --button-danger-hover: #d94b4b;
             --button-secondary-bg: #5c6770;
             --button-secondary-hover: #4a545d;
-            --user-profile-bg: #4c5a6d;
-            --user-profile-border: #5d6d7e;
-            --post-item-bg: #4c4c4c;
-            --post-item-border: #555;
-            --post-shadow-color: rgba(0, 0, 0, 0.2);
-            --post-header-border: #666;
-            --post-author-color: #87ceeb;
-            --post-date-color: #bbb;
-            --no-posts-color: #aaa;
-            --link-color: #87ceeb;
-            --link-hover-color: #6aabcb;
-            --message-error-bg: #a53d3d;
-            --message-error-text: #ffcccc;
-            --message-success-bg: #3a7a3a;
-            --message-success-text: #ccffcc;
-            /* NEW: Warna untuk centang biru di Dark Mode */
-            --verified-badge-color: #4A90E2; /* Sedikit lebih terang di dark mode */
 
-            /* NEW: Warna untuk Rules Section di Dark Mode */
-            --rules-section-bg: #34495e; /* Darker blue background */
-            --rules-section-border: #4a6d8c; /* Border for rules section */
-            --rules-heading-color: #ffffff;
-            --rules-text-color: #e0e0e0;
-            --rules-list-marker-color: #87ceeb;
-            --rules-highlight-bg: #4c667a;
+            --user-profile-bg: #2b3b50;
+            --user-profile-border: #3c4d60;
+            --verified-badge-color: #61affe; /* Biru terang untuk dark mode */
+
+            --rules-section-bg: #2b3b50;
+            --rules-section-border: #3c4d60;
+            --rules-heading-color: var(--text-primary);
+            --rules-text-color: var(--text-secondary);
+            --rules-list-marker-color: var(--accent-color);
+            --rules-highlight-bg: #3e526d;
+
+            --affiliate-banner-bg: #3a3a00; /* Hijau gelap kekuningan */
+            --affiliate-banner-border: #5a5a00;
+            --affiliate-banner-text: #ffebb2;
+            --affiliate-close-btn-color: #ffcc00;
+            --affiliate-close-btn-hover-bg: #4a4a00;
+            --affiliate-link-color: #87ceeb;
+
+            /* Messages Dark Mode */
+            --message-error-bg: #5a2020;
+            --message-error-text: #ffcccc;
+            --message-success-bg: #205a20;
+            --message-success-text: #ccffcc;
         }
 
-        /* --- Gaya Umum & Reset untuk Responsivitas --- */
+        /* --- Gaya Umum & Reset --- */
         * {
-            box-sizing: border-box; /* Sangat penting untuk responsivitas */
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; /* Poppins jika diimport */
             margin: 0;
             padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-body);
+            color: var(--text-primary);
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: hidden; /* Mencegah scrolling horizontal yang tidak diinginkan */
-            width: 100%; /* Memastikan body tidak melebihi viewport */
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
         }
 
-        /* Top Bar / Navigasi */
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        /* --- Perbaikan Top Bar / Navigasi --- */
         .top-bar {
             width: 100%;
             background-color: var(--header-bg);
             color: var(--header-text);
-            padding: 15px 20px;
+            padding: 10px 25px; /* **PERUBAHAN: Padding vertikal lebih kecil** */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px var(--shadow-color);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            flex-wrap: wrap; /* Memungkinkan item wrap di layar kecil */
+            box-shadow: 0 4px 10px var(--shadow-light);
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
+            position: sticky; /* Sticky header */
+            top: 0;
+            z-index: 1000; /* Pastikan di atas konten lain */
+            flex-wrap: nowrap; /* **PERUBAHAN: Jangan wrap di desktop** */
         }
 
         .top-bar .logo {
             font-size: 1.8em;
-            font-weight: bold;
+            font-weight: 700;
             color: var(--header-text);
             text-decoration: none;
-            flex-shrink: 0; /* Mencegah logo mengecil terlalu banyak */
-            margin-right: 20px; /* Memberi sedikit jarak */
+            flex-shrink: 0;
+            margin-right: 30px;
+            letter-spacing: -0.5px;
         }
 
         .top-bar nav {
-            flex-grow: 1; /* Memungkinkan nav mengambil ruang yang tersisa */
+            flex-grow: 1;
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            flex-wrap: wrap;
+            gap: 25px;
+            /* **PERUBAHAN: Tidak perlu flex-wrap di desktop** */
         }
 
         .top-bar nav a {
             color: var(--nav-link-color);
             text-decoration: none;
-            margin-right: 20px;
             font-weight: 500;
-            transition: color 0.3s ease, text-decoration 0.3s ease;
-            white-space: nowrap; /* Mencegah link putus baris */
-            display: flex; /* MODIFIKASI UNTUK FITUR CENTANG BIRU: Untuk menyejajarkan ikon dan teks */
-            align-items: center; /* MODIFIKASI UNTUK FITUR CENTANG BIRU: Untuk menyejajarkan ikon dan teks */
-            gap: 5px; /* MODIFIKASI UNTUK FITUR CENTANG BIRU: Jarak antara ikon dan teks */
-        }
-
-        .top-bar nav a:last-child {
-            margin-right: 0;
+            transition: color 0.3s ease, transform 0.2s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 0;
         }
 
         .top-bar nav a:hover {
             color: var(--nav-link-hover-color);
-            text-decoration: underline;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .top-bar nav a i {
+            font-size: 1.1em;
+        }
+
+        .theme-toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: auto; /* Mendorong ke kanan */
+            flex-shrink: 0;
         }
 
         /* Header Utama (Konten "Komunitas Kita") */
         header {
             width: 100%;
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
-            background-color: var(--container-bg);
-            box-shadow: 0 2px 4px var(--shadow-color);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            margin-bottom: 20px;
+            background-color: var(--bg-container);
+            box-shadow: 0 4px 10px var(--shadow-light);
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
+            margin-bottom: 30px;
+            color: var(--text-primary);
         }
 
         header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
             margin: 0;
-            color: var(--header-color);
+            color: inherit;
+        }
+
+        /* --- Perbaikan Banner Afiliasi --- */
+        #affiliateBanner {
+            background-color: var(--affiliate-banner-bg);
+            border: 1px solid var(--affiliate-banner-border);
+            color: var(--affiliate-banner-text);
+            padding: 12px 25px;
+            margin: 25px auto; /* **PERUBAHAN: Margin otomatis untuk tengah** */
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.98em;
+            box-shadow: 0 2px 8px var(--shadow-light);
+            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+            max-width: 900px; /* **PERUBAHAN: Lebar maksimum lebih besar** */
+            width: calc(100% - 40px); /* **PERUBAHAN: Menyesuaikan lebar** */
+            position: relative;
+            gap: 15px;
+            text-align: center;
+        }
+
+        #affiliateBanner p {
+            margin: 0;
+            flex-grow: 1;
+            text-align: center;
+            line-height: 1.4; /* **PERUBAHAN: Line height lebih baik** */
+        }
+
+        #affiliateBanner a {
+            color: var(--affiliate-link-color);
+            font-weight: 600;
+            text-decoration: underline;
             transition: color 0.3s ease;
+            white-space: nowrap; /* **PERUBAHAN: Jangan wrap link** */
+        }
+
+        #affiliateBanner a:hover {
+            color: var(--accent-hover);
+            text-decoration: none;
+        }
+
+        #affiliateBanner .close-btn {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.3em;
+            padding: 2px 8px;
+            color: var(--affiliate-close-btn-color);
+            background-color: transparent;
+            border: none;
+            border-radius: 5px;
+            transition: color 0.2s ease, background-color 0.2s ease;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            line-height: 1;
+        }
+
+        #affiliateBanner .close-btn:hover {
+            background-color: var(--affiliate-close-btn-hover-bg);
+            color: var(--affiliate-banner-text);
         }
 
         .container {
             flex-grow: 1;
-            background-color: var(--container-bg);
-            border-radius: 8px;
-            box-shadow: 0 4px 12px var(--shadow-color);
-            padding: 30px;
-            margin: 20px auto; /* Centering the container */
-            width: calc(100% - 40px); /* Adjusting width to account for margin */
-            max-width: 700px;
+            background-color: var(--bg-container);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px var(--shadow-medium);
+            padding: 35px;
+            margin: 30px auto;
+            width: calc(100% - 60px);
+            max-width: 800px;
             box-sizing: border-box;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
         }
 
         h2 {
-            color: var(--header-color);
+            font-size: 1.8em;
+            font-weight: 600;
             text-align: center;
-            margin-bottom: 25px;
-            transition: color 0.3s ease;
+            margin-bottom: 30px;
+            color: var(--text-primary);
         }
 
         /* Gaya untuk bagian yang tersembunyi/tampil */
-        .auth-section, .post-form, .profile-management, .rules-section { /* NEW: Tambahkan .rules-section */
-            background-color: var(--section-bg);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            border: 1px solid var(--section-border);
+        .auth-section, .post-form, .profile-management, .rules-section {
+            background-color: var(--bg-body);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 35px;
+            border: 1px solid var(--border-color);
             text-align: center;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
+            transition: background-color 0.4s ease, border-color 0.4s ease;
+            box-shadow: 0 2px 10px var(--shadow-light);
         }
 
         input[type="email"],
         input[type="password"],
         input[type="text"],
         textarea {
-            width: 100%; /* Lebar penuh */
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid var(--input-border);
-            border-radius: 5px;
-            font-size: 1em;
-            background-color: var(--container-bg);
-            color: var(--text-color);
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1.05em;
+            background-color: var(--bg-container);
+            color: var(--text-primary);
+            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.2s ease;
+            outline: none;
         }
-        /* NEW: Gaya untuk textarea yang disabled */
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+        }
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
         textarea:disabled {
-            background-color: #e0e0e0;
+            background-color: var(--bg-body);
             cursor: not-allowed;
-            color: #777;
-        }
-        body.dark-mode textarea:disabled {
-            background-color: #555;
-            color: #aaa;
+            color: var(--text-secondary);
+            border-color: var(--border-color);
+            box-shadow: none;
         }
 
         button {
-            background-color: var(--button-primary-bg);
+            background-color: var(--accent-color);
             color: white;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            margin: 5px;
-            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            margin: 8px;
+            font-size: 1.05em;
+            font-weight: 500;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
+            text-transform: capitalize;
         }
 
         button:hover {
-            background-color: var(--button-primary-hover);
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px var(--shadow-light);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: none;
         }
 
         .auth-section p {
-            margin-top: 15px;
-            font-size: 0.9em;
-            color: var(--text-color);
+            margin-top: 20px;
+            font-size: 0.95em;
+            color: var(--text-primary);
         }
 
         .auth-section p button {
             background: none;
             border: none;
-            color: var(--link-color);
+            color: var(--accent-color);
             cursor: pointer;
             text-decoration: underline;
             padding: 0;
             margin: 0;
-            font-size: 0.9em;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         .auth-section p button:hover {
-            color: var(--link-hover-color);
+            color: var(--accent-hover);
+            text-decoration: none;
+            transform: none;
+            box-shadow: none;
         }
 
         /* --- Profil Pengguna (Navbar di atas) --- */
@@ -293,59 +420,48 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding: 15px;
+            margin-bottom: 30px;
+            padding: 20px;
             background-color: var(--user-profile-bg);
-            border-radius: 6px;
+            border-radius: 10px;
             border: 1px solid var(--user-profile-border);
             flex-wrap: wrap;
-            gap: 10px;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
+            gap: 15px;
+            transition: background-color 0.4s ease, border-color 0.4s ease;
+            box-shadow: 0 2px 8px var(--shadow-light);
         }
 
         .user-profile .profile-info {
             flex-grow: 1;
-            color: var(--text-color);
-            min-width: 150px; /* Ensure it doesn't get too small */
+            color: var(--text-primary);
+            font-size: 1.05em;
+            min-width: 200px;
         }
 
         .user-profile span {
-            font-weight: bold;
-            color: var(--link-color);
+            font-weight: 600;
+            color: var(--accent-color);
             font-size: 1.1em;
-            transition: color 0.3s ease;
+            transition: color 0.4s ease;
         }
-        /* NEW: Gaya untuk teks "Belum Login" */
+
         .user-profile span.not-logged-in {
-            color: var(--post-date-color); /* Atau warna abu-abu */
+            color: var(--text-secondary);
             font-style: italic;
         }
 
         .user-profile button {
-            background-color: var(--button-primary-bg);
-            color: white;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-left: 10px; /* Jarak antar tombol */
-            flex-shrink: 0; /* Mencegah tombol mengecil */
+            padding: 10px 20px;
+            margin: 0 8px;
         }
-
         .user-profile button:first-of-type {
-            margin-left: 0; /* Hilangkan margin kiri pada tombol pertama */
+            margin-left: 0;
         }
 
-
-        .user-profile button:hover {
-            background-color: var(--button-primary-hover);
-        }
 
         .user-profile button.logout-button {
             background-color: var(--button-danger-bg);
         }
-
         .user-profile button.logout-button:hover {
             background-color: var(--button-danger-hover);
         }
@@ -353,10 +469,12 @@
         /* --- Kelola Profil --- */
         .profile-management p {
             text-align: left;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-size: 1em;
         }
         .profile-management p strong {
-            color: var(--link-color);
+            color: var(--accent-color);
+            font-weight: 600;
         }
         .profile-management button.back-button {
              background-color: var(--button-secondary-bg);
@@ -365,49 +483,42 @@
              background-color: var(--button-secondary-hover);
         }
         #nameChangeInfo {
-            font-size: 0.9em;
-            color: var(--post-date-color);
+            font-size: 0.88em;
+            color: var(--text-secondary);
             text-align: left;
-            margin-top: -5px;
-            margin-bottom: 15px;
+            margin-top: -10px;
+            margin-bottom: 20px;
         }
-        /* NEW: Style untuk status verifikasi di profil */
-        .profile-management #profileVerificationStatus {
+        #profileVerificationStatus {
             display: flex;
             align-items: center;
-            gap: 5px;
-            font-weight: bold;
-            color: var(--text-color);
-            margin-bottom: 15px;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 20px;
             justify-content: flex-start;
         }
-        .profile-management #profileVerificationStatus .verified-badge {
-            font-size: 1.1em;
+        #profileVerificationStatus .verified-badge {
+            font-size: 1.2em;
             color: var(--verified-badge-color);
         }
-        .profile-management #profileVerificationStatus .not-verified-text {
+        #profileVerificationStatus .not-verified-text {
             font-weight: normal;
-            color: var(--post-date-color); /* Warna abu-abu */
+            color: var(--text-secondary);
         }
-
 
         /* --- Form Postingan --- */
         .post-form textarea {
-            min-height: 80px;
-            resize: vertical;
+            min-height: 120px;
         }
 
         .post-form button {
             background-color: var(--button-success-bg);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
             width: 100%;
-            font-size: 1.1em;
-            font-weight: bold;
+            font-size: 1.15em;
+            font-weight: 600;
+            margin: 10px 0 0 0;
+            padding: 14px 25px;
         }
 
         .post-form button:hover {
@@ -416,107 +527,104 @@
 
         /* --- Daftar Postingan --- */
         .posts-list {
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .post-item {
-            background-color: var(--post-item-bg);
-            border: 1px solid var(--post-item-border);
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px var(--post-shadow-color);
-            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: var(--bg-container);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px var(--shadow-light);
+            transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
+        .post-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px var(--shadow-medium);
+        }
+
 
         .post-item .post-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-            border-bottom: 1px dashed var(--post-header-border);
-            transition: border-color 0.3s ease;
-            flex-wrap: wrap; /* Untuk tampilan di layar kecil */
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed var(--border-color);
+            transition: border-color 0.4s ease;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .post-item .post-author {
-            font-weight: bold;
-            color: var(--post-author-color);
-            font-size: 1.05em;
-            transition: color 0.3s ease;
-            margin-right: 10px; /* Jarak antara author dan date */
-            display: flex; /* NEW: Untuk menyejajarkan nama dan centang biru */
-            align-items: center; /* NEW: Untuk menyejajarkan nama dan centang biru */
-            gap: 5px; /* NEW: Jarak antara nama dan ikon centang */
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 1.1em;
+            transition: color 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* NEW: Style untuk centang biru */
         .post-item .post-author .verified-badge {
             color: var(--verified-badge-color);
-            font-size: 0.9em; /* Sedikit lebih kecil dari teks nama */
-            vertical-align: middle; /* Memastikan ikon sejajar dengan teks */
+            font-size: 1em;
+            vertical-align: middle;
         }
 
         .post-item .post-date {
-            font-size: 0.85em;
-            color: var(--post-date-color);
-            transition: color 0.3s ease;
-            white-space: nowrap; /* Mencegah tanggal putus baris */
+            font-size: 0.88em;
+            color: var(--text-secondary);
+            transition: color 0.4s ease;
+            white-space: nowrap;
         }
 
         .post-item .post-content {
-            line-height: 1.6;
-            color: var(--text-color);
+            line-height: 1.7;
+            color: var(--text-primary);
             white-space: pre-wrap;
             word-wrap: break-word;
-            transition: color 0.3s ease;
+            transition: color 0.4s ease;
+            font-size: 1em;
         }
 
         .no-posts-message {
             text-align: center;
-            color: var(--no-posts-color);
+            color: var(--text-secondary);
             font-style: italic;
-            margin-top: 30px;
-            transition: color 0.3s ease;
+            margin-top: 40px;
+            font-size: 1.1em;
+            transition: color 0.4s ease;
         }
 
         /* --- Tema Toggle --- */
-        .theme-toggle-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-left: auto; /* Memastikan tombol tema selalu di kanan */
-            flex-shrink: 0;
-        }
         .theme-toggle-button {
-            background-color: var(--button-primary-bg);
-            color: white;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            background-color: var(--button-secondary-bg);
         }
         .theme-toggle-button:hover {
-            background-color: var(--button-primary-hover);
+            background-color: var(--button-secondary-hover);
         }
 
         /* Pesan notifikasi */
         .message {
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            font-size: 0.9em;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-size: 0.95em;
             text-align: center;
+            font-weight: 500;
+            border: 1px solid transparent;
         }
         .message.error {
             background-color: var(--message-error-bg);
             color: var(--message-error-text);
+            border-color: var(--message-error-text);
         }
         .message.success {
             background-color: var(--message-success-bg);
             color: var(--message-success-text);
+            border-color: var(--message-success-text);
         }
 
         /* Utility Class */
@@ -524,66 +632,68 @@
             display: none !important;
         }
 
-        /* --- NEW: Gaya untuk Rules Section --- */
+        /* --- Gaya untuk Rules Section --- */
         .rules-section {
             background-color: var(--rules-section-bg);
             border: 1px solid var(--rules-section-border);
-            padding: 25px;
-            text-align: left; /* Atur teks ke kiri */
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
+            padding: 30px;
+            text-align: left;
+            margin-bottom: 35px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px var(--shadow-light);
         }
 
         .rules-section h2 {
-            color: var(--rules-heading-color);
-            text-align: center;
-            margin-bottom: 20px;
+            font-size: 2em;
+            margin-bottom: 25px;
         }
 
         .rules-section p {
-            font-size: 1em;
-            line-height: 1.6;
+            font-size: 1.05em;
+            line-height: 1.7;
             margin-bottom: 15px;
             color: var(--rules-text-color);
         }
 
         .rules-section ul {
-            list-style-type: none; /* Hilangkan bullet default */
+            list-style-type: none;
             padding-left: 0;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .rules-section ul li {
             position: relative;
-            padding-left: 25px; /* Ruang untuk ikon bullet */
-            margin-bottom: 10px;
-            line-height: 1.5;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            line-height: 1.6;
             color: var(--rules-text-color);
+            font-size: 1em;
         }
 
         .rules-section ul li:before {
-            content: "\f058"; /* Font Awesome check-circle icon */
+            content: "\f058";
             font-family: 'Font Awesome 5 Free';
             font-weight: 900;
             position: absolute;
             left: 0;
             top: 2px;
             color: var(--rules-list-marker-color);
-            font-size: 0.9em;
+            font-size: 1.1em;
         }
 
         .rules-section .highlight {
             background-color: var(--rules-highlight-bg);
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: bold;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-weight: 600;
             display: inline-block;
+            margin: 0 4px;
         }
 
         .rules-section .back-button {
-            margin-top: 20px;
-            width: auto; /* Agar tidak memenuhi lebar penuh */
-            display: block; /* Pusatkan tombol jika perlu */
+            margin-top: 30px;
+            width: auto;
+            display: block;
             margin-left: auto;
             margin-right: auto;
             background-color: var(--button-secondary-bg);
@@ -595,98 +705,182 @@
 
         /* --- Responsif (mobile first) --- */
         @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+            }
             .container {
-                margin: 10px auto;
-                padding: 15px;
-                width: calc(100% - 20px);
+                margin: 20px auto;
+                padding: 20px;
+                width: calc(100% - 30px);
             }
             header {
-                padding: 20px 10px;
+                padding: 30px 15px;
+                margin-bottom: 20px;
             }
-            h1 {
-                font-size: 1.8em;
+            header h1 {
+                font-size: 2em;
             }
             h2 {
-                font-size: 1.5em;
+                font-size: 1.6em;
+                margin-bottom: 25px;
             }
 
+            /* **PERUBAHAN: Top Bar Responsif Mobile** */
             .top-bar {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 10px;
+                flex-direction: column; /* Tumpuk elemen */
+                align-items: center; /* Tengahkan semua */
+                padding: 10px 15px;
             }
             .top-bar .logo {
-                margin-bottom: 10px; /* Jarak antara logo dan navigasi */
+                margin-bottom: 10px; /* Jarak bawah logo */
                 margin-right: 0;
                 width: 100%;
                 text-align: center;
-                font-size: 1.5em;
+                font-size: 1.6em;
             }
             .top-bar nav {
                 width: 100%;
-                flex-direction: column;
+                flex-direction: column; /* Tumpuk navigasi */
                 align-items: center;
-                margin-bottom: 10px;
+                gap: 8px; /* Jarak vertikal yang lebih kecil */
+                margin-bottom: 10px; /* Jarak bawah navigasi */
             }
             .top-bar nav a {
-                margin: 5px 0; /* Jarak vertikal untuk link navigasi */
-                width: auto;
+                margin: 0;
+                padding: 5px 0;
+                font-size: 0.95em;
             }
             .theme-toggle-container {
                 width: 100%;
-                justify-content: center; /* Pusatkan tombol tema */
+                justify-content: center;
                 margin-left: 0;
+                margin-top: 5px; /* Jarak atas tombol tema */
+            }
+            .theme-toggle-button {
+                width: 100%;
+                padding: 10px 15px;
+            }
+
+
+            /* Responsif untuk banner afiliasi */
+            #affiliateBanner {
+                margin: 15px auto;
+                padding: 10px 15px;
+                width: calc(100% - 30px);
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            #affiliateBanner p {
+                font-size: 0.9em;
+                text-align: center;
+                padding-right: 0; /* **PERUBAHAN: Hilangkan padding kanan** */
+            }
+            #affiliateBanner a {
+                white-space: normal; /* **PERUBAHAN: Izinkan wrap untuk link di mobile** */
+            }
+            #affiliateBanner .close-btn {
+                position: static;
+                align-self: flex-end;
+                margin-top: 5px; /* **PERUBAHAN: Geser ke atas sedikit** */
+                margin-right: 0;
+                font-size: 1.1em;
+            }
+
+
+            .auth-section, .post-form, .profile-management, .rules-section {
+                padding: 20px;
+                margin-bottom: 25px;
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 1em;
+                width: 100%;
+                margin: 8px 0;
+            }
+            .auth-section p button {
+                width: auto;
+            }
+            .post-form button {
+                 padding: 12px 20px;
             }
 
             .user-profile {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 5px;
+                gap: 10px;
+                padding: 15px;
             }
             .user-profile .profile-info {
-                width: 100%; /* Pastikan info profil mengambil lebar penuh */
-                margin-bottom: 10px;
+                width: 100%;
+                margin-bottom: 5px;
             }
-            .user-profile > div { /* Container untuk tombol kelola profil & keluar */
+            .user-profile > div {
                 display: flex;
                 flex-direction: column;
                 width: 100%;
                 gap: 10px;
             }
             .user-profile button {
-                margin-left: 0;
-                width: 100%; /* Tombol memenuhi lebar */
-            }
-            .user-profile button.logout-button {
-                 margin-top: 0; /* Dikelola oleh gap pada parent div */
+                margin: 0;
+                width: 100%;
             }
 
+            .post-item {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
             .post-item .post-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 5px;
+                gap: 8px;
             }
             .post-item .post-author {
-                margin-right: 0; /* Hilangkan margin di mobile */
+                margin-right: 0;
+                font-size: 1.05em;
+            }
+            .post-item .post-date {
+                font-size: 0.8em;
+            }
+
+            .rules-section h2 {
+                font-size: 1.8em;
+            }
+            .rules-section ul li {
+                padding-left: 30px;
+            }
+            .rules-section ul li:before {
+                font-size: 1em;
+            }
+        }
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.6em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            .container {
+                padding: 15px;
+            }
+            .post-item {
+                padding: 12px;
+            }
+            input[type="email"], input[type="password"], input[type="text"], textarea {
+                padding: 10px 12px;
+                font-size: 0.95em;
             }
         }
     </style>
-    <script async custom-element="amp-auto-ads"
-            src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2680606899061778"
-            crossorigin="anonymous"></script>
 </head>
 <body>
-    <amp-auto-ads type="adsense"
-            data-ad-client="ca-pub-2680606899061778">
-    </amp-auto-ads>
-
     <div class="top-bar">
         <a href="#" class="logo">Komunitas Kita</a>
         <nav>
             <a href="https://www.tebakangka.co-id.id" target="_blank" rel="noopener noreferrer"><i class="fas fa-calculator"></i> Tebak Angka</a>
-            <a href="#" id="showRulesButton"><i class="fas fa-gavel"></i> Rules Komunitas</a> </nav>
+            <a href="#" id="showRulesButton"><i class="fas fa-gavel"></i> Rules Komunitas</a>
+        </nav>
         <div class="theme-toggle-container">
             <button id="themeToggleButton" class="theme-toggle-button">
                 <i class="fas fa-moon"></i> Mode Gelap
@@ -698,6 +892,10 @@
         <h1>Selamat Datang di Komunitas Kita!</h1>
     </header>
 
+    <div id="affiliateBanner">
+        <p>Dukung kami! Kunjungi link afiliasi kami untuk penawaran terbaik: <a href="https://lynk.id/babe0821" target="_blank" rel="noopener noreferrer">Klik Di Sini!</a></p>
+        <button class="close-btn" aria-label="Tutup banner afiliasi">X</button>
+    </div>
     <main class="container">
         <div id="globalMessage" class="message hidden"></div>
 
@@ -723,7 +921,7 @@
             <p>Nama Tampilan Saat Ini: <strong id="profileDisplayName"></strong></p>
             <div id="profileVerificationStatus">Status Verifikasi: Sedang dimuat...</div>
 
-            <label for="newDisplayNameInput" style="display: block; text-align: left; margin-bottom: 5px;">Ganti Nama Tampilan:</label>
+            <label for="newDisplayNameInput" style="display: block; text-align: left; margin-bottom: 5px; font-weight: 500;">Ganti Nama Tampilan:</label>
             <input type="text" id="newDisplayNameInput" placeholder="Nama tampilan baru">
             <p id="nameChangeInfo"></p>
             <button id="changeNameButton"><i class="fas fa-save"></i> Ganti Nama</button>
@@ -732,7 +930,7 @@
         </div>
 
         <div id="rulesSection" class="rules-section hidden">
-            <h2><i class="fas fa-book"></i> Aturan Komunitas Kita</h2>
+            <h2><i class="fas fa-book-reader"></i> Aturan Komunitas Kita</h2>
             <p>Selamat datang di Komunitas Kita! Agar kita semua bisa berinteraksi dengan nyaman dan positif, mohon perhatikan dan patuhi aturan berikut:</p>
             <ul>
                 <li><span class="highlight">Hormati Sesama Anggota:</span> Jaga bahasa Anda, hindari hinaan, pelecehan, atau konten yang merendahkan. Ingat, ada manusia di balik setiap akun.</li>
@@ -768,7 +966,7 @@
 
         // --- KONFIGURASI FIREBASE ANDA ---
         const firebaseConfig = {
-            apiKey: "AIzaSyDmyanNuVS3-Kdsz22fhS-prViRSCyUFK4",
+            apiKey: "AIzaSyDmyanNuVS3-Kdsz22fhS-prViRSCyUFK4", // GANTI DENGAN API KEY FIREBASE ANDA
             authDomain: "komunitas-chataja.firebaseapp.com",
             projectId: "komunitas-chataja",
             storageBucket: "komunitas-chataja.firebasestorage.app",
@@ -823,6 +1021,10 @@
         const showRulesButton = document.getElementById('showRulesButton');
         const backButtonRules = document.getElementById('backButtonRules');
 
+        // NEW: Elemen Banner Afiliasi
+        const affiliateBanner = document.getElementById('affiliateBanner');
+        const affiliateCloseBtn = affiliateBanner.querySelector('.close-btn');
+        const AFFILIATE_BANNER_KEY = 'hideAffiliateBanner'; // Kunci untuk Local Storage banner
 
         // Elemen Form Postingan
         const postFormSection = document.getElementById('postFormSection');
@@ -984,6 +1186,7 @@
             globalMessage.classList.add('hidden');
             postFormSection.classList.add('hidden'); // NEW
             postsContainer.parentElement.classList.add('hidden'); // NEW: Sembunyikan daftar postingan
+            affiliateBanner.classList.add('hidden'); // NEW: Sembunyikan banner afiliasi saat di halaman profil
 
         }
 
@@ -994,6 +1197,7 @@
             authSection.classList.add('hidden');
             rulesSection.classList.add('hidden'); // NEW
             updateUIVisibility(auth.currentUser); // Perbarui UI sesuai status login (akan menampilkan postForm dan postsList)
+            // affiliateBanner visibility handled by updateUIVisibility
         }
 
         changeNameButtonInProfile.addEventListener('click', async () => {
@@ -1113,6 +1317,7 @@
             globalMessage.classList.add('hidden');
             postFormSection.classList.add('hidden');
             postsContainer.parentElement.classList.add('hidden'); // Sembunyikan daftar postingan
+            affiliateBanner.classList.add('hidden'); // NEW: Sembunyikan banner afiliasi saat di halaman rules
 
             rulesSection.classList.remove('hidden'); // Tampilkan rules section
         }
@@ -1122,6 +1327,7 @@
             // Sembunyikan rules section dan perbarui UI ke tampilan default (postingan)
             rulesSection.classList.add('hidden');
             updateUIVisibility(auth.currentUser); // Akan menampilkan postForm dan postsList
+            // affiliateBanner visibility handled by updateUIVisibility
         }
 
 
@@ -1134,6 +1340,7 @@
             postFormSection.classList.add('hidden'); // NEW: Sembunyikan form postingan
             postsContainer.parentElement.classList.add('hidden'); // NEW: Sembunyikan daftar postingan
             globalMessage.classList.add('hidden'); // Sembunyikan pesan global lama
+            affiliateBanner.classList.add('hidden'); // NEW: Sembunyikan banner afiliasi saat di halaman auth
             authEmailInput.focus(); // Fokus ke input email
         }
 
@@ -1148,6 +1355,22 @@
             postFormSection.classList.remove('hidden');
             postsContainer.parentElement.classList.remove('hidden'); // Menampilkan kembali kontainer postingan
 
+            // NEW: Tampilkan/sembunyikan banner afiliasi berdasarkan Local Storage
+            // NOTE: setupAffiliateBanner() juga dipanggil di DOMContentLoaded.
+            // Ini memastikan banner diperiksa dua kali: saat load awal, dan saat status auth berubah.
+            // Jika ada aturan kompleks (misal, banner hanya muncul untuk user login tertentu), logikanya bisa di sini.
+            // Untuk saat ini, kita biarkan `setupAffiliateBanner` mengatur visibility default.
+            if (localStorage.getItem(AFFILIATE_BANNER_KEY) === 'true' ||
+                profileManagementSection.classList.contains('hidden') === false || // Jika sedang di halaman profil, sembunyikan
+                rulesSection.classList.contains('hidden') === false || // Jika sedang di halaman rules, sembunyikan
+                authSection.classList.contains('hidden') === false // Jika sedang di halaman auth, sembunyikan
+            ) {
+                 affiliateBanner.classList.add('hidden');
+            } else {
+                 affiliateBanner.classList.remove('hidden');
+            }
+
+
             if (user) {
                 // Pengguna sudah login
                 currentUserName = user.displayName || user.email.split('@')[0];
@@ -1159,6 +1382,8 @@
 
                 postContentInput.disabled = false; // Aktifkan textarea
                 addPostButton.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Postingan'; // Ubah teks tombol kirim
+                addPostButton.removeEventListener('click', showAuthSection); // Hapus event listener lama
+                addPostButton.addEventListener('click', addPost); // Tambahkan event listener baru
 
                 // Ambil status isVerified dari Firestore untuk pengguna yang login
                 try {
@@ -1168,6 +1393,7 @@
                         const userData = userDoc.data();
                         currentUserIsVerified = userData.isVerified === true;
                     } else {
+                        // Jika dokumen user belum ada, buat dengan isVerified: false
                         currentUserIsVerified = false;
                         await setDoc(userDocRef, {
                             email: user.email,
@@ -1175,7 +1401,7 @@
                             createdAt: serverTimestamp(),
                             lastDisplayNameUpdate: null,
                             isVerified: false
-                        }, { merge: true });
+                        }, { merge: true }); // Gunakan merge agar tidak menimpa field lain jika ada
                     }
                 } catch (error) {
                     console.error("Error fetching/creating current user verification status:", error);
@@ -1194,6 +1420,8 @@
                 postContentInput.disabled = true; // Nonaktifkan textarea
                 postContentInput.value = ''; // Kosongkan isi textarea
                 addPostButton.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login untuk Posting'; // Ubah teks tombol
+                addPostButton.removeEventListener('click', addPost); // Hapus event listener lama
+                addPostButton.addEventListener('click', showAuthSection); // NEW: Tambahkan event handler untuk tombol "Login untuk Posting"
 
                 currentUserIsVerified = false; // Reset verification status
             }
@@ -1308,55 +1536,48 @@
             });
         }
 
+
         async function addPost() {
             console.log('addPost dipanggil');
-            if (!auth.currentUser) {
-                // NEW: Jika belum login, tampilkan pesan dan arahkan ke authSection
-                showMessage(globalMessage, 'Anda harus login untuk membuat postingan! Silakan masuk atau daftar.', 'error');
+            const user = auth.currentUser;
+            if (!user) {
+                // If not logged in, change button to show auth section
                 showAuthSection();
+                showMessage(globalMessage, 'Anda harus login untuk membuat postingan.', 'error');
                 return;
             }
 
-            const content = postContentInput.value.trim();
-
-            if (!content) {
-                showMessage(globalMessage, 'Postingan tidak boleh kosong!', 'error');
+            const postContent = postContentInput.value.trim();
+            if (!postContent) {
+                showMessage(globalMessage, 'Isi postingan tidak boleh kosong!', 'error');
                 return;
             }
 
             try {
+                const userDocRef = doc(db, USERS_COLLECTION_NAME, user.uid);
+                const userDoc = await getDoc(userDocRef);
+                let displayNameForPost = user.displayName || user.email.split('@')[0];
+                if (userDoc.exists() && userDoc.data().displayName) {
+                     displayNameForPost = userDoc.data().displayName;
+                }
+
                 await addDoc(collection(db, POSTS_COLLECTION_NAME), {
-                    author: auth.currentUser.displayName || auth.currentUser.email.split('@')[0],
-                    authorEmail: auth.currentUser.email,
-                    authorId: auth.currentUser.uid,
-                    content: content,
+                    content: postContent,
+                    author: displayNameForPost,
+                    authorId: user.uid,
+                    authorEmail: user.email,
                     timestamp: serverTimestamp()
                 });
                 postContentInput.value = '';
                 showMessage(globalMessage, 'Postingan berhasil dikirim!', 'success');
             } catch (error) {
-                console.error("Error adding post to Firestore:", error);
-                showMessage(globalMessage, 'Gagal mengirim postingan. Coba lagi nanti.', 'error');
+                console.error("Error adding document: ", error);
+                showMessage(globalMessage, 'Gagal mengirim postingan: ' + error.message, 'error');
             }
         }
 
-        // --- Fungsi Tema Toggle (Mode Gelap) ---
 
-        function toggleTheme() {
-            console.log('toggleTheme dipanggil');
-            document.body.classList.toggle('dark-mode');
-            const isDarkMode = document.body.classList.contains('dark-mode');
-            localStorage.setItem(THEME_KEY, isDarkMode ? 'dark' : 'light');
-
-            // Update button text and icon
-            if (isDarkMode) {
-                themeToggleButton.innerHTML = '<i class="fas fa-sun"></i> Mode Terang';
-            } else {
-                themeToggleButton.innerHTML = '<i class="fas fa-moon"></i> Mode Gelap';
-            }
-        }
-
-        // Terapkan tema yang disimpan saat halaman dimuat
+        // --- Fungsi Pengelolaan Tema ---
         function applySavedTheme() {
             const savedTheme = localStorage.getItem(THEME_KEY);
             if (savedTheme === 'dark') {
@@ -1365,6 +1586,52 @@
             } else {
                 document.body.classList.remove('dark-mode');
                 themeToggleButton.innerHTML = '<i class="fas fa-moon"></i> Mode Gelap';
+            }
+        }
+
+        function toggleTheme() {
+            if (document.body.classList.contains('dark-mode')) {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem(THEME_KEY, 'light');
+                themeToggleButton.innerHTML = '<i class="fas fa-moon"></i> Mode Gelap';
+            } else {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem(THEME_KEY, 'dark');
+                themeToggleButton.innerHTML = '<i class="fas fa-sun"></i> Mode Terang';
+            }
+        }
+
+        // --- Fungsi Pengelolaan Banner Afiliasi ---
+        function setupAffiliateBanner() {
+            console.log('setupAffiliateBanner dipanggil');
+            // Pastikan elemen banner ada
+            if (!affiliateBanner) {
+                console.warn('Elemen #affiliateBanner tidak ditemukan.');
+                return;
+            }
+
+            // Periksa Local Storage untuk melihat apakah banner harus disembunyikan
+            if (localStorage.getItem(AFFILIATE_BANNER_KEY) === 'true') {
+                affiliateBanner.classList.add('hidden');
+                console.log('Affiliate banner hidden due to localStorage preference.');
+            } else {
+                affiliateBanner.classList.remove('hidden'); // Menampilkan banner jika tidak ada preferensi sembunyikan
+                console.log('Affiliate banner shown (no localStorage preference or preference is false).');
+            }
+
+            // Tambahkan event listener ke tombol tutup (pastikan hanya sekali)
+            if (affiliateCloseBtn) {
+                 affiliateCloseBtn.removeEventListener('click', hideAffiliateBanner); // Hapus listener lama
+                 affiliateCloseBtn.addEventListener('click', hideAffiliateBanner);    // Tambahkan listener baru
+            }
+        }
+
+        // Fungsi terpisah untuk menyembunyikan banner dan menyimpan preferensi
+        function hideAffiliateBanner() {
+            if (affiliateBanner) {
+                affiliateBanner.classList.add('hidden');
+                localStorage.setItem(AFFILIATE_BANNER_KEY, 'true');
+                console.log('Affiliate banner closed and preference saved to localStorage.');
             }
         }
 
@@ -1380,14 +1647,13 @@
             if (logoutButton) {
                 logoutButton.addEventListener('click', logout);
             }
-            // showProfileManagementButton tidak lagi memiliki kondisi if (showProfileManagementButton) karena selalu ada
             showProfileManagementButton.addEventListener('click', showProfileManagement);
 
             if (backButtonProfile) {
                 backButtonProfile.addEventListener('click', hideProfileManagement);
             }
-            // addPostButton sekarang memiliki logika kondisional
-            addPostButton.addEventListener('click', addPost);
+            // addPostButton sekarang memiliki logika kondisional yang diatur di updateUIVisibility
+            // Jadi, pada DOMContentLoaded ini tidak perlu lagi addEventListener('click', addPost);
 
             // NEW: Event listener untuk tombol Rules Komunitas
             if (showRulesButton) {
@@ -1397,8 +1663,11 @@
                 backButtonRules.addEventListener('click', hideRules);
             }
 
+            // Panggil setup banner afiliasi setelah DOM dimuat
+            setupAffiliateBanner();
 
             // onAuthStateChanged akan menangani tampilan awal setelah loading
+            // dan juga akan memanggil updateUIVisibility yang akan mengatur ulang visibility banner
         });
     </script>
 </body>

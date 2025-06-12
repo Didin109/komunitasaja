@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+       backgroun<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -7,112 +7,124 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta name="google-site-verification" content="uOq5OFGGKbB0TCKFkwKulr52Y-SMjA5MU_prM-lVZv8" />
     <style>
-        /* --- Variabel Warna (Tema) --- */
+        /* --- Variabel Warna (Tema) - UI Desain Modern --- */
         :root {
             /* Warna Default (Light Mode) */
-            --bg-body: #f7f9fc; /* Latar belakang halaman utama yang lebih terang */
-            --bg-container: #ffffff; /* Latar belakang kartu/kontainer */
-            --text-primary: #2c3e50; /* Warna teks utama yang lebih gelap */
-            --text-secondary: #5a6a7a; /* Warna teks sekunder (misal: tanggal, info kecil) */
-            --accent-color: #007bff; /* Warna aksen utama (biru cerah) */
-            --accent-hover: #0056b3; /* Hover untuk warna aksen */
-            --border-color: #e0e6ec; /* Warna border yang halus */
-            --shadow-light: rgba(0, 0, 0, 0.08); /* Bayangan elemen ringan */
-            --shadow-medium: rgba(0, 0, 0, 0.15); /* Bayangan elemen standar */
-            --header-bg: #2c3e50; /* Header background */
+            --bg-body: #f0f2f5; /* Latar belakang halaman utama yang lembut */
+            --bg-container: #ffffff; /* Latar belakang kartu/kontainer yang bersih */
+            --text-primary: #333d47; /* Warna teks utama yang gelap lembut */
+            --text-secondary: #6e7a87; /* Warna teks sekunder (abu-abu sedang) */
+            --accent-color: #5b7ef3; /* Warna aksen utama (biru modern) */
+            --accent-hover: #4a67d6; /* Hover untuk warna aksen */
+            --border-color: #e0e5eb; /* Warna border yang sangat halus */
+            --shadow-light: rgba(51, 61, 71, 0.08); /* Bayangan elemen ringan, sedikit lebih gelap dari sebelumnya */
+            --shadow-medium: rgba(51, 61, 71, 0.15); /* Bayangan elemen standar */
+            --header-bg: #333d47; /* Header background gelap lembut */
             --header-text: #ffffff;
             --nav-link-color: #ffffff;
-            --nav-link-hover-color: #f0f0f0;
+            --nav-link-hover-color: #e0e5eb;
 
-            --button-success-bg: #28a745;
+            --button-success-bg: #28a745; /* Tetap hijau standar untuk success */
             --button-success-hover: #218838;
-            --button-danger-bg: #dc3545;
+            --button-danger-bg: #dc3545; /* Tetap merah standar untuk danger */
             --button-danger-hover: #c82333;
-            --button-secondary-bg: #6c757d;
-            --button-secondary-hover: #5a6268;
+            --button-secondary-bg: #6e7a87; /* Abu-abu untuk sekunder */
+            --button-secondary-hover: #5a6a7a;
 
-            --user-profile-bg: #e9f0f7;
-            --user-profile-border: #d0e0ed;
-            --verified-badge-color: #1DA1F2; /* Twitter Blue */
+            --user-profile-bg: #eaf1f7; /* Latar belakang profil yang terang */
+            --user-profile-border: #d0d7e0;
+            --verified-badge-color: var(--accent-color); /* Warna badge verifikasi mengikuti accent-color */
 
-            --rules-section-bg: #f0f8ff; /* Light blue background */
-            --rules-section-border: #b3d9ff;
+            --rules-section-bg: #f5f8fc; /* Light blue-gray for rules */
+            --rules-section-border: #d5e0ee;
             --rules-heading-color: var(--text-primary);
             --rules-text-color: var(--text-secondary);
             --rules-list-marker-color: var(--accent-color);
-            --rules-highlight-bg: #e6f2ff;
+            --rules-highlight-bg: #eef4fb;
 
-            --affiliate-banner-bg: #fffbe6; /* Warna kuning muda pastel */
+            --affiliate-banner-bg: #fffbf0; /* Warna kuning muda pastel */
             --affiliate-banner-border: #ffe082;
             --affiliate-banner-text: #856404;
             --affiliate-close-btn-color: #856404;
             --affiliate-close-btn-hover-bg: #faebcc;
-            --affiliate-link-color: #007bff;
+            --affiliate-link-color: #5b7ef3; /* Menggunakan warna aksen */
 
             /* Messages */
-            --message-error-bg: #ffe0e6;
-            --message-error-text: #cc0033;
-            --message-success-bg: #e0ffe6;
-            --message-success-text: #009933;
+            --message-error-bg: #fde6e9;
+            --message-error-text: #cc3344;
+            --message-success-bg: #e6f7e9;
+            --message-success-text: #339944;
+
+            /* Footer */
+            --footer-bg: #333d47;
+            --footer-text: #e0e6eb;
+            --footer-link: var(--accent-color);
+            --footer-link-hover: var(--accent-hover);
         }
 
-        /* Night Mode (Dark Theme) */
+        /* Night Mode (Dark Theme) - UI Desain Modern */
         body.dark-mode {
-            --bg-body: #1a1a2e; /* Latar belakang halaman yang lebih gelap */
-            --bg-container: #212135; /* Latar belakang kartu/kontainer yang lebih gelap */
-            --text-primary: #e0e0e0; /* Teks utama lebih terang */
-            --text-secondary: #a0a0a0; /* Teks sekunder abu-abu terang */
-            --accent-color: #87ceeb; /* Warna aksen lebih terang (biru langit) */
-            --accent-hover: #6aabcb; /* Hover untuk warna aksen gelap */
-            --border-color: #33334c; /* Warna border yang lebih gelap */
+            --bg-body: #1e2632; /* Latar belakang halaman yang lebih gelap */
+            --bg-container: #283340; /* Latar belakang kartu/kontainer yang lebih gelap */
+            --text-primary: #e0e6eb; /* Teks utama lebih terang */
+            --text-secondary: #a0a8b2; /* Teks sekunder abu-abu terang */
+            --accent-color: #7b9ef7; /* Warna aksen lebih terang */
+            --accent-hover: #6a8cd6; /* Hover untuk warna aksen gelap */
+            --border-color: #3b4d60; /* Warna border yang lebih gelap */
             --shadow-light: rgba(0, 0, 0, 0.4); /* Bayangan elemen ringan gelap */
             --shadow-medium: rgba(0, 0, 0, 0.6); /* Bayangan elemen standar gelap */
-            --header-bg: #141426; /* Header background lebih gelap */
+            --header-bg: #151d26; /* Header background lebih gelap */
             --header-text: #ffffff;
-            --nav-link-color: #e0e0e0;
+            --nav-link-color: #e0e6eb;
             --nav-link-hover-color: #cccccc;
 
             --button-primary-bg: #4a90e2;
             --button-primary-hover: #3a7bd8;
-            --button-success-bg: #5cb85c;
-            --button-success-hover: #4cae4c;
-            --button-danger-bg: #e25c5c;
-            --button-danger-hover: #d94b4b;
-            --button-secondary-bg: #5c6770;
-            --button-secondary-hover: #4a545d;
+            --button-success-bg: #4caf50;
+            --button-success-hover: #43a047;
+            --button-danger-bg: #ef5350;
+            --button-danger-hover: #e53935;
+            --button-secondary-bg: #78909c;
+            --button-secondary-hover: #607d8b;
 
-            --user-profile-bg: #2b3b50;
-            --user-profile-border: #3c4d60;
-            --verified-badge-color: #61affe; /* Biru terang untuk dark mode */
+            --user-profile-bg: #2d3c4d;
+            --user-profile-border: #3e526a;
+            --verified-badge-color: var(--accent-color); /* Warna badge verifikasi mengikuti accent-color */
 
-            --rules-section-bg: #2b3b50;
-            --rules-section-border: #3c4d60;
+            --rules-section-bg: #2d3c4d;
+            --rules-section-border: #3e526a;
             --rules-heading-color: var(--text-primary);
             --rules-text-color: var(--text-secondary);
             --rules-list-marker-color: var(--accent-color);
-            --rules-highlight-bg: #3e526d;
+            --rules-highlight-bg: #3f526b;
 
-            --affiliate-banner-bg: #3a3a00; /* Hijau gelap kekuningan */
-            --affiliate-banner-border: #5a5a00;
+            --affiliate-banner-bg: #4a4a00; /* Hijau gelap kekuningan */
+            --affiliate-banner-border: #6a6a00;
             --affiliate-banner-text: #ffebb2;
             --affiliate-close-btn-color: #ffcc00;
-            --affiliate-close-btn-hover-bg: #4a4a00;
-            --affiliate-link-color: #87ceeb;
+            --affiliate-close-btn-hover-bg: #5a5a00;
+            --affiliate-link-color: #7b9ef7; /* Menggunakan warna aksen */
 
             /* Messages Dark Mode */
             --message-error-bg: #5a2020;
             --message-error-text: #ffcccc;
             --message-success-bg: #205a20;
             --message-success-text: #ccffcc;
+
+            /* Footer Dark Mode */
+            --footer-bg: #151d26;
+            --footer-text: #a0a8b2;
+            --footer-link: var(--accent-color);
+            --footer-link-hover: var(--accent-hover);
         }
 
         /* --- Gaya Umum & Reset --- */
         * {
             box-sizing: border-box;
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; /* Poppins jika diimport */
         }
 
         body {
-            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; /* Poppins jika diimport */
             margin: 0;
             padding: 0;
             background-color: var(--bg-body);
@@ -122,6 +134,8 @@
             min-height: 100vh;
             transition: background-color 0.4s ease, color 0.4s ease;
             overflow-x: hidden;
+            line-height: 1.6; /* Kerapatan baris yang nyaman */
+            font-size: 16px;
         }
 
         a {
@@ -139,10 +153,10 @@
             color: var(--text-primary);
             margin-top: 0;
             margin-bottom: 15px;
+            font-weight: 600; /* Font weight yang lebih terstruktur */
         }
 
         p {
-            line-height: 1.6;
             margin-bottom: 10px;
         }
 
@@ -151,26 +165,36 @@
             width: 100%;
             background-color: var(--header-bg);
             color: var(--header-text);
-            padding: 10px 25px; /* **PERUBAHAN: Padding vertikal lebih kecil** */
+            padding: 10px 30px; /* Padding lebih proporsional, mengurangi tinggi */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 10px var(--shadow-light);
+            box-shadow: 0 4px 12px var(--shadow-light); /* Bayangan lebih lembut */
             transition: background-color 0.4s ease, box-shadow 0.4s ease;
-            position: sticky; /* Sticky header */
+            position: sticky;
             top: 0;
-            z-index: 1000; /* Pastikan di atas konten lain */
-            flex-wrap: nowrap; /* **PERUBAHAN: Jangan wrap di desktop** */
+            z-index: 1000;
+            flex-wrap: nowrap; /* Penting agar tidak membungkus ke bawah pada ukuran lebar */
+            min-height: 55px; /* Tambahkan min-height agar tidak terlalu pendek */
         }
 
         .top-bar .logo {
-            font-size: 1.8em;
+            font-size: 1.8em; /* Ukuran logo sedikit lebih besar */
             font-weight: 700;
             color: var(--header-text);
             text-decoration: none;
             flex-shrink: 0;
-            margin-right: 30px;
+            margin-right: 25px; /* Jarak antara logo dan nav */
             letter-spacing: -0.5px;
+            display: flex; /* Memungkinkan logo dan gambar sejajar */
+            align-items: center;
+            gap: 10px; /* Jarak antara teks dan gambar */
+        }
+
+        .top-bar .logo img {
+            height: 35px; /* Sesuaikan tinggi logo gambar */
+            width: auto;
+            vertical-align: middle;
         }
 
         .top-bar nav {
@@ -178,8 +202,7 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            gap: 25px;
-            /* **PERUBAHAN: Tidak perlu flex-wrap di desktop** */
+            gap: 25px; /* Jarak antar link navigasi */
         }
 
         .top-bar nav a {
@@ -190,8 +213,9 @@
             white-space: nowrap;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 7px; /* Jarak ikon dan teks */
             padding: 5px 0;
+            font-size: 0.9em; /* Ukuran font link */
         }
 
         .top-bar nav a:hover {
@@ -201,31 +225,32 @@
         }
 
         .top-bar nav a i {
-            font-size: 1.1em;
+            font-size: 1em;
         }
 
         .theme-toggle-container {
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-left: auto; /* Mendorong ke kanan */
+            margin-left: auto;
             flex-shrink: 0;
         }
 
         /* Header Utama (Konten "Komunitas Kita") */
         header {
             width: 100%;
-            padding: 40px 20px;
+            padding: 50px 20px; /* Padding lebih besar */
             text-align: center;
             background-color: var(--bg-container);
-            box-shadow: 0 4px 10px var(--shadow-light);
+            box-shadow: 0 4px 12px var(--shadow-light);
             transition: background-color 0.4s ease, box-shadow 0.4s ease;
             margin-bottom: 30px;
             color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color); /* Sedikit border bawah */
         }
 
         header h1 {
-            font-size: 2.5em;
+            font-size: 2.8em; /* Ukuran h1 lebih besar */
             font-weight: 700;
             margin: 0;
             color: inherit;
@@ -236,17 +261,17 @@
             background-color: var(--affiliate-banner-bg);
             border: 1px solid var(--affiliate-banner-border);
             color: var(--affiliate-banner-text);
-            padding: 12px 25px;
-            margin: 25px auto; /* **PERUBAHAN: Margin otomatis untuk tengah** */
-            border-radius: 10px;
+            padding: 14px 30px; /* Padding lebih baik */
+            margin: 25px auto;
+            border-radius: 12px; /* Radius lebih besar */
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 0.98em;
-            box-shadow: 0 2px 8px var(--shadow-light);
+            box-shadow: 0 2px 10px var(--shadow-light); /* Bayangan lembut */
             transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
-            max-width: 900px; /* **PERUBAHAN: Lebar maksimum lebih besar** */
-            width: calc(100% - 40px); /* **PERUBAHAN: Menyesuaikan lebar** */
+            max-width: 900px;
+            width: calc(100% - 40px);
             position: relative;
             gap: 15px;
             text-align: center;
@@ -256,7 +281,7 @@
             margin: 0;
             flex-grow: 1;
             text-align: center;
-            line-height: 1.4; /* **PERUBAHAN: Line height lebih baik** */
+            line-height: 1.4;
         }
 
         #affiliateBanner a {
@@ -264,7 +289,7 @@
             font-weight: 600;
             text-decoration: underline;
             transition: color 0.3s ease;
-            white-space: nowrap; /* **PERUBAHAN: Jangan wrap link** */
+            white-space: nowrap;
         }
 
         #affiliateBanner a:hover {
@@ -275,16 +300,16 @@
         #affiliateBanner .close-btn {
             cursor: pointer;
             font-weight: bold;
-            font-size: 1.3em;
-            padding: 2px 8px;
+            font-size: 1.4em; /* Ukuran lebih besar */
+            padding: 2px 10px;
             color: var(--affiliate-close-btn-color);
             background-color: transparent;
             border: none;
-            border-radius: 5px;
+            border-radius: 50%; /* Bulat */
             transition: color 0.2s ease, background-color 0.2s ease;
             position: absolute;
-            right: 10px;
-            top: 10px;
+            right: 12px;
+            top: 12px;
             line-height: 1;
         }
 
@@ -296,18 +321,18 @@
         .container {
             flex-grow: 1;
             background-color: var(--bg-container);
-            border-radius: 12px;
-            box-shadow: 0 6px 20px var(--shadow-medium);
-            padding: 35px;
+            border-radius: 16px; /* Radius yang lebih besar */
+            box-shadow: 0 8px 25px var(--shadow-medium); /* Bayangan yang lebih menonjol tapi lembut */
+            padding: 40px; /* Padding lebih banyak */
             margin: 30px auto;
             width: calc(100% - 60px);
-            max-width: 800px;
+            max-width: 900px; /* Max width sedikit lebih besar */
             box-sizing: border-box;
             transition: background-color 0.4s ease, box-shadow 0.4s ease;
         }
 
         h2 {
-            font-size: 1.8em;
+            font-size: 2.2em; /* Ukuran h2 lebih besar */
             font-weight: 600;
             text-align: center;
             margin-bottom: 30px;
@@ -316,11 +341,11 @@
 
         /* Gaya untuk bagian yang tersembunyi/tampil */
         .auth-section, .post-form, .profile-management, .rules-section {
-            background-color: var(--bg-body);
-            padding: 25px;
-            border-radius: 10px;
+            background-color: var(--bg-body); /* Background yang seragam dengan body */
+            padding: 30px; /* Padding lebih besar */
+            border-radius: 12px; /* Radius yang lebih besar */
             margin-bottom: 35px;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border-color); /* Border yang lebih halus */
             text-align: center;
             transition: background-color 0.4s ease, border-color 0.4s ease;
             box-shadow: 0 2px 10px var(--shadow-light);
@@ -331,12 +356,12 @@
         input[type="text"],
         textarea {
             width: 100%;
-            padding: 12px 15px;
-            margin-bottom: 15px;
+            padding: 14px 18px; /* Padding yang lebih nyaman */
+            margin-bottom: 18px; /* Jarak bawah */
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 10px; /* Radius yang lebih besar */
             font-size: 1.05em;
-            background-color: var(--bg-container);
+            background-color: var(--bg-container); /* Konsisten dengan background container */
             color: var(--text-primary);
             transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.2s ease;
             outline: none;
@@ -346,10 +371,10 @@
         input[type="text"]:focus,
         textarea:focus {
             border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+            box-shadow: 0 0 0 4px rgba(91, 126, 243, 0.25); /* Bayangan fokus yang lebih tebal */
         }
         textarea {
-            min-height: 100px;
+            min-height: 120px; /* Tinggi minimum textarea */
             resize: vertical;
         }
 
@@ -364,9 +389,9 @@
         button {
             background-color: var(--accent-color);
             color: white;
-            padding: 12px 25px;
+            padding: 14px 28px; /* Padding lebih besar */
             border: none;
-            border-radius: 8px;
+            border-radius: 10px; /* Radius tombol */
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
             margin: 8px;
@@ -377,17 +402,18 @@
             justify-content: center;
             gap: 10px;
             text-transform: capitalize;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bayangan lembut untuk tombol */
         }
 
         button:hover {
             background-color: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px var(--shadow-light);
+            transform: translateY(-3px); /* Efek hover yang lebih jelas */
+            box-shadow: 0 6px 15px var(--shadow-medium); /* Bayangan hover lebih kuat */
         }
 
         button:active {
             transform: translateY(0);
-            box-shadow: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .auth-section p {
@@ -407,13 +433,13 @@
             font-size: 0.95em;
             font-weight: 500;
             transition: color 0.3s ease;
+            box-shadow: none; /* Hilangkan bayangan untuk tombol link */
         }
 
         .auth-section p button:hover {
             color: var(--accent-hover);
             text-decoration: none;
             transform: none;
-            box-shadow: none;
         }
 
         /* --- Profil Pengguna (Navbar di atas) --- */
@@ -422,27 +448,27 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
-            padding: 20px;
+            padding: 25px; /* Padding lebih besar */
             background-color: var(--user-profile-bg);
-            border-radius: 10px;
+            border-radius: 12px; /* Radius lebih besar */
             border: 1px solid var(--user-profile-border);
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px; /* Jarak antar elemen */
             transition: background-color 0.4s ease, border-color 0.4s ease;
-            box-shadow: 0 2px 8px var(--shadow-light);
+            box-shadow: 0 2px 10px var(--shadow-light);
         }
 
         .user-profile .profile-info {
             flex-grow: 1;
             color: var(--text-primary);
-            font-size: 1.05em;
+            font-size: 1.1em; /* Ukuran teks lebih besar */
             min-width: 200px;
         }
 
         .user-profile span {
             font-weight: 600;
             color: var(--accent-color);
-            font-size: 1.1em;
+            font-size: 1.15em; /* Ukuran nama lebih besar */
             transition: color 0.4s ease;
         }
 
@@ -452,7 +478,7 @@
         }
 
         .user-profile button {
-            padding: 10px 20px;
+            padding: 12px 22px; /* Padding tombol di profil */
             margin: 0 8px;
         }
         .user-profile button:first-of-type {
@@ -484,7 +510,7 @@
              background-color: var(--button-secondary-hover);
         }
         #nameChangeInfo {
-            font-size: 0.88em;
+            font-size: 0.9em; /* Sedikit lebih kecil */
             color: var(--text-secondary);
             text-align: left;
             margin-top: -10px;
@@ -498,10 +524,11 @@
             color: var(--text-primary);
             margin-bottom: 20px;
             justify-content: flex-start;
+            font-size: 1.05em;
         }
         #profileVerificationStatus .verified-badge {
-            font-size: 1.2em;
-            color: var(--verified-badge-color);
+            font-size: 1.3em; /* Ukuran badge lebih besar */
+            color: var(--verified-badge-color); /* Menggunakan variabel warna baru */
         }
         #profileVerificationStatus .not-verified-text {
             font-weight: normal;
@@ -510,16 +537,16 @@
 
         /* --- Form Postingan --- */
         .post-form textarea {
-            min-height: 120px;
+            min-height: 150px; /* Tinggi textarea lebih besar */
         }
 
         .post-form button {
             background-color: var(--button-success-bg);
             width: 100%;
-            font-size: 1.15em;
+            font-size: 1.2em; /* Ukuran teks tombol lebih besar */
             font-weight: 600;
-            margin: 10px 0 0 0;
-            padding: 14px 25px;
+            margin: 15px 0 0 0; /* Jarak atas tombol */
+            padding: 16px 25px; /* Padding tombol lebih besar */
         }
 
         .post-form button:hover {
@@ -528,21 +555,21 @@
 
         /* --- Daftar Postingan --- */
         .posts-list {
-            margin-top: 30px;
+            margin-top: 40px; /* Jarak atas lebih besar */
         }
 
         .post-item {
             background-color: var(--bg-container);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 20px;
+            border-radius: 12px; /* Radius lebih besar */
+            padding: 25px; /* Padding lebih besar */
             margin-bottom: 20px;
-            box-shadow: 0 4px 15px var(--shadow-light);
-            transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 4px 18px var(--shadow-light); /* Bayangan lebih jelas */
+            transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
         }
         .post-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px var(--shadow-medium);
+            transform: translateY(-5px); /* Efek hover yang lebih nyata */
+            box-shadow: 0 8px 25px var(--shadow-medium);
         }
 
 
@@ -550,8 +577,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
-            padding-bottom: 8px;
+            margin-bottom: 15px; /* Jarak bawah header */
+            padding-bottom: 10px;
             border-bottom: 1px dashed var(--border-color);
             transition: border-color 0.4s ease;
             flex-wrap: wrap;
@@ -561,7 +588,7 @@
         .post-item .post-author {
             font-weight: 700;
             color: var(--accent-color);
-            font-size: 1.1em;
+            font-size: 1.15em; /* Ukuran nama lebih besar */
             transition: color 0.4s ease;
             display: flex;
             align-items: center;
@@ -569,13 +596,13 @@
         }
 
         .post-item .post-author .verified-badge {
-            color: var(--verified-badge-color);
+            color: var(--verified-badge-color); /* Menggunakan variabel warna baru */
             font-size: 1em;
             vertical-align: middle;
         }
 
         .post-item .post-date {
-            font-size: 0.88em;
+            font-size: 0.9em; /* Ukuran tanggal sedikit lebih kecil */
             color: var(--text-secondary);
             transition: color 0.4s ease;
             white-space: nowrap;
@@ -587,21 +614,23 @@
             white-space: pre-wrap;
             word-wrap: break-word;
             transition: color 0.4s ease;
-            font-size: 1em;
+            font-size: 1.05em; /* Ukuran konten sedikit lebih besar */
         }
 
         .no-posts-message {
             text-align: center;
             color: var(--text-secondary);
             font-style: italic;
-            margin-top: 40px;
-            font-size: 1.1em;
+            margin-top: 50px; /* Jarak atas lebih besar */
+            font-size: 1.2em; /* Ukuran teks lebih besar */
             transition: color 0.4s ease;
         }
 
         /* --- Tema Toggle --- */
         .theme-toggle-button {
             background-color: var(--button-secondary-bg);
+            padding: 10px 18px; /* Padding lebih proporsional */
+            font-size: 0.95em;
         }
         .theme-toggle-button:hover {
             background-color: var(--button-secondary-hover);
@@ -609,10 +638,10 @@
 
         /* Pesan notifikasi */
         .message {
-            padding: 12px 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            font-size: 0.95em;
+            padding: 14px 18px; /* Padding lebih besar */
+            margin-bottom: 25px; /* Jarak bawah lebih besar */
+            border-radius: 10px; /* Radius lebih besar */
+            font-size: 0.98em;
             text-align: center;
             font-weight: 500;
             border: 1px solid transparent;
@@ -637,16 +666,18 @@
         .rules-section {
             background-color: var(--rules-section-bg);
             border: 1px solid var(--rules-section-border);
-            padding: 30px;
+            padding: 35px; /* Padding lebih besar */
             text-align: left;
             margin-bottom: 35px;
             transition: all 0.4s ease;
             box-shadow: 0 4px 15px var(--shadow-light);
+            border-radius: 12px;
         }
 
         .rules-section h2 {
-            font-size: 2em;
+            font-size: 2.2em; /* Ukuran h2 lebih besar */
             margin-bottom: 25px;
+            text-align: center;
         }
 
         .rules-section p {
@@ -664,22 +695,22 @@
 
         .rules-section ul li {
             position: relative;
-            padding-left: 35px;
-            margin-bottom: 12px;
+            padding-left: 40px; /* Jarak untuk ikon */
+            margin-bottom: 15px; /* Jarak antar list item */
             line-height: 1.6;
             color: var(--rules-text-color);
-            font-size: 1em;
+            font-size: 1.05em;
         }
 
         .rules-section ul li:before {
-            content: "\f058";
+            content: "\f058"; /* Ikon check circle */
             font-family: 'Font Awesome 5 Free';
             font-weight: 900;
             position: absolute;
             left: 0;
             top: 2px;
             color: var(--rules-list-marker-color);
-            font-size: 1.1em;
+            font-size: 1.2em; /* Ukuran ikon lebih besar */
         }
 
         .rules-section .highlight {
@@ -703,6 +734,152 @@
             background-color: var(--button-secondary-hover);
         }
 
+        /* --- Footer Styles --- */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px; /* Jarak dari konten di atas */
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: var(--header-text); /* Warna header tetap putih */
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-weight: 600;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+
+        .footer-section p, .footer-section address {
+            font-size: 0.95em;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: var(--footer-text); /* Link default warna teks footer */
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--footer-link-hover); /* Warna link hover */
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85em;
+            color: var(--text-secondary); /* Warna teks copyright sedikit lebih terang */
+        }
+
+        .social-icons a {
+            color: var(--footer-text);
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+            transform: scale(1.1);
+            text-decoration: none;
+        }
+
+        /* --- Kontak Service Section --- */
+        .contact-service-section {
+            background-color: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+            margin: 30px auto; /* Margin atas dan bawah */
+            max-width: 900px;
+            width: calc(100% - 60px);
+            box-shadow: 0 4px 15px var(--shadow-light);
+            transition: all 0.4s ease;
+        }
+
+        .contact-service-section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .contact-service-section p {
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .contact-service-section .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-service-section .contact-links a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+
+        .contact-service-section .contact-links a:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-service-section .contact-links a i {
+            font-size: 1.3em;
+        }
+
 
         /* --- Responsif (mobile first) --- */
         @media (max-width: 768px) {
@@ -711,51 +888,56 @@
             }
             .container {
                 margin: 20px auto;
-                padding: 20px;
+                padding: 25px; /* Padding disesuaikan */
                 width: calc(100% - 30px);
             }
             header {
-                padding: 30px 15px;
+                padding: 40px 15px;
                 margin-bottom: 20px;
             }
             header h1 {
-                font-size: 2em;
+                font-size: 2.2em;
             }
             h2 {
-                font-size: 1.6em;
+                font-size: 1.8em;
                 margin-bottom: 25px;
             }
 
-            /* **PERUBAHAN: Top Bar Responsif Mobile** */
+            /* Top Bar Responsif Mobile */
             .top-bar {
-                flex-direction: column; /* Tumpuk elemen */
-                align-items: center; /* Tengahkan semua */
+                flex-direction: column; /* Ubah ke kolom */
+                align-items: center;
                 padding: 10px 15px;
+                height: auto; /* Biarkan tinggi menyesuaikan */
+                min-height: unset; /* Hapus min-height untuk mobile agar fleksibel */
             }
             .top-bar .logo {
-                margin-bottom: 10px; /* Jarak bawah logo */
+                margin-bottom: 10px;
                 margin-right: 0;
                 width: 100%;
                 text-align: center;
-                font-size: 1.6em;
+                font-size: 1.7em;
+            }
+            .top-bar .logo img {
+                height: 30px; /* Sesuaikan tinggi logo gambar di mobile */
             }
             .top-bar nav {
                 width: 100%;
-                flex-direction: column; /* Tumpuk navigasi */
+                flex-direction: column;
                 align-items: center;
-                gap: 8px; /* Jarak vertikal yang lebih kecil */
-                margin-bottom: 10px; /* Jarak bawah navigasi */
+                gap: 10px;
+                margin-bottom: 10px;
             }
             .top-bar nav a {
                 margin: 0;
                 padding: 5px 0;
-                font-size: 0.95em;
+                font-size: 0.9em;
             }
             .theme-toggle-container {
                 width: 100%;
                 justify-content: center;
                 margin-left: 0;
-                margin-top: 5px; /* Jarak atas tombol tema */
+                margin-top: 10px;
             }
             .theme-toggle-button {
                 width: 100%;
@@ -766,7 +948,7 @@
             /* Responsif untuk banner afiliasi */
             #affiliateBanner {
                 margin: 15px auto;
-                padding: 10px 15px;
+                padding: 12px 20px;
                 width: calc(100% - 30px);
                 flex-direction: column;
                 gap: 10px;
@@ -775,27 +957,27 @@
             #affiliateBanner p {
                 font-size: 0.9em;
                 text-align: center;
-                padding-right: 0; /* **PERUBAHAN: Hilangkan padding kanan** */
+                padding-right: 0;
             }
             #affiliateBanner a {
-                white-space: normal; /* **PERUBAHAN: Izinkan wrap untuk link di mobile** */
+                white-space: normal;
             }
             #affiliateBanner .close-btn {
                 position: static;
                 align-self: flex-end;
-                margin-top: 5px; /* **PERUBAHAN: Geser ke atas sedikit** */
+                margin-top: 5px;
                 margin-right: 0;
-                font-size: 1.1em;
+                font-size: 1.2em;
             }
 
 
-            .auth-section, .post-form, .profile-management, .rules-section {
-                padding: 20px;
+            .auth-section, .post-form, .profile-management, .rules-section, .contact-service-section { /* Tambah contact-service-section */
+                padding: 25px;
                 margin-bottom: 25px;
             }
 
             button {
-                padding: 10px 20px;
+                padding: 12px 20px;
                 font-size: 1em;
                 width: 100%;
                 margin: 8px 0;
@@ -804,18 +986,22 @@
                 width: auto;
             }
             .post-form button {
-                 padding: 12px 20px;
+                 padding: 14px 20px;
             }
 
             .user-profile {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 10px;
-                padding: 15px;
+                gap: 15px;
+                padding: 20px;
             }
             .user-profile .profile-info {
                 width: 100%;
                 margin-bottom: 5px;
+                font-size: 1em;
+            }
+            .user-profile span {
+                font-size: 1.05em;
             }
             .user-profile > div {
                 display: flex;
@@ -829,7 +1015,7 @@
             }
 
             .post-item {
-                padding: 15px;
+                padding: 20px;
                 margin-bottom: 15px;
             }
             .post-item .post-header {
@@ -839,37 +1025,66 @@
             }
             .post-item .post-author {
                 margin-right: 0;
-                font-size: 1.05em;
+                font-size: 1.1em;
             }
             .post-item .post-date {
-                font-size: 0.8em;
+                font-size: 0.85em;
             }
 
-            .rules-section h2 {
+            .rules-section h2, .contact-service-section h2 { /* Tambah contact-service-section */
                 font-size: 1.8em;
             }
             .rules-section ul li {
-                padding-left: 30px;
+                padding-left: 35px;
+                font-size: 1em;
             }
             .rules-section ul li:before {
+                font-size: 1.1em;
+            }
+
+            /* Footer Responsif */
+            .footer-content {
+                flex-direction: column;
+                gap: 25px;
+                text-align: center;
+            }
+            .footer-section {
+                text-align: center;
+            }
+            .footer-section h3 {
+                border-bottom: none;
+                padding-bottom: 0;
+                margin-bottom: 10px;
+            }
+            .footer-section ul li a {
+                justify-content: center;
+            }
+
+            .contact-service-section .contact-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .contact-service-section .contact-links a {
+                width: 100%;
+                padding: 12px 20px;
                 font-size: 1em;
             }
         }
         @media (max-width: 480px) {
             header h1 {
-                font-size: 1.6em;
+                font-size: 1.8em;
             }
             h2 {
-                font-size: 1.4em;
+                font-size: 1.6em;
             }
             .container {
-                padding: 15px;
+                padding: 20px;
             }
             .post-item {
-                padding: 12px;
+                padding: 15px;
             }
             input[type="email"], input[type="password"], input[type="text"], textarea {
-                padding: 10px 12px;
+                padding: 12px 15px;
                 font-size: 0.95em;
             }
         }
@@ -877,9 +1092,12 @@
 </head>
 <body>
     <div class="top-bar">
-        <a href="#" class="logo">Komunitas Kita</a>
+        <a href="#" class="logo">
+            <img src="logo.png" alt="Komunitas Kita Logo">
+            Komunitas Kita
+        </a>
         <nav>
-            <a href="https://tebakangka.duckdns.org/" target="_blank" rel="noopener noreferrer"><i class="fas fa-calculator"></i> Tebak Angka</a>
+            <a href="https://www.tebakangka.co-id.id" target="_blank" rel="noopener noreferrer"><i class="fas fa-calculator"></i> Tebak Angka</a>
             <a href="#" id="showRulesButton"><i class="fas fa-gavel"></i> Rules Komunitas</a>
         </nav>
         <div class="theme-toggle-container">
@@ -960,6 +1178,52 @@
         </div>
     </main>
 
+    <section class="contact-service-section">
+        <h2>Butuh Bantuan? Hubungi Kami!</h2>
+        <p>Tim dukungan kami siap membantu Anda dengan pertanyaan atau masalah apa pun.</p>
+        <div class="contact-links">
+            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="mailto:support@komunitaskita.com">
+                <i class="fas fa-envelope"></i> Email
+            </a>
+            <a href="tel:+6281234567890">
+                <i class="fas fa-phone"></i> Telepon
+            </a>
+        </div>
+        <p style="margin-top: 25px; font-size: 0.9em; color: var(--text-secondary);">Jam Operasional: Senin-Jumat, 09:00 - 17:00 WIT.</p>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Tentang Komunitas</h3>
+                <p>Komunitas Kita adalah platform tempat Anda bisa berbagi ide, berdiskusi, dan terhubung dengan sesama anggota. Mari membangun lingkungan yang positif!</p>
+            </div>
+            <div class="footer-section">
+                <h3>Link Cepat</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
+                    <li><a href="#" id="footerShowRulesButton"><i class="fas fa-gavel"></i> Aturan Komunitas</a></li>
+                    <li><a href="https://www.tebakangka.co-id.id" target="_blank" rel="noopener noreferrer"><i class="fas fa-calculator"></i> Tebak Angka</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Ikuti Kami</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com/komunitaskita" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/komunitaskita" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/komunitaskita" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/komunitaskita" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Komunitas Kita. Hak Cipta Dilindungi Undang-Undang.
+        </div>
+    </footer>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
@@ -1021,6 +1285,7 @@
         const rulesSection = document.getElementById('rulesSection');
         const showRulesButton = document.getElementById('showRulesButton');
         const backButtonRules = document.getElementById('backButtonRules');
+        const footerShowRulesButton = document.getElementById('footerShowRulesButton'); // NEW: tombol rules di footer
 
         // NEW: Elemen Banner Afiliasi
         const affiliateBanner = document.getElementById('affiliateBanner');
@@ -1322,6 +1587,8 @@
             affiliateBanner.classList.add('hidden'); // NEW: Sembunyikan banner afiliasi saat di halaman rules
 
             rulesSection.classList.remove('hidden'); // Tampilkan rules section
+            // Menggulir ke atas halaman agar rules terlihat jelas
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function hideRules() {
@@ -1657,9 +1924,13 @@
             // addPostButton sekarang memiliki logika kondisional yang diatur di updateUIVisibility
             // Jadi, pada DOMContentLoaded ini tidak perlu lagi addEventListener('click', addPost);
 
-            // NEW: Event listener untuk tombol Rules Komunitas
+            // NEW: Event listener untuk tombol Rules Komunitas di Top Bar
             if (showRulesButton) {
                 showRulesButton.addEventListener('click', showRules);
+            }
+            // NEW: Event listener untuk tombol Rules Komunitas di Footer
+            if (footerShowRulesButton) {
+                footerShowRulesButton.addEventListener('click', showRules);
             }
             if (backButtonRules) {
                 backButtonRules.addEventListener('click', hideRules);

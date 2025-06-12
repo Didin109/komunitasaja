@@ -7,103 +7,102 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta name="google-site-verification" content="uOq5OFGGKbB0TCKFkwKulr52Y-SMjA5MU_prM-lVZv8" />
     <style>
-        /* --- Variabel Warna (Tema) - UI Desain Modern --- */
+        /* --- Variabel Warna (Tema) --- */
         :root {
             /* Warna Default (Light Mode) */
-            --bg-body: #f0f2f5; /* Latar belakang halaman utama yang lembut */
-            --bg-container: #ffffff; /* Latar belakang kartu/kontainer yang bersih */
-            --text-primary: #333d47; /* Warna teks utama yang gelap lembut */
-            --text-secondary: #6e7a87; /* Warna teks sekunder (abu-abu sedang) */
-            --accent-color: #5b7ef3; /* Warna aksen utama (biru modern) */
-            --accent-hover: #4a67d6; /* Hover untuk warna aksen */
-            --border-color: #e0e5eb; /* Warna border yang sangat halus */
-            --shadow-light: rgba(51, 61, 71, 0.08); /* Bayangan elemen ringan, sedikit lebih gelap dari sebelumnya */
-            --shadow-medium: rgba(51, 61, 71, 0.15); /* Bayangan elemen standar */
-            --header-bg: #333d47; /* Header background gelap lembut */
+            --bg-body: #f7f9fc; /* Latar belakang halaman utama yang lebih terang */
+            --bg-container: #ffffff; /* Latar belakang kartu/kontainer */
+            --text-primary: #2c3e50; /* Warna teks utama yang lebih gelap */
+            --text-secondary: #5a6a7a; /* Warna teks sekunder (misal: tanggal, info kecil) */
+            --accent-color: #007bff; /* Warna aksen utama (biru cerah) */
+            --accent-hover: #0056b3; /* Hover untuk warna aksen */
+            --border-color: #e0e6ec; /* Warna border yang halus */
+            --shadow-light: rgba(0, 0, 0, 0.08); /* Bayangan elemen ringan */
+            --shadow-medium: rgba(0, 0, 0, 0.15); /* Bayangan elemen standar */
+            --header-bg: #2c3e50; /* Header background */
             --header-text: #ffffff;
             --nav-link-color: #ffffff;
-            --nav-link-hover-color: #e0e5eb;
+            --nav-link-hover-color: #f0f0f0;
 
-            --button-success-bg: #28a745; /* Tetap hijau standar untuk success */
+            --button-success-bg: #28a745;
             --button-success-hover: #218838;
-            --button-danger-bg: #dc3545; /* Tetap merah standar untuk danger */
+            --button-danger-bg: #dc3545;
             --button-danger-hover: #c82333;
-            --button-secondary-bg: #6e7a87; /* Abu-abu untuk sekunder */
-            --button-secondary-hover: #5a6a7a;
+            --button-secondary-bg: #6c757d;
+            --button-secondary-hover: #5a6268;
 
-            --user-profile-bg: #eaf1f7; /* Latar belakang profil yang terang */
-            --user-profile-border: #d0d7e0;
-            --verified-badge-color: var(--accent-color); /* Warna badge verifikasi mengikuti accent-color */
+            --user-profile-bg: #e9f0f7;
+            --user-profile-border: #d0e0ed;
+            --verified-badge-color: #1DA1F2; /* Twitter Blue */
 
-            --rules-section-bg: #f5f8fc; /* Light blue-gray for rules */
-            --rules-section-border: #d5e0ee;
+            --rules-section-bg: #f0f8ff; /* Light blue background */
+            --rules-section-border: #b3d9ff;
             --rules-heading-color: var(--text-primary);
             --rules-text-color: var(--text-secondary);
             --rules-list-marker-color: var(--accent-color);
-            --rules-highlight-bg: #eef4fb;
+            --rules-highlight-bg: #e6f2ff;
 
-            --affiliate-banner-bg: #fffbf0; /* Warna kuning muda pastel */
+            --affiliate-banner-bg: #fffbe6; /* Warna kuning muda pastel */
             --affiliate-banner-border: #ffe082;
             --affiliate-banner-text: #856404;
             --affiliate-close-btn-color: #856404;
             --affiliate-close-btn-hover-bg: #faebcc;
-            --affiliate-link-color: #5b7ef3; /* Menggunakan warna aksen */
+            --affiliate-link-color: #007bff;
 
             /* Messages */
-            --message-error-bg: #fde6e9;
-            --message-error-text: #cc3344;
-            --message-success-bg: #e6f7e9;
-            --message-success-text: #339944;
+            --message-error-bg: #ffe0e6;
+            --message-error-text: #cc0033;
+            --message-success-bg: #e0ffe6;
+            --message-success-text: #009933;
 
             /* Footer */
-            --footer-bg: #333d47;
-            --footer-text: #e0e6eb;
-            --footer-link: var(--accent-color);
-            --footer-link-hover: var(--accent-hover);
+            --footer-bg: #2c3e50;
+            --footer-text: #ffffff;
+            --footer-link-hover: #007bff;
         }
 
-        /* Night Mode (Dark Theme) - UI Desain Modern */
+        /* Night Mode (Dark Theme) */
         body.dark-mode {
-            --bg-body: #1e2632; /* Latar belakang halaman yang lebih gelap */
-            --bg-container: #283340; /* Latar belakang kartu/kontainer yang lebih gelap */
-            --text-primary: #e0e6eb; /* Teks utama lebih terang */
-            --text-secondary: #a0a8b2; /* Teks sekunder abu-abu terang */
-            --accent-color: #7b9ef7; /* Warna aksen lebih terang */
-            --accent-hover: #6a8cd6; /* Hover untuk warna aksen gelap */
-            --border-color: #3b4d60; /* Warna border yang lebih gelap */
+            --bg-body: #1a1a2e; /* Latar belakang halaman yang lebih gelap */
+            --bg-container: #212135; /* Latar belakang kartu/kontainer yang lebih gelap */
+            --text-primary: #e0e0e0; /* Teks utama lebih terang */
+            --text-secondary: #a0a0a0; /* Teks sekunder abu-abu terang */
+            --accent-color: #87ceeb; /* Warna aksen lebih terang (biru langit) */
+            --accent-hover: #6aabcb; /* Hover untuk warna aksen gelap */
+            --border-color: #33334c; /* Warna border yang lebih gelap */
             --shadow-light: rgba(0, 0, 0, 0.4); /* Bayangan elemen ringan gelap */
             --shadow-medium: rgba(0, 0, 0, 0.6); /* Bayangan elemen standar gelap */
-            --header-bg: #151d26; /* Header background lebih gelap */
+            --header-bg: #141426; /* Header background lebih gelap */
             --header-text: #ffffff;
-            --nav-link-color: #e0e6eb;
+            --nav-link-color: #e0e0e0;
             --nav-link-hover-color: #cccccc;
 
             --button-primary-bg: #4a90e2;
             --button-primary-hover: #3a7bd8;
-            --button-success-bg: #4caf50;
-            --button-success-hover: #43a047;
-            --button-danger-bg: #ef5350;
-            --button-danger-hover: #e53935;
-            --button-secondary-bg: #78909c;
-            --button-secondary-hover: #607d8b;
+            --button-success-bg: #5cb85c;
+            --button-success-hover: #4cae4c;
+            --button-danger-bg: #e25c5c;
+            --button-danger-hover: #d94b4b;
+            --button-secondary-bg: #5c6770;
+            --button-secondary-hover: #4a545d;
 
-            --user-profile-bg: #2d3c4d;
-            --user-profile-border: #3e526a;
-            --verified-badge-color: var(--accent-color); /* Warna badge verifikasi mengikuti accent-color */
+            --user-profile-bg: #2b3b50;
+            --user-profile-border: #3c4d60;
+            --verified-badge-color: #61affe; /* Biru terang untuk dark mode */
 
-            --rules-section-bg: #2d3c4d;
-            --rules-section-border: #3e526a;
+            --rules-section-bg: #2b3b50;
+            --rules-section-border: #3c4d60;
             --rules-heading-color: var(--text-primary);
             --rules-text-color: var(--text-secondary);
             --rules-list-marker-color: var(--accent-color);
-            --rules-highlight-bg: #3f526b;
+            --rules-highlight-bg: #3e526d;
 
-            --affiliate-banner-bg: #4a4a00; /* Hijau gelap kekuningan */
-            --affiliate-banner-border: #6a6a00;
+            --affiliate-banner-bg: #3a3a00; /* Hijau gelap kekuningan */
+            --affiliate-banner-border: #5a5a00;
             --affiliate-banner-text: #ffebb2;
             --affiliate-close-btn-color: #ffcc00;
-            --affiliate-close-btn-hover-bg: #5a5a00;
-            --affiliate-link-color: #7b9ef7; /* Menggunakan warna aksen */
+            --affiliate-close-btn-hover-bg: #4a4a00;
+            --affiliate-link-color: #87ceeb;
 
             /* Messages Dark Mode */
             --message-error-bg: #5a2020;
@@ -112,19 +111,18 @@
             --message-success-text: #ccffcc;
 
             /* Footer Dark Mode */
-            --footer-bg: #151d26;
-            --footer-text: #a0a8b2;
-            --footer-link: var(--accent-color);
-            --footer-link-hover: var(--accent-hover);
+            --footer-bg: #141426;
+            --footer-text: #e0e0e0;
+            --footer-link-hover: #87ceeb;
         }
 
         /* --- Gaya Umum & Reset --- */
         * {
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; /* Poppins jika diimport */
         }
 
         body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; /* Poppins jika diimport */
             margin: 0;
             padding: 0;
             background-color: var(--bg-body);
@@ -160,49 +158,50 @@
             margin-bottom: 10px;
         }
 
-        /* --- Perbaikan Top Bar / Navigasi --- */
+        /* --- Top Bar / Navigasi --- */
         .top-bar {
             width: 100%;
             background-color: var(--header-bg);
             color: var(--header-text);
-            padding: 10px 30px; /* Padding lebih proporsional, mengurangi tinggi */
+            padding: 10px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 12px var(--shadow-light); /* Bayangan lebih lembut */
+            box-shadow: 0 4px 12px var(--shadow-light);
             transition: background-color 0.4s ease, box-shadow 0.4s ease;
             position: sticky;
             top: 0;
             z-index: 1000;
-            flex-wrap: nowrap; /* Penting agar tidak membungkus ke bawah pada ukuran lebar */
-            min-height: 55px; /* Tambahkan min-height agar tidak terlalu pendek */
+            flex-wrap: nowrap;
+            min-height: 55px;
         }
 
         .top-bar .logo {
-            font-size: 1.8em; /* Ukuran logo sedikit lebih besar */
+            font-size: 1.8em;
             font-weight: 700;
             color: var(--header-text);
             text-decoration: none;
             flex-shrink: 0;
-            margin-right: 25px; /* Jarak antara logo dan nav */
+            /* margin-right: 25px; Hapus atau sesuaikan jika navigasi di tengah */
             letter-spacing: -0.5px;
-            display: flex; /* Memungkinkan logo dan gambar sejajar */
+            display: flex;
             align-items: center;
-            gap: 10px; /* Jarak antara teks dan gambar */
+            gap: 10px;
         }
 
         .top-bar .logo img {
-            height: 35px; /* Sesuaikan tinggi logo gambar */
+            height: 35px;
             width: auto;
             vertical-align: middle;
         }
 
         .top-bar nav {
-            flex-grow: 1;
+            flex-grow: 1; /* Memungkinkan navigasi mengisi ruang yang tersedia */
             display: flex;
-            justify-content: flex-start;
+            justify-content: center; /* MENGUBAH: Mengatur link navigasi agar di tengah */
             align-items: center;
-            gap: 25px; /* Jarak antar link navigasi */
+            gap: 25px;
+            /* margin: 0 auto; Ini tidak diperlukan karena flex-grow sudah menangani ruang */
         }
 
         .top-bar nav a {
@@ -213,9 +212,9 @@
             white-space: nowrap;
             display: flex;
             align-items: center;
-            gap: 7px; /* Jarak ikon dan teks */
+            gap: 7px;
             padding: 5px 0;
-            font-size: 0.9em; /* Ukuran font link */
+            font-size: 0.9em;
         }
 
         .top-bar nav a:hover {
@@ -239,36 +238,36 @@
         /* Header Utama (Konten "Komunitas Kita") */
         header {
             width: 100%;
-            padding: 50px 20px; /* Padding lebih besar */
+            padding: 50px 20px;
             text-align: center;
             background-color: var(--bg-container);
             box-shadow: 0 4px 12px var(--shadow-light);
             transition: background-color 0.4s ease, box-shadow 0.4s ease;
             margin-bottom: 30px;
             color: var(--text-primary);
-            border-bottom: 1px solid var(--border-color); /* Sedikit border bawah */
+            border-bottom: 1px solid var(--border-color);
         }
 
         header h1 {
-            font-size: 2.8em; /* Ukuran h1 lebih besar */
+            font-size: 2.8em;
             font-weight: 700;
             margin: 0;
             color: inherit;
         }
 
-        /* --- Perbaikan Banner Afiliasi --- */
+        /* --- Banner Afiliasi --- */
         #affiliateBanner {
             background-color: var(--affiliate-banner-bg);
             border: 1px solid var(--affiliate-banner-border);
             color: var(--affiliate-banner-text);
-            padding: 14px 30px; /* Padding lebih baik */
+            padding: 14px 30px;
             margin: 25px auto;
-            border-radius: 12px; /* Radius lebih besar */
+            border-radius: 12px;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 0.98em;
-            box-shadow: 0 2px 10px var(--shadow-light); /* Bayangan lembut */
+            box-shadow: 0 2px 10px var(--shadow-light);
             transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
             max-width: 900px;
             width: calc(100% - 40px);
@@ -300,12 +299,12 @@
         #affiliateBanner .close-btn {
             cursor: pointer;
             font-weight: bold;
-            font-size: 1.4em; /* Ukuran lebih besar */
+            font-size: 1.4em;
             padding: 2px 10px;
             color: var(--affiliate-close-btn-color);
             background-color: transparent;
             border: none;
-            border-radius: 50%; /* Bulat */
+            border-radius: 50%;
             transition: color 0.2s ease, background-color 0.2s ease;
             position: absolute;
             right: 12px;
@@ -321,18 +320,18 @@
         .container {
             flex-grow: 1;
             background-color: var(--bg-container);
-            border-radius: 16px; /* Radius yang lebih besar */
-            box-shadow: 0 8px 25px var(--shadow-medium); /* Bayangan yang lebih menonjol tapi lembut */
-            padding: 40px; /* Padding lebih banyak */
+            border-radius: 16px;
+            box-shadow: 0 8px 25px var(--shadow-medium);
+            padding: 40px;
             margin: 30px auto;
             width: calc(100% - 60px);
-            max-width: 900px; /* Max width sedikit lebih besar */
+            max-width: 900px;
             box-sizing: border-box;
             transition: background-color 0.4s ease, box-shadow 0.4s ease;
         }
 
         h2 {
-            font-size: 2.2em; /* Ukuran h2 lebih besar */
+            font-size: 2.2em;
             font-weight: 600;
             text-align: center;
             margin-bottom: 30px;
@@ -341,11 +340,11 @@
 
         /* Gaya untuk bagian yang tersembunyi/tampil */
         .auth-section, .post-form, .profile-management, .rules-section {
-            background-color: var(--bg-body); /* Background yang seragam dengan body */
-            padding: 30px; /* Padding lebih besar */
-            border-radius: 12px; /* Radius yang lebih besar */
+            background-color: var(--bg-body);
+            padding: 30px;
+            border-radius: 12px;
             margin-bottom: 35px;
-            border: 1px solid var(--border-color); /* Border yang lebih halus */
+            border: 1px solid var(--border-color);
             text-align: center;
             transition: background-color 0.4s ease, border-color 0.4s ease;
             box-shadow: 0 2px 10px var(--shadow-light);
@@ -356,12 +355,12 @@
         input[type="text"],
         textarea {
             width: 100%;
-            padding: 14px 18px; /* Padding yang lebih nyaman */
-            margin-bottom: 18px; /* Jarak bawah */
+            padding: 14px 18px;
+            margin-bottom: 18px;
             border: 1px solid var(--border-color);
-            border-radius: 10px; /* Radius yang lebih besar */
+            border-radius: 10px;
             font-size: 1.05em;
-            background-color: var(--bg-container); /* Konsisten dengan background container */
+            background-color: var(--bg-container);
             color: var(--text-primary);
             transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.2s ease;
             outline: none;
@@ -371,10 +370,10 @@
         input[type="text"]:focus,
         textarea:focus {
             border-color: var(--accent-color);
-            box-shadow: 0 0 0 4px rgba(91, 126, 243, 0.25); /* Bayangan fokus yang lebih tebal */
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
         }
         textarea {
-            min-height: 120px; /* Tinggi minimum textarea */
+            min-height: 120px;
             resize: vertical;
         }
 
@@ -389,9 +388,9 @@
         button {
             background-color: var(--accent-color);
             color: white;
-            padding: 14px 28px; /* Padding lebih besar */
+            padding: 14px 28px;
             border: none;
-            border-radius: 10px; /* Radius tombol */
+            border-radius: 10px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
             margin: 8px;
@@ -402,13 +401,13 @@
             justify-content: center;
             gap: 10px;
             text-transform: capitalize;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bayangan lembut untuk tombol */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         button:hover {
             background-color: var(--accent-hover);
-            transform: translateY(-3px); /* Efek hover yang lebih jelas */
-            box-shadow: 0 6px 15px var(--shadow-medium); /* Bayangan hover lebih kuat */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px var(--shadow-medium);
         }
 
         button:active {
@@ -433,7 +432,7 @@
             font-size: 0.95em;
             font-weight: 500;
             transition: color 0.3s ease;
-            box-shadow: none; /* Hilangkan bayangan untuk tombol link */
+            box-shadow: none;
         }
 
         .auth-section p button:hover {
@@ -448,12 +447,12 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
-            padding: 25px; /* Padding lebih besar */
+            padding: 25px;
             background-color: var(--user-profile-bg);
-            border-radius: 12px; /* Radius lebih besar */
+            border-radius: 12px;
             border: 1px solid var(--user-profile-border);
             flex-wrap: wrap;
-            gap: 20px; /* Jarak antar elemen */
+            gap: 20px;
             transition: background-color 0.4s ease, border-color 0.4s ease;
             box-shadow: 0 2px 10px var(--shadow-light);
         }
@@ -461,14 +460,14 @@
         .user-profile .profile-info {
             flex-grow: 1;
             color: var(--text-primary);
-            font-size: 1.1em; /* Ukuran teks lebih besar */
+            font-size: 1.1em;
             min-width: 200px;
         }
 
         .user-profile span {
             font-weight: 600;
             color: var(--accent-color);
-            font-size: 1.15em; /* Ukuran nama lebih besar */
+            font-size: 1.15em;
             transition: color 0.4s ease;
         }
 
@@ -478,7 +477,7 @@
         }
 
         .user-profile button {
-            padding: 12px 22px; /* Padding tombol di profil */
+            padding: 12px 22px;
             margin: 0 8px;
         }
         .user-profile button:first-of-type {
@@ -510,7 +509,7 @@
              background-color: var(--button-secondary-hover);
         }
         #nameChangeInfo {
-            font-size: 0.9em; /* Sedikit lebih kecil */
+            font-size: 0.9em;
             color: var(--text-secondary);
             text-align: left;
             margin-top: -10px;
@@ -527,8 +526,8 @@
             font-size: 1.05em;
         }
         #profileVerificationStatus .verified-badge {
-            font-size: 1.3em; /* Ukuran badge lebih besar */
-            color: var(--verified-badge-color); /* Menggunakan variabel warna baru */
+            font-size: 1.3em;
+            color: var(--verified-badge-color);
         }
         #profileVerificationStatus .not-verified-text {
             font-weight: normal;
@@ -537,16 +536,16 @@
 
         /* --- Form Postingan --- */
         .post-form textarea {
-            min-height: 150px; /* Tinggi textarea lebih besar */
+            min-height: 150px;
         }
 
         .post-form button {
             background-color: var(--button-success-bg);
             width: 100%;
-            font-size: 1.2em; /* Ukuran teks tombol lebih besar */
+            font-size: 1.2em;
             font-weight: 600;
-            margin: 15px 0 0 0; /* Jarak atas tombol */
-            padding: 16px 25px; /* Padding tombol lebih besar */
+            margin: 15px 0 0 0;
+            padding: 16px 25px;
         }
 
         .post-form button:hover {
@@ -555,20 +554,20 @@
 
         /* --- Daftar Postingan --- */
         .posts-list {
-            margin-top: 40px; /* Jarak atas lebih besar */
+            margin-top: 40px;
         }
 
         .post-item {
             background-color: var(--bg-container);
             border: 1px solid var(--border-color);
-            border-radius: 12px; /* Radius lebih besar */
-            padding: 25px; /* Padding lebih besar */
+            border-radius: 12px;
+            padding: 25px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 18px var(--shadow-light); /* Bayangan lebih jelas */
+            box-shadow: 0 4px 18px var(--shadow-light);
             transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
         }
         .post-item:hover {
-            transform: translateY(-5px); /* Efek hover yang lebih nyata */
+            transform: translateY(-5px);
             box-shadow: 0 8px 25px var(--shadow-medium);
         }
 
@@ -577,7 +576,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px; /* Jarak bawah header */
+            margin-bottom: 15px;
             padding-bottom: 10px;
             border-bottom: 1px dashed var(--border-color);
             transition: border-color 0.4s ease;
@@ -588,7 +587,7 @@
         .post-item .post-author {
             font-weight: 700;
             color: var(--accent-color);
-            font-size: 1.15em; /* Ukuran nama lebih besar */
+            font-size: 1.15em;
             transition: color 0.4s ease;
             display: flex;
             align-items: center;
@@ -596,13 +595,13 @@
         }
 
         .post-item .post-author .verified-badge {
-            color: var(--verified-badge-color); /* Menggunakan variabel warna baru */
+            color: var(--verified-badge-color);
             font-size: 1em;
             vertical-align: middle;
         }
 
         .post-item .post-date {
-            font-size: 0.9em; /* Ukuran tanggal sedikit lebih kecil */
+            font-size: 0.9em;
             color: var(--text-secondary);
             transition: color 0.4s ease;
             white-space: nowrap;
@@ -614,22 +613,22 @@
             white-space: pre-wrap;
             word-wrap: break-word;
             transition: color 0.4s ease;
-            font-size: 1.05em; /* Ukuran konten sedikit lebih besar */
+            font-size: 1.05em;
         }
 
         .no-posts-message {
             text-align: center;
             color: var(--text-secondary);
             font-style: italic;
-            margin-top: 50px; /* Jarak atas lebih besar */
-            font-size: 1.2em; /* Ukuran teks lebih besar */
+            margin-top: 50px;
+            font-size: 1.2em;
             transition: color 0.4s ease;
         }
 
         /* --- Tema Toggle --- */
         .theme-toggle-button {
             background-color: var(--button-secondary-bg);
-            padding: 10px 18px; /* Padding lebih proporsional */
+            padding: 10px 18px;
             font-size: 0.95em;
         }
         .theme-toggle-button:hover {
@@ -638,9 +637,9 @@
 
         /* Pesan notifikasi */
         .message {
-            padding: 14px 18px; /* Padding lebih besar */
-            margin-bottom: 25px; /* Jarak bawah lebih besar */
-            border-radius: 10px; /* Radius lebih besar */
+            padding: 14px 18px;
+            margin-bottom: 25px;
+            border-radius: 10px;
             font-size: 0.98em;
             text-align: center;
             font-weight: 500;
@@ -666,7 +665,7 @@
         .rules-section {
             background-color: var(--rules-section-bg);
             border: 1px solid var(--rules-section-border);
-            padding: 35px; /* Padding lebih besar */
+            padding: 35px;
             text-align: left;
             margin-bottom: 35px;
             transition: all 0.4s ease;
@@ -675,7 +674,7 @@
         }
 
         .rules-section h2 {
-            font-size: 2.2em; /* Ukuran h2 lebih besar */
+            font-size: 2.2em;
             margin-bottom: 25px;
             text-align: center;
         }
@@ -695,22 +694,22 @@
 
         .rules-section ul li {
             position: relative;
-            padding-left: 40px; /* Jarak untuk ikon */
-            margin-bottom: 15px; /* Jarak antar list item */
+            padding-left: 40px;
+            margin-bottom: 15px;
             line-height: 1.6;
             color: var(--rules-text-color);
             font-size: 1.05em;
         }
 
         .rules-section ul li:before {
-            content: "\f058"; /* Ikon check circle */
+            content: "\f058";
             font-family: 'Font Awesome 5 Free';
             font-weight: 900;
             position: absolute;
             left: 0;
             top: 2px;
             color: var(--rules-list-marker-color);
-            font-size: 1.2em; /* Ukuran ikon lebih besar */
+            font-size: 1.2em;
         }
 
         .rules-section .highlight {
@@ -738,9 +737,9 @@
         footer {
             background-color: var(--footer-bg);
             color: var(--footer-text);
-            padding: 40px 20px;
+            padding: 30px 20px; /* Padding lebih ramping */
             text-align: center;
-            margin-top: 50px; /* Jarak dari konten di atas */
+            margin-top: 50px;
             box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
             transition: background-color 0.4s ease, color 0.4s ease;
         }
@@ -750,31 +749,33 @@
             margin: 0 auto;
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: space-around; /* Ganti space-between ke space-around untuk jarak merata */
             align-items: flex-start;
-            gap: 30px;
+            gap: 20px; /* Kurangi gap */
         }
 
         .footer-section {
             flex: 1;
-            min-width: 200px;
-            text-align: left;
+            min-width: 200px; /* Tetap pertahankan agar tidak terlalu sempit */
+            max-width: 30%; /* Batasi lebar untuk 3 kolom */
+            text-align: center; /* Rata tengah untuk tampilan yang lebih rapi */
+            margin: 0 10px; /* Tambahkan margin horizontal */
         }
 
         .footer-section h3 {
-            color: var(--header-text); /* Warna header tetap putih */
-            margin-bottom: 15px;
-            font-size: 1.3em;
+            color: var(--header-text);
+            margin-bottom: 12px; /* Kurangi margin bawah */
+            font-size: 1.2em; /* Sedikit lebih kecil */
             font-weight: 600;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 8px;
-            display: inline-block;
+            border-bottom: 1px solid var(--accent-color); /* Ubah ke 1px solid */
+            padding-bottom: 6px; /* Kurangi padding bawah */
+            display: inline-block; /* Agar border pas dengan teks */
         }
 
-        .footer-section p, .footer-section address {
-            font-size: 0.95em;
-            line-height: 1.7;
-            margin-bottom: 10px;
+        .footer-section p {
+            font-size: 0.9em; /* Ukuran font lebih kecil */
+            line-height: 1.6;
+            margin-bottom: 8px;
         }
 
         .footer-section ul {
@@ -784,34 +785,30 @@
         }
 
         .footer-section ul li {
-            margin-bottom: 8px;
+            margin-bottom: 6px; /* Kurangi margin bawah */
         }
 
         .footer-section ul li a {
-            color: var(--footer-text); /* Link default warna teks footer */
+            color: var(--footer-text);
             transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 0.9em; /* Ukuran font link lebih kecil */
+            display: block; /* Agar link memenuhi lebar */
+            padding: 2px 0; /* Padding vertikal kecil */
         }
 
         .footer-section ul li a:hover {
-            color: var(--footer-link-hover); /* Warna link hover */
+            color: var(--footer-link-hover);
             text-decoration: underline;
         }
 
-        .footer-bottom {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.85em;
-            color: var(--text-secondary); /* Warna teks copyright sedikit lebih terang */
+        .social-icons {
+            margin-top: 15px; /* Jarak atas ikon sosial */
         }
 
         .social-icons a {
             color: var(--footer-text);
-            font-size: 1.5em;
-            margin: 0 10px;
+            font-size: 1.3em; /* Ukuran ikon sosial sedikit lebih kecil */
+            margin: 0 8px; /* Jarak antar ikon */
             transition: color 0.3s ease, transform 0.2s ease;
         }
 
@@ -821,63 +818,12 @@
             text-decoration: none;
         }
 
-        /* --- Kontak Service Section --- */
-        .contact-service-section {
-            background-color: var(--bg-body);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 35px;
-            text-align: center;
-            margin: 30px auto; /* Margin atas dan bawah */
-            max-width: 900px;
-            width: calc(100% - 60px);
-            box-shadow: 0 4px 15px var(--shadow-light);
-            transition: all 0.4s ease;
-        }
-
-        .contact-service-section h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-
-        .contact-service-section p {
-            font-size: 1.1em;
+        .footer-bottom {
+            margin-top: 30px; /* Kurangi margin atas */
+            padding-top: 15px; /* Kurangi padding atas */
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.8em; /* Ukuran font copyright lebih kecil */
             color: var(--text-secondary);
-            margin-bottom: 15px;
-        }
-
-        .contact-service-section .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .contact-service-section .contact-links a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
-            font-size: 1.1em;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            text-decoration: none;
-        }
-
-        .contact-service-section .contact-links a:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .contact-service-section .contact-links a i {
-            font-size: 1.3em;
         }
 
 
@@ -888,7 +834,7 @@
             }
             .container {
                 margin: 20px auto;
-                padding: 25px; /* Padding disesuaikan */
+                padding: 25px;
                 width: calc(100% - 30px);
             }
             header {
@@ -905,11 +851,11 @@
 
             /* Top Bar Responsif Mobile */
             .top-bar {
-                flex-direction: column; /* Ubah ke kolom */
+                flex-direction: column;
                 align-items: center;
                 padding: 10px 15px;
-                height: auto; /* Biarkan tinggi menyesuaikan */
-                min-height: unset; /* Hapus min-height untuk mobile agar fleksibel */
+                height: auto;
+                min-height: unset;
             }
             .top-bar .logo {
                 margin-bottom: 10px;
@@ -919,7 +865,7 @@
                 font-size: 1.7em;
             }
             .top-bar .logo img {
-                height: 30px; /* Sesuaikan tinggi logo gambar di mobile */
+                height: 30px;
             }
             .top-bar nav {
                 width: 100%;
@@ -943,7 +889,6 @@
                 width: 100%;
                 padding: 10px 15px;
             }
-
 
             /* Responsif untuk banner afiliasi */
             #affiliateBanner {
@@ -970,8 +915,7 @@
                 font-size: 1.2em;
             }
 
-
-            .auth-section, .post-form, .profile-management, .rules-section, .contact-service-section { /* Tambah contact-service-section */
+            .auth-section, .post-form, .profile-management, .rules-section {
                 padding: 25px;
                 margin-bottom: 25px;
             }
@@ -1031,7 +975,7 @@
                 font-size: 0.85em;
             }
 
-            .rules-section h2, .contact-service-section h2 { /* Tambah contact-service-section */
+            .rules-section h2 {
                 font-size: 1.8em;
             }
             .rules-section ul li {
@@ -1043,31 +987,41 @@
             }
 
             /* Footer Responsif */
+            footer {
+                padding: 25px 15px;
+            }
             .footer-content {
                 flex-direction: column;
-                gap: 25px;
-                text-align: center;
+                gap: 20px; /* Kurangi gap */
             }
             .footer-section {
                 text-align: center;
+                min-width: unset; /* Hapus min-width */
+                max-width: 100%; /* Lebarkan ke 100% */
+                margin: 0; /* Hapus margin horizontal */
             }
             .footer-section h3 {
-                border-bottom: none;
-                padding-bottom: 0;
+                border-bottom: 1px solid var(--accent-color); /* Pertahankan border */
+                padding-bottom: 5px;
                 margin-bottom: 10px;
+            }
+            .footer-section p, .footer-section ul li a {
+                font-size: 0.9em; /* Konsisten */
             }
             .footer-section ul li a {
                 justify-content: center;
             }
-
-            .contact-service-section .contact-links {
-                flex-direction: column;
-                gap: 15px;
+            .social-icons {
+                margin-top: 10px; /* Kurangi jarak atas */
             }
-            .contact-service-section .contact-links a {
-                width: 100%;
-                padding: 12px 20px;
-                font-size: 1em;
+            .social-icons a {
+                font-size: 1.2em; /* Sedikit lebih kecil */
+                margin: 0 6px;
+            }
+            .footer-bottom {
+                margin-top: 25px;
+                padding-top: 10px;
+                font-size: 0.75em;
             }
         }
         @media (max-width: 480px) {
@@ -1115,6 +1069,7 @@
         <p>Dukung kami! Kunjungi link afiliasi kami untuk penawaran terbaik: <a href="https://lynk.id/babe0821" target="_blank" rel="noopener noreferrer">Klik Di Sini!</a></p>
         <button class="close-btn" aria-label="Tutup banner afiliasi">X</button>
     </div>
+
     <main class="container">
         <div id="globalMessage" class="message hidden"></div>
 
@@ -1178,23 +1133,6 @@
         </div>
     </main>
 
-    <section class="contact-service-section">
-        <h2>Butuh Bantuan? Hubungi Kami!</h2>
-        <p>Tim dukungan kami siap membantu Anda dengan pertanyaan atau masalah apa pun.</p>
-        <div class="contact-links">
-            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-whatsapp"></i> WhatsApp
-            </a>
-            <a href="mailto:support@komunitaskita.com">
-                <i class="fas fa-envelope"></i> Email
-            </a>
-            <a href="tel:+6281234567890">
-                <i class="fas fa-phone"></i> Telepon
-            </a>
-        </div>
-        <p style="margin-top: 25px; font-size: 0.9em; color: var(--text-secondary);">Jam Operasional: Senin-Jumat, 09:00 - 17:00 WIT.</p>
-    </section>
-
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -1204,9 +1142,9 @@
             <div class="footer-section">
                 <h3>Link Cepat</h3>
                 <ul>
-                    <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
-                    <li><a href="#" id="footerShowRulesButton"><i class="fas fa-gavel"></i> Aturan Komunitas</a></li>
-                    <li><a href="https://www.tebakangka.co-id.id" target="_blank" rel="noopener noreferrer"><i class="fas fa-calculator"></i> Tebak Angka</a></li>
+                    <li><a href="#">Beranda</a></li>
+                    <li><a href="#" id="footerShowRulesButton">Aturan Komunitas</a></li>
+                    <li><a href="https://www.tebakangka.co-id.id" target="_blank" rel="noopener noreferrer">Tebak Angka</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -1383,7 +1321,7 @@
                     await updateProfile(newUser, { displayName: defaultDisplayName });
 
                     // Simpan data pengguna ke koleksi 'users' di Firestore
-                    await setDoc(doc(db, USERS_COLLECTION_NAME, newUser.uid), {
+                    await setDoc(doc(db, USERS_COLLECTIONS_NAME, newUser.uid), {
                         email: email,
                         displayName: defaultDisplayName,
                         createdAt: serverTimestamp(),
@@ -1630,223 +1568,151 @@
             // Jika ada aturan kompleks (misal, banner hanya muncul untuk user login tertentu), logikanya bisa di sini.
             // Untuk saat ini, kita biarkan `setupAffiliateBanner` mengatur visibility default.
             if (localStorage.getItem(AFFILIATE_BANNER_KEY) === 'true' ||
-                profileManagementSection.classList.contains('hidden') === false || // Jika sedang di halaman profil, sembunyikan
-                rulesSection.classList.contains('hidden') === false || // Jika sedang di halaman rules, sembunyikan
-                authSection.classList.contains('hidden') === false // Jika sedang di halaman auth, sembunyikan
+                profileManagementSection.classList.contains('hidden') === false || // Jika di halaman profil, banner disembunyikan
+                rulesSection.classList.contains('hidden') === false || // Jika di halaman rules, banner disembunyikan
+                authSection.classList.contains('hidden') === false // Jika di halaman auth, banner disembunyikan
             ) {
-                 affiliateBanner.classList.add('hidden');
+                affiliateBanner.classList.add('hidden');
             } else {
-                 affiliateBanner.classList.remove('hidden');
+                affiliateBanner.classList.remove('hidden');
             }
 
 
             if (user) {
-                // Pengguna sudah login
+                // User sudah login
+                userProfileSection.classList.remove('hidden');
+                authSection.classList.add('hidden'); // Sembunyikan form login/daftar
+
                 currentUserName = user.displayName || user.email.split('@')[0];
                 currentUserNameDisplay.textContent = currentUserName;
-                currentUserNameDisplay.classList.remove('not-logged-in'); // Hapus gaya "belum login"
 
-                logoutButton.classList.remove('hidden'); // Tampilkan tombol keluar
-                // showProfileManagementButton sudah selalu terlihat
+                // Tampilkan tombol logout
+                logoutButton.classList.remove('hidden');
 
-                postContentInput.disabled = false; // Aktifkan textarea
-                addPostButton.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Postingan'; // Ubah teks tombol kirim
-                addPostButton.removeEventListener('click', showAuthSection); // Hapus event listener lama
-                addPostButton.addEventListener('click', addPost); // Tambahkan event listener baru
+                // NEW: Tampilkan form postingan hanya jika user login
+                postFormSection.classList.remove('hidden');
+                postsContainer.parentElement.classList.remove('hidden'); // Pastikan daftar postingan terlihat
 
-                // Ambil status isVerified dari Firestore untuk pengguna yang login
+                // Dapatkan status verifikasi dari Firestore
                 try {
                     const userDocRef = doc(db, USERS_COLLECTION_NAME, user.uid);
                     const userDoc = await getDoc(userDocRef);
                     if (userDoc.exists()) {
-                        const userData = userDoc.data();
-                        currentUserIsVerified = userData.isVerified === true;
+                        currentUserIsVerified = userDoc.data().isVerified === true;
+                        console.log(`User ${user.email} verified status: ${currentUserIsVerified}`);
                     } else {
-                        // Jika dokumen user belum ada, buat dengan isVerified: false
                         currentUserIsVerified = false;
-                        await setDoc(userDocRef, {
-                            email: user.email,
-                            displayName: user.displayName || user.email.split('@')[0],
-                            createdAt: serverTimestamp(),
-                            lastDisplayNameUpdate: null,
-                            isVerified: false
-                        }, { merge: true }); // Gunakan merge agar tidak menimpa field lain jika ada
+                        console.log(`User doc for ${user.email} not found, assuming not verified.`);
                     }
                 } catch (error) {
-                    console.error("Error fetching/creating current user verification status:", error);
+                    console.error("Error fetching user verification status for UI:", error);
                     currentUserIsVerified = false;
                 }
 
+                // Attach listener untuk tombol addPostButton hanya jika belum ada
+                addPostButton.removeEventListener('click', addPost); // Hapus dulu untuk menghindari duplikasi
+                addPostButton.addEventListener('click', addPost);
+
             } else {
-                // Pengguna BELUM login
-                currentUserName = 'Belum Login'; // Ganti teks nama
-                currentUserNameDisplay.textContent = currentUserName;
-                currentUserNameDisplay.classList.add('not-logged-in'); // Tambahkan gaya "belum login"
+                // User belum login
+                userProfileSection.classList.add('hidden');
+                logoutButton.classList.add('hidden'); // Sembunyikan tombol logout
+                currentUserNameDisplay.textContent = 'Anda belum login';
+                currentUserNameDisplay.classList.add('not-logged-in'); // Tambahkan kelas untuk styling
 
-                logoutButton.classList.add('hidden'); // Sembunyikan tombol keluar
-                // showProfileManagementButton sudah selalu terlihat
+                // Sembunyikan form postingan dan daftar postingan jika belum login
+                postFormSection.classList.add('hidden');
+                postsContainer.parentElement.classList.add('hidden');
 
-                postContentInput.disabled = true; // Nonaktifkan textarea
-                postContentInput.value = ''; // Kosongkan isi textarea
-                addPostButton.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login untuk Posting'; // Ubah teks tombol
-                addPostButton.removeEventListener('click', addPost); // Hapus event listener lama
-                addPostButton.addEventListener('click', showAuthSection); // NEW: Tambahkan event handler untuk tombol "Login untuk Posting"
+                // Tampilkan Auth Section secara default jika belum login
+                showAuthSection();
 
-                currentUserIsVerified = false; // Reset verification status
+                // Pastikan status verifikasi direset
+                currentUserIsVerified = false;
             }
-            displayPosts(); // Perbarui daftar postingan setiap kali UI berubah
         }
 
-
-        // --- Update UI Berdasarkan Status Autentikasi ---
-        onAuthStateChanged(auth, async user => {
-            await updateUIVisibility(user);
-        });
-
-
-        // --- Fungsi Pengelolaan Postingan (Menggunakan Firebase Firestore) ---
-
-        let unsubscribePosts = null;
-
-        const userVerificationCache = {};
-
-        async function getAuthorVerificationStatus(authorId) {
-            if (!authorId) return false;
-
-            if (typeof userVerificationCache[authorId] !== 'undefined') {
-                return userVerificationCache[authorId];
-            }
-
-            try {
-                const authorDocRef = doc(db, USERS_COLLECTION_NAME, authorId);
-                const authorDoc = await getDoc(authorDocRef);
-                if (authorDoc.exists()) {
-                    const isVerified = authorDoc.data().isVerified === true;
-                    userVerificationCache[authorId] = isVerified;
-                    return isVerified;
-                }
-            } catch (error) {
-                console.error("Error fetching author verification status from Firestore:", error);
-            }
-            userVerificationCache[authorId] = false;
-            return false;
-        }
-
-
-        function displayPosts() {
-            console.log('displayPosts dipanggil');
-            if (unsubscribePosts) {
-                unsubscribePosts();
-            }
-
-            postsContainer.innerHTML = '';
-            noPostsMessage.textContent = 'Memuat postingan...';
-            noPostsMessage.classList.remove('hidden');
-
-            const postsCollectionRef = collection(db, POSTS_COLLECTION_NAME);
-            const q = query(postsCollectionRef, orderBy('timestamp', 'desc'));
-
-            unsubscribePosts = onSnapshot(q, async (snapshot) => {
-                postsContainer.innerHTML = '';
-                if (snapshot.empty) {
-                    noPostsMessage.textContent = 'Belum ada postingan. Ayo jadi yang pertama!';
-                    noPostsMessage.classList.remove('hidden');
-                } else {
-                    noPostsMessage.classList.add('hidden');
-
-                    const postPromises = snapshot.docs.map(async docSnapshot => {
-                        const post = docSnapshot.data();
-                        const isAuthorVerified = await getAuthorVerificationStatus(post.authorId);
-                        return { post, isAuthorVerified };
-                    });
-
-                    const postsWithVerification = await Promise.all(postPromises);
-
-                    postsWithVerification.forEach(({ post, isAuthorVerified }) => {
-                        const postItem = document.createElement('div');
-                        postItem.classList.add('post-item');
-
-                        const postHeader = document.createElement('div');
-                        postHeader.classList.add('post-header');
-
-                        const postAuthor = document.createElement('span');
-                        postAuthor.classList.add('post-author');
-                        postAuthor.textContent = post.author || (post.authorEmail ? post.authorEmail.split('@')[0] : 'Anonim');
-
-                        if (isAuthorVerified) {
-                            const verifiedBadge = document.createElement('i');
-                            verifiedBadge.classList.add('fas', 'fa-check-circle', 'verified-badge');
-                            verifiedBadge.title = "Akun Terverifikasi";
-                            postAuthor.appendChild(verifiedBadge);
-                        }
-
-                        const postDate = document.createElement('span');
-                        postDate.classList.add('post-date');
-                        postDate.textContent = formatTimestamp(post.timestamp);
-
-                        // NEW: Tambahkan elemen untuk menampilkan konten postingan
-                        const postContentDiv = document.createElement('div');
-                        postContentDiv.classList.add('post-content');
-                        postContentDiv.textContent = post.content; // PERBAIKAN: Menggunakan post.content
-
-                        postHeader.appendChild(postAuthor);
-                        postHeader.appendChild(postDate);
-                        postItem.appendChild(postHeader);
-                        postItem.appendChild(postContentDiv); // PERBAIKAN: Menggunakan postContentDiv
-
-                        postsContainer.appendChild(postItem);
-                    });
-                }
-            }, (error) => {
-                console.error("Error loading posts from Firestore:", error);
-                noPostsMessage.textContent = 'Gagal memuat postingan. Terjadi kesalahan.';
-                noPostsMessage.classList.remove('hidden');
-                noPostsMessage.classList.add('error');
-            });
-        }
-
+        // --- Fungsi Pengelolaan Postingan ---
+        addPostButton.addEventListener('click', addPost); // Listener utama
 
         async function addPost() {
-            console.log('addPost dipanggil');
+            console.log('Add Post Button diklik');
             const user = auth.currentUser;
             if (!user) {
-                // If not logged in, change button to show auth section
-                showAuthSection();
-                showMessage(globalMessage, 'Anda harus login untuk membuat postingan.', 'error');
+                showMessage(globalMessage, 'Anda harus login untuk membuat postingan!', 'error');
                 return;
             }
 
             const postContent = postContentInput.value.trim();
+
             if (!postContent) {
-                showMessage(globalMessage, 'Isi postingan tidak boleh kosong!', 'error');
+                showMessage(globalMessage, 'Isi postingan tidak boleh kosong.', 'error');
                 return;
             }
 
             try {
-                const userDocRef = doc(db, USERS_COLLECTION_NAME, user.uid);
-                const userDoc = await getDoc(userDocRef);
-                let displayNameForPost = user.displayName || user.email.split('@')[0];
-                if (userDoc.exists() && userDoc.data().displayName) {
-                     displayNameForPost = userDoc.data().displayName;
-                }
-
                 await addDoc(collection(db, POSTS_COLLECTION_NAME), {
-                    content: postContent,
-                    author: displayNameForPost,
                     authorId: user.uid,
-                    authorEmail: user.email,
-                    timestamp: serverTimestamp()
+                    authorName: user.displayName || user.email.split('@')[0],
+                    content: postContent,
+                    timestamp: serverTimestamp(),
+                    isVerified: currentUserIsVerified // Simpan status verifikasi saat posting
                 });
                 postContentInput.value = '';
-                showMessage(globalMessage, 'Postingan berhasil dikirim!', 'success');
+                showMessage(globalMessage, 'Postingan berhasil ditambahkan!', 'success');
             } catch (error) {
                 console.error("Error adding document: ", error);
-                showMessage(globalMessage, 'Gagal mengirim postingan: ' + error.message, 'error');
+                showMessage(globalMessage, 'Gagal menambahkan postingan: ' + error.message, 'error');
             }
         }
 
+        function displayPosts(posts) {
+            console.log('displayPosts dipanggil. Jumlah postingan:', posts.length);
+            postsContainer.innerHTML = '';
+            if (posts.length === 0) {
+                noPostsMessage.textContent = 'Belum ada postingan. Jadilah yang pertama!';
+                postsContainer.appendChild(noPostsMessage);
+                noPostsMessage.classList.remove('hidden');
+            } else {
+                noPostsMessage.classList.add('hidden');
+                posts.forEach(post => {
+                    const postElement = document.createElement('div');
+                    postElement.className = 'post-item';
+                    postElement.innerHTML = `
+                        <div class="post-header">
+                            <span class="post-author">${post.authorName} ${post.isVerified ? '<i class="fas fa-check-circle verified-badge" title="Akun Terverifikasi"></i>' : ''}</span>
+                            <span class="post-date">${formatTimestamp(post.timestamp)}</span>
+                        </div>
+                        <p class="post-content">${post.content}</p>
+                    `;
+                    postsContainer.appendChild(postElement);
+                });
+            }
+        }
 
-        // --- Fungsi Pengelolaan Tema ---
+        // Listener untuk perubahan status autentikasi
+        onAuthStateChanged(auth, async (user) => {
+            console.log('onAuthStateChanged dipanggil. User:', user ? user.email : 'null');
+            updateUIVisibility(user);
+            if (user) {
+                // Fetch posts only if user is logged in
+                const q = query(collection(db, POSTS_COLLECTION_NAME), orderBy('timestamp', 'desc'));
+                onSnapshot(q, (snapshot) => {
+                    const posts = [];
+                    snapshot.forEach((doc) => {
+                        posts.push({ id: doc.id, ...doc.data() });
+                    });
+                    displayPosts(posts);
+                }, (error) => {
+                    console.error("Error fetching posts:", error);
+                    postsContainer.innerHTML = `<p class="no-posts-message error">Gagal memuat postingan: ${error.message}</p>`;
+                });
+            } else {
+                displayPosts([]); // Kosongkan daftar postingan jika tidak login
+            }
+        });
+
+        // --- Tema ---
         function applySavedTheme() {
             const savedTheme = localStorage.getItem(THEME_KEY);
             if (savedTheme === 'dark') {
@@ -1870,37 +1736,13 @@
             }
         }
 
-        // --- Fungsi Pengelolaan Banner Afiliasi ---
+        // NEW: Fungsi untuk mengatur visibility banner afiliasi
         function setupAffiliateBanner() {
-            console.log('setupAffiliateBanner dipanggil');
-            // Pastikan elemen banner ada
-            if (!affiliateBanner) {
-                console.warn('Elemen #affiliateBanner tidak ditemukan.');
-                return;
-            }
-
-            // Periksa Local Storage untuk melihat apakah banner harus disembunyikan
-            if (localStorage.getItem(AFFILIATE_BANNER_KEY) === 'true') {
+            const hideBanner = localStorage.getItem(AFFILIATE_BANNER_KEY);
+            if (hideBanner === 'true') {
                 affiliateBanner.classList.add('hidden');
-                console.log('Affiliate banner hidden due to localStorage preference.');
             } else {
-                affiliateBanner.classList.remove('hidden'); // Menampilkan banner jika tidak ada preferensi sembunyikan
-                console.log('Affiliate banner shown (no localStorage preference or preference is false).');
-            }
-
-            // Tambahkan event listener ke tombol tutup (pastikan hanya sekali)
-            if (affiliateCloseBtn) {
-                 affiliateCloseBtn.removeEventListener('click', hideAffiliateBanner); // Hapus listener lama
-                 affiliateCloseBtn.addEventListener('click', hideAffiliateBanner);    // Tambahkan listener baru
-            }
-        }
-
-        // Fungsi terpisah untuk menyembunyikan banner dan menyimpan preferensi
-        function hideAffiliateBanner() {
-            if (affiliateBanner) {
-                affiliateBanner.classList.add('hidden');
-                localStorage.setItem(AFFILIATE_BANNER_KEY, 'true');
-                console.log('Affiliate banner closed and preference saved to localStorage.');
+                affiliateBanner.classList.remove('hidden');
             }
         }
 
@@ -1924,20 +1766,29 @@
             // addPostButton sekarang memiliki logika kondisional yang diatur di updateUIVisibility
             // Jadi, pada DOMContentLoaded ini tidak perlu lagi addEventListener('click', addPost);
 
-            // NEW: Event listener untuk tombol Rules Komunitas di Top Bar
+            // NEW: Event listener untuk tombol Rules Komunitas
             if (showRulesButton) {
                 showRulesButton.addEventListener('click', showRules);
-            }
-            // NEW: Event listener untuk tombol Rules Komunitas di Footer
-            if (footerShowRulesButton) {
-                footerShowRulesButton.addEventListener('click', showRules);
             }
             if (backButtonRules) {
                 backButtonRules.addEventListener('click', hideRules);
             }
 
+            // NEW: Event listener untuk tombol Rules di footer
+            if (footerShowRulesButton) {
+                footerShowRulesButton.addEventListener('click', showRules);
+            }
+
             // Panggil setup banner afiliasi setelah DOM dimuat
             setupAffiliateBanner();
+
+            // Event listener untuk tombol tutup banner afiliasi
+            if (affiliateCloseBtn) {
+                affiliateCloseBtn.addEventListener('click', () => {
+                    affiliateBanner.classList.add('hidden');
+                    localStorage.setItem(AFFILIATE_BANNER_KEY, 'true');
+                });
+            }
 
             // onAuthStateChanged akan menangani tampilan awal setelah loading
             // dan juga akan memanggil updateUIVisibility yang akan mengatur ulang visibility banner

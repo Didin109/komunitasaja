@@ -749,7 +749,7 @@
             margin: 0 auto;
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around; /* Ganti space-between ke space-around untuk jarak merata */
+            justify-content: center; /* MENGUBAH: Mengatur grup item agar di tengah */
             align-items: flex-start;
             gap: 20px; /* Kurangi gap */
         }
@@ -942,7 +942,7 @@
             .user-profile .profile-info {
                 width: 100%;
                 margin-bottom: 5px;
-                font-size: 1em;
+                font-size: 1.0em;
             }
             .user-profile span {
                 font-size: 1.05em;
@@ -1051,7 +1051,7 @@
             Komunitas Kita
         </a>
         <nav>
-            <a href="https://tebakangka.duckdns.org/" target="_blank" rel="noopener noreferrer"><i class="fas fa-calculator"></i> Tebak Angka</a>
+            <a href="https://www.tebakangka.co-id.id" target="_blank" rel="noopener noreferrer"><i class="fas fa-calculator"></i> Tebak Angka</a>
             <a href="#" id="showRulesButton"><i class="fas fa-gavel"></i> Rules Komunitas</a>
         </nav>
         <div class="theme-toggle-container">
@@ -1150,9 +1150,9 @@
             <div class="footer-section">
                 <h3>Ikuti Kami</h3>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/share/1BsHZuCXio/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://facebook.com/komunitaskita" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://twitter.com/komunitaskita" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/knzdi1?igsh=MWxvanU0c2x6Ym94dw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://instagram.com/komunitaskita" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="https://t.me/komunitaskita" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
                 </div>
             </div>
@@ -1185,10 +1185,10 @@
 
         // Variabel Global dan Referensi Elemen HTML
         let currentUserName = 'Anonim';
-        let currentUserIsVerified = false; // NEW: Tambahkan status verifikasi pengguna saat ini
+        let currentUserIsVerified = false; // Status verifikasi pengguna yang sedang login
         let authMode = 'login'; // 'login' atau 'signup'
-        const POSTS_COLLECTION_NAME = 'community_posts'; // Nama koleksi postingan Anda
-        const USERS_COLLECTION_NAME = 'users'; // NEW: Nama koleksi pengguna
+        const POSTS_COLLECTION_NAME = 'community_posts';
+        const USERS_COLLECTION_NAME = 'users'; // Nama koleksi pengguna
         const THEME_KEY = 'theme_preference'; // Kunci untuk Local Storage tema
         const DISPLAY_NAME_UPDATE_COOLDOWN = 24 * 60 * 60 * 1000; // 24 jam dalam milidetik
 
@@ -1200,12 +1200,12 @@
         const authPasswordInput = document.getElementById('authPassword');
         const authActionButton = document.getElementById('authActionButton');
         const authToggleMessage = document.getElementById('authToggleMessage');
-        let toggleAuthModeButton = document.getElementById('toggleAuthModeButton'); // Perlu diperbarui
+        let toggleAuthModeButton = document.getElementById('toggleAuthModeButton');
 
         // Elemen Profil Pengguna (Navbar)
         const userProfileSection = document.getElementById('userProfileSection');
         const currentUserNameDisplay = document.getElementById('currentUserName');
-        const profileButtons = document.getElementById('profileButtons'); // NEW: Kontainer tombol
+        const profileButtons = document.getElementById('profileButtons');
         const logoutButton = document.getElementById('logoutButton');
         const showProfileManagementButton = document.getElementById('showProfileManagementButton');
 
@@ -1217,18 +1217,18 @@
         const nameChangeInfo = document.getElementById('nameChangeInfo');
         const changeNameButtonInProfile = document.getElementById('changeNameButton');
         const backButtonProfile = document.getElementById('backButtonProfile');
-        const profileVerificationStatus = document.getElementById('profileVerificationStatus'); // NEW ID
+        const profileVerificationStatus = document.getElementById('profileVerificationStatus');
 
-        // NEW: Elemen Rules
+        // Elemen Rules
         const rulesSection = document.getElementById('rulesSection');
         const showRulesButton = document.getElementById('showRulesButton');
         const backButtonRules = document.getElementById('backButtonRules');
-        const footerShowRulesButton = document.getElementById('footerShowRulesButton'); // NEW: tombol rules di footer
+        const footerShowRulesButton = document.getElementById('footerShowRulesButton');
 
-        // NEW: Elemen Banner Afiliasi
+        // Elemen Banner Afiliasi
         const affiliateBanner = document.getElementById('affiliateBanner');
         const affiliateCloseBtn = affiliateBanner.querySelector('.close-btn');
-        const AFFILIATE_BANNER_KEY = 'hideAffiliateBanner'; // Kunci untuk Local Storage banner
+        const AFFILIATE_BANNER_KEY = 'hideAffiliateBanner';
 
         // Elemen Form Postingan
         const postFormSection = document.getElementById('postFormSection');
@@ -1275,11 +1275,10 @@
 
         // --- Fungsi Pengelolaan Autentikasi ---
         function attachToggleAuthModeButtonListener() {
-             // Pastikan button ada sebelum menambahkan event listener
             toggleAuthModeButton = document.getElementById('toggleAuthModeButton');
             if (toggleAuthModeButton) {
-                toggleAuthModeButton.removeEventListener('click', toggleAuthMode); // Hapus listener lama
-                toggleAuthModeButton.addEventListener('click', toggleAuthMode);    // Tambahkan listener baru
+                toggleAuthModeButton.removeEventListener('click', toggleAuthMode);
+                toggleAuthModeButton.addEventListener('click', toggleAuthMode);
             }
         }
 
@@ -1296,7 +1295,7 @@
                 authActionButton.innerHTML = '<i class="fas fa-sign-in-alt"></i> Masuk';
                 authToggleMessage.innerHTML = 'Belum punya akun? <button id="toggleAuthModeButton">Daftar di sini</button>';
             }
-            attachToggleAuthModeButtonListener(); // Re-attach listener setelah innerHTML berubah
+            attachToggleAuthModeButtonListener();
 
             authEmailInput.value = '';
             authPasswordInput.value = '';
@@ -1321,12 +1320,12 @@
                     await updateProfile(newUser, { displayName: defaultDisplayName });
 
                     // Simpan data pengguna ke koleksi 'users' di Firestore
-                    await setDoc(doc(db, USERS_COLLECTIONS_NAME, newUser.uid), {
+                    await setDoc(doc(db, USERS_COLLECTION_NAME, newUser.uid), {
                         email: email,
                         displayName: defaultDisplayName,
                         createdAt: serverTimestamp(),
                         lastDisplayNameUpdate: null,
-                        isVerified: false
+                        isVerified: false // Defaultnya false untuk pengguna baru
                     });
                     showMessage(globalMessage, 'Pendaftaran berhasil! Anda sudah masuk.', 'success');
                 } else {
@@ -1356,9 +1355,8 @@
             console.log('showProfileManagement dipanggil');
             const user = auth.currentUser;
             if (!user) {
-                // NEW: Jika belum login, tampilkan authSection
                 showMessage(globalMessage, 'Anda harus login untuk mengelola profil!', 'error');
-                showAuthSection(); // Memanggil fungsi baru untuk menampilkan form login/daftar
+                showAuthSection();
                 return;
             }
 
@@ -1384,25 +1382,22 @@
                 profileVerificationStatus.textContent = 'Status Verifikasi: Gagal memuat.';
             }
 
-            // Sembunyikan bagian lain dan tampilkan hanya profil management
             authSection.classList.add('hidden');
-            rulesSection.classList.add('hidden'); // NEW
+            rulesSection.classList.add('hidden');
             profileManagementSection.classList.remove('hidden');
             globalMessage.classList.add('hidden');
-            postFormSection.classList.add('hidden'); // NEW
-            postsContainer.parentElement.classList.add('hidden'); // NEW: Sembunyikan daftar postingan
-            affiliateBanner.classList.add('hidden'); // NEW: Sembunyikan banner afiliasi saat di halaman profil
+            postFormSection.classList.add('hidden');
+            postsContainer.parentElement.classList.add('hidden');
+            affiliateBanner.classList.add('hidden');
 
         }
 
         function hideProfileManagement() {
             console.log('hideProfileManagement dipanggil');
-            // NEW: Sembunyikan profil management, auth section, rules section, biarkan semua yang lain terlihat
             profileManagementSection.classList.add('hidden');
             authSection.classList.add('hidden');
-            rulesSection.classList.add('hidden'); // NEW
-            updateUIVisibility(auth.currentUser); // Perbarui UI sesuai status login (akan menampilkan postForm dan postsList)
-            // affiliateBanner visibility handled by updateUIVisibility
+            rulesSection.classList.add('hidden');
+            updateUIVisibility(auth.currentUser);
         }
 
         changeNameButtonInProfile.addEventListener('click', async () => {
@@ -1438,7 +1433,8 @@
                 const lastChangeTime = lastChangeTimestamp.toMillis();
                 const timePassed = now - lastChangeTime;
                 if (timePassed < DISPLAY_NAME_UPDATE_COOLDOWN) {
-                    const remainingTime = DISPLAY_NAME_UPDATE_COOLDOWN - timePassed;
+                    const remainingTime = DISPLAY_N
+AME_UPDATE_COOLDOWN - timePassed;
                     const hours = Math.floor(remainingTime / (1000 * 60 * 60));
                     const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
                     showMessage(globalMessage, `Anda bisa mengganti nama lagi dalam sekitar ${hours} jam ${minutes} menit.`, 'error');
@@ -1513,64 +1509,52 @@
         }
 
 
-        // --- NEW: Fungsi Pengelolaan Rules Section ---
+        // --- Fungsi Pengelolaan Rules Section ---
         function showRules() {
             console.log('showRules dipanggil');
-            // Sembunyikan semua bagian lain dan tampilkan hanya rules
             authSection.classList.add('hidden');
             profileManagementSection.classList.add('hidden');
             globalMessage.classList.add('hidden');
             postFormSection.classList.add('hidden');
-            postsContainer.parentElement.classList.add('hidden'); // Sembunyikan daftar postingan
-            affiliateBanner.classList.add('hidden'); // NEW: Sembunyikan banner afiliasi saat di halaman rules
+            postsContainer.parentElement.classList.add('hidden');
+            affiliateBanner.classList.add('hidden');
 
-            rulesSection.classList.remove('hidden'); // Tampilkan rules section
-            // Menggulir ke atas halaman agar rules terlihat jelas
+            rulesSection.classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function hideRules() {
             console.log('hideRules dipanggil');
-            // Sembunyikan rules section dan perbarui UI ke tampilan default (postingan)
             rulesSection.classList.add('hidden');
-            updateUIVisibility(auth.currentUser); // Akan menampilkan postForm dan postsList
-            // affiliateBanner visibility handled by updateUIVisibility
+            updateUIVisibility(auth.currentUser);
         }
 
 
         // --- Fungsi untuk memperbarui tampilan UI ---
-        // NEW: Fungsi untuk menampilkan Auth Section
         function showAuthSection() {
             authSection.classList.remove('hidden');
-            profileManagementSection.classList.add('hidden'); // Sembunyikan profil mgmt jika muncul
-            rulesSection.classList.add('hidden'); // NEW: Sembunyikan rules
-            postFormSection.classList.add('hidden'); // NEW: Sembunyikan form postingan
-            postsContainer.parentElement.classList.add('hidden'); // NEW: Sembunyikan daftar postingan
-            globalMessage.classList.add('hidden'); // Sembunyikan pesan global lama
-            affiliateBanner.classList.add('hidden'); // NEW: Sembunyikan banner afiliasi saat di halaman auth
-            authEmailInput.focus(); // Fokus ke input email
+            profileManagementSection.classList.add('hidden');
+            rulesSection.classList.add('hidden');
+            postFormSection.classList.add('hidden');
+            postsContainer.parentElement.classList.add('hidden');
+            globalMessage.classList.add('hidden');
+            affiliateBanner.classList.add('hidden');
+            authEmailInput.focus();
         }
 
         async function updateUIVisibility(user) {
             console.log('updateUIVisibility dipanggil. User:', user ? user.email : 'null');
-            // Selalu sembunyikan authSection dan profileManagementSection dan rulesSection saat awal
             authSection.classList.add('hidden');
             profileManagementSection.classList.add('hidden');
-            rulesSection.classList.add('hidden'); // NEW
+            rulesSection.classList.add('hidden');
 
-            // NEW: Selalu tampilkan postFormSection dan postsContainer
             postFormSection.classList.remove('hidden');
-            postsContainer.parentElement.classList.remove('hidden'); // Menampilkan kembali kontainer postingan
+            postsContainer.parentElement.classList.remove('hidden');
 
-            // NEW: Tampilkan/sembunyikan banner afiliasi berdasarkan Local Storage
-            // NOTE: setupAffiliateBanner() juga dipanggil di DOMContentLoaded.
-            // Ini memastikan banner diperiksa dua kali: saat load awal, dan saat status auth berubah.
-            // Jika ada aturan kompleks (misal, banner hanya muncul untuk user login tertentu), logikanya bisa di sini.
-            // Untuk saat ini, kita biarkan `setupAffiliateBanner` mengatur visibility default.
             if (localStorage.getItem(AFFILIATE_BANNER_KEY) === 'true' ||
-                profileManagementSection.classList.contains('hidden') === false || // Jika di halaman profil, banner disembunyikan
-                rulesSection.classList.contains('hidden') === false || // Jika di halaman rules, banner disembunyikan
-                authSection.classList.contains('hidden') === false // Jika di halaman auth, banner disembunyikan
+                !profileManagementSection.classList.contains('hidden') ||
+                !rulesSection.classList.contains('hidden') ||
+                !authSection.classList.contains('hidden')
             ) {
                 affiliateBanner.classList.add('hidden');
             } else {
@@ -1581,59 +1565,58 @@
             if (user) {
                 // User sudah login
                 userProfileSection.classList.remove('hidden');
-                authSection.classList.add('hidden'); // Sembunyikan form login/daftar
+                authSection.classList.add('hidden');
 
                 currentUserName = user.displayName || user.email.split('@')[0];
                 currentUserNameDisplay.textContent = currentUserName;
 
-                // Tampilkan tombol logout
                 logoutButton.classList.remove('hidden');
 
-                // NEW: Tampilkan form postingan hanya jika user login
                 postFormSection.classList.remove('hidden');
-                postsContainer.parentElement.classList.remove('hidden'); // Pastikan daftar postingan terlihat
+                postsContainer.parentElement.classList.remove('hidden');
 
-                // Dapatkan status verifikasi dari Firestore
+                // Dapatkan status verifikasi dari Firestore untuk pengguna yang sedang login
                 try {
                     const userDocRef = doc(db, USERS_COLLECTION_NAME, user.uid);
                     const userDoc = await getDoc(userDocRef);
                     if (userDoc.exists()) {
                         currentUserIsVerified = userDoc.data().isVerified === true;
                         console.log(`User ${user.email} verified status: ${currentUserIsVerified}`);
+                        // Perbarui tampilan status verifikasi di profil (jika sedang ditampilkan)
+                        // Ini memastikan profil pengguna yang sedang login juga memiliki centang biru yang akurat
+                        profileVerificationStatus.innerHTML = `Status Verifikasi: <strong>${currentUserIsVerified ? 'Terverifikasi' : 'Belum Terverifikasi'}</strong> ${currentUserIsVerified ? '<i class="fas fa-check-circle verified-badge" title="Akun Terverifikasi"></i>' : '<span class="not-verified-text">(Perlu Verifikasi)</span>'}`;
                     } else {
                         currentUserIsVerified = false;
                         console.log(`User doc for ${user.email} not found, assuming not verified.`);
+                        profileVerificationStatus.textContent = 'Status Verifikasi: Data pengguna tidak ditemukan.';
                     }
                 } catch (error) {
                     console.error("Error fetching user verification status for UI:", error);
                     currentUserIsVerified = false;
+                    profileVerificationStatus.textContent = 'Status Verifikasi: Gagal memuat.';
                 }
 
-                // Attach listener untuk tombol addPostButton hanya jika belum ada
-                addPostButton.removeEventListener('click', addPost); // Hapus dulu untuk menghindari duplikasi
+                addPostButton.removeEventListener('click', addPost);
                 addPostButton.addEventListener('click', addPost);
 
             } else {
                 // User belum login
                 userProfileSection.classList.add('hidden');
-                logoutButton.classList.add('hidden'); // Sembunyikan tombol logout
+                logoutButton.classList.add('hidden');
                 currentUserNameDisplay.textContent = 'Anda belum login';
-                currentUserNameDisplay.classList.add('not-logged-in'); // Tambahkan kelas untuk styling
+                currentUserNameDisplay.classList.add('not-logged-in');
 
-                // Sembunyikan form postingan dan daftar postingan jika belum login
                 postFormSection.classList.add('hidden');
                 postsContainer.parentElement.classList.add('hidden');
 
-                // Tampilkan Auth Section secara default jika belum login
                 showAuthSection();
 
-                // Pastikan status verifikasi direset
                 currentUserIsVerified = false;
             }
         }
 
         // --- Fungsi Pengelolaan Postingan ---
-        addPostButton.addEventListener('click', addPost); // Listener utama
+        // addPostButton.addEventListener('click', addPost); // Listener utama (akan diatur di updateUIVisibility)
 
         async function addPost() {
             console.log('Add Post Button diklik');
@@ -1656,7 +1639,7 @@
                     authorName: user.displayName || user.email.split('@')[0],
                     content: postContent,
                     timestamp: serverTimestamp(),
-                    isVerified: currentUserIsVerified // Simpan status verifikasi saat posting
+                    // HAPUS BARIS INI: isVerified: currentUserIsVerified // TIDAK LAGI DISIMPAN PER-POSTINGAN
                 });
                 postContentInput.value = '';
                 showMessage(globalMessage, 'Postingan berhasil ditambahkan!', 'success');
@@ -1666,28 +1649,56 @@
             }
         }
 
-        function displayPosts(posts) {
+        async function displayPosts(posts) {
             console.log('displayPosts dipanggil. Jumlah postingan:', posts.length);
             postsContainer.innerHTML = '';
+
             if (posts.length === 0) {
                 noPostsMessage.textContent = 'Belum ada postingan. Jadilah yang pertama!';
                 postsContainer.appendChild(noPostsMessage);
                 noPostsMessage.classList.remove('hidden');
+                return;
             } else {
                 noPostsMessage.classList.add('hidden');
-                posts.forEach(post => {
-                    const postElement = document.createElement('div');
-                    postElement.className = 'post-item';
-                    postElement.innerHTML = `
-                        <div class="post-header">
-                            <span class="post-author">${post.authorName} ${post.isVerified ? '<i class="fas fa-check-circle verified-badge" title="Akun Terverifikasi"></i>' : ''}</span>
-                            <span class="post-date">${formatTimestamp(post.timestamp)}</span>
-                        </div>
-                        <p class="post-content">${post.content}</p>
-                    `;
-                    postsContainer.appendChild(postElement);
-                });
             }
+
+            // Buat map untuk menyimpan status verifikasi penulis agar tidak fetch berulang
+            const authorVerificationStatus = new Map();
+            const uniqueAuthorIds = [...new Set(posts.map(post => post.authorId))];
+
+            // Fetch status verifikasi untuk semua penulis unik secara paralel
+            const userFetches = uniqueAuthorIds.map(async authorId => {
+                try {
+                    const userDocRef = doc(db, USERS_COLLECTION_NAME, authorId);
+                    const userDoc = await getDoc(userDocRef);
+                    if (userDoc.exists()) {
+                        authorVerificationStatus.set(authorId, userDoc.data().isVerified === true);
+                    } else {
+                        authorVerificationStatus.set(authorId, false); // Default ke tidak terverifikasi jika dokumen pengguna tidak ditemukan
+                    }
+                } catch (error) {
+                    console.error(`Error fetching verification status for author ${authorId}:`, error);
+                    authorVerificationStatus.set(authorId, false); // Default ke tidak terverifikasi jika ada error
+                }
+            });
+
+            await Promise.all(userFetches); // Tunggu semua status verifikasi penulis selesai diambil
+
+            posts.forEach(post => {
+                // Ambil status verifikasi dari map
+                const isAuthorVerified = authorVerificationStatus.get(post.authorId) || false;
+
+                const postElement = document.createElement('div');
+                postElement.className = 'post-item';
+                postElement.innerHTML = `
+                    <div class="post-header">
+                        <span class="post-author">${post.authorName} ${isAuthorVerified ? '<i class="fas fa-check-circle verified-badge" title="Akun Terverifikasi"></i>' : ''}</span>
+                        <span class="post-date">${formatTimestamp(post.timestamp)}</span>
+                    </div>
+                    <p class="post-content">${post.content}</p>
+                `;
+                postsContainer.appendChild(postElement);
+            });
         }
 
         // Listener untuk perubahan status autentikasi
@@ -1702,7 +1713,7 @@
                     snapshot.forEach((doc) => {
                         posts.push({ id: doc.id, ...doc.data() });
                     });
-                    displayPosts(posts);
+                    displayPosts(posts); // Panggil displayPosts yang sudah asynchronous
                 }, (error) => {
                     console.error("Error fetching posts:", error);
                     postsContainer.innerHTML = `<p class="no-posts-message error">Gagal memuat postingan: ${error.message}</p>`;
@@ -1736,7 +1747,7 @@
             }
         }
 
-        // NEW: Fungsi untuk mengatur visibility banner afiliasi
+        // Fungsi untuk mengatur visibility banner afiliasi
         function setupAffiliateBanner() {
             const hideBanner = localStorage.getItem(AFFILIATE_BANNER_KEY);
             if (hideBanner === 'true') {
@@ -1763,8 +1774,6 @@
             if (backButtonProfile) {
                 backButtonProfile.addEventListener('click', hideProfileManagement);
             }
-            // addPostButton sekarang memiliki logika kondisional yang diatur di updateUIVisibility
-            // Jadi, pada DOMContentLoaded ini tidak perlu lagi addEventListener('click', addPost);
 
             // NEW: Event listener untuk tombol Rules Komunitas
             if (showRulesButton) {
@@ -1779,19 +1788,14 @@
                 footerShowRulesButton.addEventListener('click', showRules);
             }
 
-            // Panggil setup banner afiliasi setelah DOM dimuat
             setupAffiliateBanner();
 
-            // Event listener untuk tombol tutup banner afiliasi
             if (affiliateCloseBtn) {
                 affiliateCloseBtn.addEventListener('click', () => {
                     affiliateBanner.classList.add('hidden');
                     localStorage.setItem(AFFILIATE_BANNER_KEY, 'true');
                 });
             }
-
-            // onAuthStateChanged akan menangani tampilan awal setelah loading
-            // dan juga akan memanggil updateUIVisibility yang akan mengatur ulang visibility banner
         });
     </script>
 </body>

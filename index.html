@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Komunitas Kita</title>
+    <title>komunitasgame</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta name="google-site-verification" content="uOq5OFGGKbB0TCKFkwKulr52Y-SMjA5MU_prM-lVZv8" />
     <style>
@@ -59,6 +59,14 @@
             --footer-bg: #2c3e50;
             --footer-text: #ffffff;
             --footer-link-hover: #007bff;
+
+            /* Search Section (Removed, but keeping variables for consistency if needed elsewhere) */
+            --search-bg: #f0f4f7;
+            --search-border: #dbe4eb;
+            --search-input-bg: #ffffff;
+            --search-input-text: #2c3e50;
+            --search-button-bg: #007bff;
+            --search-button-hover: #0056b3;
         }
 
         /* Night Mode (Dark Theme) */
@@ -114,6 +122,14 @@
             --footer-bg: #141426;
             --footer-text: #e0e0e0;
             --footer-link-hover: #87ceeb;
+
+            /* Search Section Dark Mode (Removed, but keeping variables for consistency) */
+            --search-bg: #2b3b50;
+            --search-border: #3c4d60;
+            --search-input-bg: #212135;
+            --search-input-text: #e0e0e0;
+            --search-button-bg: #4a90e2;
+            --search-button-hover: #3a7bd8;
         }
 
         /* --- Gaya Umum & Reset --- */
@@ -339,7 +355,7 @@
         }
 
         /* Gaya untuk bagian yang tersembunyi/tampil */
-        .auth-section, .post-form, .profile-management, .rules-section {
+        .auth-section, .post-form, .profile-management, .rules-section, .pagination-controls { /* Removed .search-section */
             background-color: var(--bg-body);
             padding: 30px;
             border-radius: 12px;
@@ -413,6 +429,14 @@
         button:active {
             transform: translateY(0);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        button:disabled {
+            background-color: var(--button-secondary-bg);
+            cursor: not-allowed;
+            opacity: 0.7;
+            transform: none;
+            box-shadow: none;
         }
 
         .auth-section p {
@@ -552,6 +576,45 @@
             background-color: var(--button-success-hover);
         }
 
+        /* --- Search Section (REMOVED) --- */
+        /*
+        .search-section {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            background-color: var(--search-bg);
+            border: 1px solid var(--search-border);
+            box-shadow: 0 2px 8px var(--shadow-light);
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .search-section input[type="text"] {
+            flex-grow: 1;
+            margin-bottom: 0;
+            background-color: var(--search-input-bg);
+            color: var(--search-input-text);
+        }
+        .search-section button {
+            margin: 0;
+            flex-shrink: 0;
+            background-color: var(--search-button-bg);
+            min-width: 120px;
+            padding: 12px 20px;
+            font-size: 1em;
+        }
+        .search-section button:hover {
+            background-color: var(--search-button-hover);
+        }
+        #clearSearchButton {
+            background-color: var(--button-secondary-bg);
+        }
+        #clearSearchButton:hover {
+            background-color: var(--button-secondary-hover);
+        }
+        */
+
         /* --- Daftar Postingan --- */
         .posts-list {
             margin-top: 40px;
@@ -624,6 +687,26 @@
             font-size: 1.2em;
             transition: color 0.4s ease;
         }
+
+        /* --- Pagination Controls --- */
+        .pagination-controls {
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 12px;
+            background-color: var(--bg-body);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px var(--shadow-light);
+        }
+        .pagination-controls button {
+            width: auto;
+            min-width: 200px;
+            background-color: var(--accent-color);
+        }
+        .pagination-controls button:hover {
+            background-color: var(--accent-hover);
+        }
+
 
         /* --- Tema Toggle --- */
         .theme-toggle-button {
@@ -915,7 +998,7 @@
                 font-size: 1.2em;
             }
 
-            .auth-section, .post-form, .profile-management, .rules-section {
+            .auth-section, .post-form, .profile-management, .rules-section, .pagination-controls { /* Removed .search-section */
                 padding: 25px;
                 margin-bottom: 25px;
             }
@@ -932,6 +1015,20 @@
             .post-form button {
                  padding: 14px 20px;
             }
+
+            /* Search section responsive (REMOVED) */
+            /*
+            .search-section {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .search-section input[type="text"] {
+                margin-bottom: 0;
+            }
+            .search-section button {
+                width: 100%;
+            }
+            */
 
             .user-profile {
                 flex-direction: column;
@@ -1047,11 +1144,11 @@
 <body>
     <div class="top-bar">
         <a href="#" class="logo">
-            <img src="logo.png" alt="Komunitas Kita Logo">
-            Komunitas Kita
+            <img src="logo.png" alt="komunitasgame Logo">
+            komunitasgame
         </a>
         <nav>
-            <a href="https://tebakangka.duckdns.org/" target="_blank" rel="noopener noreferrer"><i class="fas fa-calculator"></i> Tebak Angka</a>
+            <a href="https://www.tebakangka.co-id.id" target="_blank" rel="noopener noreferrer"><i class="fas fa-calculator"></i> Tebak Angka</a>
             <a href="#" id="showRulesButton"><i class="fas fa-gavel"></i> Rules Komunitas</a>
         </nav>
         <div class="theme-toggle-container">
@@ -1062,7 +1159,7 @@
     </div>
 
     <header>
-        <h1>Selamat Datang di Komunitas Kita!</h1>
+        <h1>Selamat Datang di komunitasgame!</h1>
     </header>
 
     <div id="affiliateBanner">
@@ -1104,8 +1201,8 @@
         </div>
 
         <div id="rulesSection" class="rules-section hidden">
-            <h2><i class="fas fa-book-reader"></i> Aturan Komunitas Kita</h2>
-            <p>Selamat datang di Komunitas Kita! Agar kita semua bisa berinteraksi dengan nyaman dan positif, mohon perhatikan dan patuhi aturan berikut:</p>
+            <h2><i class="fas fa-book-reader"></i> Aturan komunitasgame</h2>
+            <p>Selamat datang di komunitasgame! Agar kita semua bisa berinteraksi dengan nyaman dan positif, mohon perhatikan dan patuhi aturan berikut:</p>
             <ul>
                 <li><span class="highlight">Hormati Sesama Anggota:</span> Jaga bahasa Anda, hindari hinaan, pelecehan, atau konten yang merendahkan. Ingat, ada manusia di balik setiap akun.</li>
                 <li><span class="highlight">Tidak Ada Spam atau Promosi Berlebihan:</span> Jangan mengirim postingan berulang-ulang, iklan yang tidak relevan, atau mempromosikan produk/jasa tanpa izin admin.</li>
@@ -1114,7 +1211,7 @@
                 <li><span class="highlight">Gunakan Fitur dengan Bijak:</span> Jika ada masalah atau pelanggaran, gunakan fitur pelaporan jika tersedia, atau hubungi admin.</li>
                 <li><span class="highlight">Patuhi Keputusan Admin:</span> Admin memiliki hak untuk memoderasi konten dan anggota demi menjaga ketertiban komunitas. Keputusan admin adalah final.</li>
             </ul>
-            <p>Dengan berinteraksi di Komunitas Kita, Anda menyetujui untuk mematuhi semua aturan di atas. Pelanggaran dapat mengakibatkan penghapusan postingan, peringatan, atau bahkan pembatasan akun.</p>
+            <p>Dengan berinteraksi di komunitasgame, Anda menyetujui untuk mematuhi semua aturan di atas. Pelanggaran dapat mengakibatkan penghapusan postingan, peringatan, atau bahkan pembatasan akun.</p>
             <button id="backButtonRules" class="back-button"><i class="fas fa-arrow-circle-left"></i> Kembali ke Beranda</button>
         </div>
 
@@ -1130,6 +1227,9 @@
             <div id="postsContainer">
                 <p class="no-posts-message" id="noPostsMessage">Memuat postingan...</p>
             </div>
+            <div id="paginationControls" class="pagination-controls hidden">
+                <button id="loadMorePostsButton"><i class="fas fa-history"></i> Lihat Post Sebelumnya</button>
+            </div>
         </div>
     </main>
 
@@ -1137,28 +1237,28 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Tentang Komunitas</h3>
-                <p>Komunitas Kita adalah platform tempat Anda bisa berbagi ide, berdiskusi, dan terhubung dengan sesama anggota. Mari membangun lingkungan yang positif!</p>
+                <p>komunitasgame adalah platform tempat Anda bisa berbagi ide, berdiskusi, dan terhubung dengan sesama anggota. Mari membangun lingkungan yang positif!</p>
             </div>
             <div class="footer-section">
                 <h3>Link Cepat</h3>
                 <ul>
                     <li><a href="#">Beranda</a></li>
                     <li><a href="#" id="footerShowRulesButton">Aturan Komunitas</a></li>
-                    <li><a href="https://tebakangka.duckdns.org/" target="_blank" rel="noopener noreferrer">Tebak Angka</a></li>
+                    <li><a href="https://www.tebakangka.co-id.id" target="_blank" rel="noopener noreferrer">Tebak Angka</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Ikuti Kami</h3>
                 <div class="social-icons">
-                    <a href="https://facebook.com/komunitaskita" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com/komunitaskita" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://instagram.com/komunitaskita" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://t.me/komunitaskita" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://facebook.com/komunitasgame" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/komunitasgame" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/komunitasgame" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/komunitasgame" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2025 Komunitas Kita. Hak Cipta Dilindungi Undang-Undang.
+            &copy; 2025 komunitasgame. Hak Cipta Dilindungi Undang-Undang.
         </div>
     </footer>
 
@@ -1191,6 +1291,12 @@
         const USERS_COLLECTION_NAME = 'users'; // Nama koleksi pengguna
         const THEME_KEY = 'theme_preference'; // Kunci untuk Local Storage tema
         const DISPLAY_NAME_UPDATE_COOLDOWN = 24 * 60 * 60 * 1000; // 24 jam dalam milidetik
+
+        // NEW: Variabel untuk paginasi (Search related variables removed)
+        let allFetchedPosts = []; // Menyimpan semua postingan yang diambil dari Firestore
+        let displayedPostsCount = 0; // Jumlah postingan yang sedang ditampilkan
+        const POSTS_PER_LOAD = 15; // Jumlah postingan yang dimuat setiap kali tombol ditekan
+        // Removed currentSearchTerm and debounceTimer
 
         // Elemen Autentikasi
         const globalMessage = document.getElementById('globalMessage');
@@ -1237,6 +1343,12 @@
         const postsContainer = document.getElementById('postsContainer');
         const noPostsMessage = document.getElementById('noPostsMessage');
 
+        // REMOVED: Elemen Search (searchInput, clearSearchButton)
+
+        // NEW: Elemen Pagination
+        const paginationControls = document.getElementById('paginationControls');
+        const loadMorePostsButton = document.getElementById('loadMorePostsButton');
+
         // Elemen Tema Toggle
         const themeToggleButton = document.getElementById('themeToggleButton');
 
@@ -1272,6 +1384,17 @@
             };
             return date.toLocaleDateString('id-ID', options);
         }
+
+        // Debounce function (No longer needed for search, but keeping if other debounced functions are added later)
+        /*
+        function debounce(func, delay) {
+            return function(...args) {
+                const context = this;
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => func.apply(context, args), delay);
+            };
+        }
+        */
 
         // --- Fungsi Pengelolaan Autentikasi ---
         function attachToggleAuthModeButtonListener() {
@@ -1389,6 +1512,8 @@
             postFormSection.classList.add('hidden');
             postsContainer.parentElement.classList.add('hidden');
             affiliateBanner.classList.add('hidden');
+            // searchSection.classList.add('hidden'); // Removed search
+            paginationControls.classList.add('hidden'); // Sembunyikan pagination
 
         }
 
@@ -1433,8 +1558,7 @@
                 const lastChangeTime = lastChangeTimestamp.toMillis();
                 const timePassed = now - lastChangeTime;
                 if (timePassed < DISPLAY_NAME_UPDATE_COOLDOWN) {
-                    const remainingTime = DISPLAY_N
-AME_UPDATE_COOLDOWN - timePassed;
+                    const remainingTime = DISPLAY_NAME_UPDATE_COOLDOWN - timePassed;
                     const hours = Math.floor(remainingTime / (1000 * 60 * 60));
                     const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
                     showMessage(globalMessage, `Anda bisa mengganti nama lagi dalam sekitar ${hours} jam ${minutes} menit.`, 'error');
@@ -1518,6 +1642,8 @@ AME_UPDATE_COOLDOWN - timePassed;
             postFormSection.classList.add('hidden');
             postsContainer.parentElement.classList.add('hidden');
             affiliateBanner.classList.add('hidden');
+            // searchSection.classList.add('hidden'); // Removed search
+            paginationControls.classList.add('hidden'); // Sembunyikan pagination
 
             rulesSection.classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1535,10 +1661,12 @@ AME_UPDATE_COOLDOWN - timePassed;
             authSection.classList.remove('hidden');
             profileManagementSection.classList.add('hidden');
             rulesSection.classList.add('hidden');
-            postFormSection.classList.add('hidden');
-            postsContainer.parentElement.classList.add('hidden');
+            // postFormSection.classList.add('hidden'); // Keep post form hidden for non-logged in users
+            // postsContainer.parentElement.classList.add('hidden'); // REMOVED: Allow viewing posts for non-logged in users
             globalMessage.classList.add('hidden');
-            affiliateBanner.classList.add('hidden');
+            // affiliateBanner.classList.add('hidden'); // Handled by updateUIVisibility below
+            // searchSection.classList.add('hidden'); // Removed search
+            // paginationControls.classList.add('hidden'); // Handled by updateUIVisibility below
             authEmailInput.focus();
         }
 
@@ -1548,8 +1676,17 @@ AME_UPDATE_COOLDOWN - timePassed;
             profileManagementSection.classList.add('hidden');
             rulesSection.classList.add('hidden');
 
-            postFormSection.classList.remove('hidden');
-            postsContainer.parentElement.classList.remove('hidden');
+            // Kontrol visibilitas form posting dan daftar postingan
+            if (user) {
+                postFormSection.classList.remove('hidden');
+                postsContainer.parentElement.classList.remove('hidden');
+                // searchSection.classList.remove('hidden'); // Removed search
+            } else {
+                postFormSection.classList.add('hidden');
+                postsContainer.parentElement.classList.remove('hidden'); // MODIFIED: Don't hide posts for non-logged in users
+                // searchSection.classList.add('hidden'); // Removed search
+            }
+
 
             if (localStorage.getItem(AFFILIATE_BANNER_KEY) === 'true' ||
                 !profileManagementSection.classList.contains('hidden') ||
@@ -1572,9 +1709,6 @@ AME_UPDATE_COOLDOWN - timePassed;
 
                 logoutButton.classList.remove('hidden');
 
-                postFormSection.classList.remove('hidden');
-                postsContainer.parentElement.classList.remove('hidden');
-
                 // Dapatkan status verifikasi dari Firestore untuk pengguna yang sedang login
                 try {
                     const userDocRef = doc(db, USERS_COLLECTION_NAME, user.uid);
@@ -1596,18 +1730,14 @@ AME_UPDATE_COOLDOWN - timePassed;
                     profileVerificationStatus.textContent = 'Status Verifikasi: Gagal memuat.';
                 }
 
-                addPostButton.removeEventListener('click', addPost);
-                addPostButton.addEventListener('click', addPost);
-
+                addPostButton.removeEventListener('click', addPost); // Hapus listener lama
+                addPostButton.addEventListener('click', addPost); // Tambahkan listener baru
             } else {
                 // User belum login
                 userProfileSection.classList.add('hidden');
                 logoutButton.classList.add('hidden');
                 currentUserNameDisplay.textContent = 'Anda belum login';
                 currentUserNameDisplay.classList.add('not-logged-in');
-
-                postFormSection.classList.add('hidden');
-                postsContainer.parentElement.classList.add('hidden');
 
                 showAuthSection();
 
@@ -1616,8 +1746,6 @@ AME_UPDATE_COOLDOWN - timePassed;
         }
 
         // --- Fungsi Pengelolaan Postingan ---
-        // addPostButton.addEventListener('click', addPost); // Listener utama (akan diatur di updateUIVisibility)
-
         async function addPost() {
             console.log('Add Post Button diklik');
             const user = auth.currentUser;
@@ -1639,7 +1767,6 @@ AME_UPDATE_COOLDOWN - timePassed;
                     authorName: user.displayName || user.email.split('@')[0],
                     content: postContent,
                     timestamp: serverTimestamp(),
-                    // HAPUS BARIS INI: isVerified: currentUserIsVerified // TIDAK LAGI DISIMPAN PER-POSTINGAN
                 });
                 postContentInput.value = '';
                 showMessage(globalMessage, 'Postingan berhasil ditambahkan!', 'success');
@@ -1649,14 +1776,20 @@ AME_UPDATE_COOLDOWN - timePassed;
             }
         }
 
-        async function displayPosts(posts) {
-            console.log('displayPosts dipanggil. Jumlah postingan:', posts.length);
+        async function displayPosts(postsToDisplay) {
+            console.log('displayPosts dipanggil. Jumlah postingan untuk ditampilkan:', postsToDisplay.length);
             postsContainer.innerHTML = '';
 
-            if (posts.length === 0) {
+            let filteredAndSortedPosts = postsToDisplay; // No filtering based on search
+
+            // NEW: Implement pagination logic
+            const postsToShow = filteredAndSortedPosts.slice(0, displayedPostsCount);
+
+            if (postsToShow.length === 0) {
                 noPostsMessage.textContent = 'Belum ada postingan. Jadilah yang pertama!';
                 postsContainer.appendChild(noPostsMessage);
                 noPostsMessage.classList.remove('hidden');
+                paginationControls.classList.add('hidden'); // Sembunyikan pagination jika tidak ada posts
                 return;
             } else {
                 noPostsMessage.classList.add('hidden');
@@ -1664,7 +1797,7 @@ AME_UPDATE_COOLDOWN - timePassed;
 
             // Buat map untuk menyimpan status verifikasi penulis agar tidak fetch berulang
             const authorVerificationStatus = new Map();
-            const uniqueAuthorIds = [...new Set(posts.map(post => post.authorId))];
+            const uniqueAuthorIds = [...new Set(postsToShow.map(post => post.authorId))];
 
             // Fetch status verifikasi untuk semua penulis unik secara paralel
             const userFetches = uniqueAuthorIds.map(async authorId => {
@@ -1684,7 +1817,7 @@ AME_UPDATE_COOLDOWN - timePassed;
 
             await Promise.all(userFetches); // Tunggu semua status verifikasi penulis selesai diambil
 
-            posts.forEach(post => {
+            postsToShow.forEach(post => {
                 // Ambil status verifikasi dari map
                 const isAuthorVerified = authorVerificationStatus.get(post.authorId) || false;
 
@@ -1699,28 +1832,66 @@ AME_UPDATE_COOLDOWN - timePassed;
                 `;
                 postsContainer.appendChild(postElement);
             });
+
+            // NEW: Update pagination button state
+            if (filteredAndSortedPosts.length > displayedPostsCount) {
+                paginationControls.classList.remove('hidden');
+                loadMorePostsButton.disabled = false;
+            } else {
+                paginationControls.classList.add('hidden');
+                loadMorePostsButton.disabled = true;
+            }
         }
+
+        // --- REMOVED: Fungsi Pencarian ---
+        /*
+        searchInput.addEventListener('input', debounce(() => {
+            currentSearchTerm = searchInput.value.trim();
+            displayedPostsCount = POSTS_PER_LOAD;
+            if (currentSearchTerm) {
+                clearSearchButton.classList.remove('hidden');
+            } else {
+                clearSearchButton.classList.add('hidden');
+            }
+            displayPosts(allFetchedPosts);
+        }, 300));
+
+        clearSearchButton.addEventListener('click', () => {
+            searchInput.value = '';
+            currentSearchTerm = '';
+            clearSearchButton.classList.add('hidden');
+            displayedPostsCount = POSTS_PER_LOAD;
+            displayPosts(allFetchedPosts);
+        });
+        */
+
+        // --- NEW: Fungsi Paginasi ---
+        loadMorePostsButton.addEventListener('click', () => {
+            console.log('Load More Posts Button diklik.');
+            displayedPostsCount += POSTS_PER_LOAD;
+            displayPosts(allFetchedPosts); // Panggil ulang displayPosts untuk memuat lebih banyak
+        });
 
         // Listener untuk perubahan status autentikasi
         onAuthStateChanged(auth, async (user) => {
             console.log('onAuthStateChanged dipanggil. User:', user ? user.email : 'null');
             updateUIVisibility(user);
-            if (user) {
-                // Fetch posts only if user is logged in
-                const q = query(collection(db, POSTS_COLLECTION_NAME), orderBy('timestamp', 'desc'));
-                onSnapshot(q, (snapshot) => {
-                    const posts = [];
-                    snapshot.forEach((doc) => {
-                        posts.push({ id: doc.id, ...doc.data() });
-                    });
-                    displayPosts(posts); // Panggil displayPosts yang sudah asynchronous
-                }, (error) => {
-                    console.error("Error fetching posts:", error);
-                    postsContainer.innerHTML = `<p class="no-posts-message error">Gagal memuat postingan: ${error.message}</p>`;
+
+            // Fetch posts regardless of login status
+            const q = query(collection(db, POSTS_COLLECTION_NAME), orderBy('timestamp', 'desc'));
+            onSnapshot(q, (snapshot) => {
+                allFetchedPosts = []; // Reset the list
+                snapshot.forEach((doc) => {
+                    allFetchedPosts.push({ id: doc.id, ...doc.data() });
                 });
-            } else {
-                displayPosts([]); // Kosongkan daftar postingan jika tidak login
-            }
+                // NEW: Inisialisasi displayedPostsCount saat pertama kali data dimuat atau berubah
+                displayedPostsCount = POSTS_PER_LOAD; // Always reset pagination
+                displayPosts(allFetchedPosts); // Panggil displayPosts dengan semua data yang diambil
+            }, (error) => {
+                console.error("Error fetching posts:", error);
+                postsContainer.innerHTML = `<p class="no-posts-message error">Gagal memuat postingan: ${error.message}</p>`;
+                paginationControls.classList.add('hidden');
+            });
         });
 
         // --- Tema ---
